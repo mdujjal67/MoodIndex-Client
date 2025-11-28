@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "image": "https://i.ibb.co.com/XxHXr1HC/6856250942e8ef039a18047b.jpg",
+    "title": "Understanding Anxiety",
+    "category": "Awareness",
+    "shortDescription": "Learn how anxiety affects your mind and body, and discover strategies to manage it effectively.",
+    "link": "/education/1",
+    "date": "June 5, 2025",
+    "readCount": "1.2K Reads"
+  },
+  {
+    "id": 2,
+    "image": "https://i.ibb.co.com/bjtVyGvq/Meditation-Strength-Training-for-the-Mind-1080x675.jpg",
+    "title": "Mindfulness Techniques",
+    "category": "Wellbeing",
+    "shortDescription": "Explore simple mindfulness exercises to reduce stress and increase your mental clarity.",
+    "link": "/education/2",
+    "date": "June 10, 2025",
+    "readCount": "950 Reads"
+  },
+  {
+    "id": 3,
+    "image": "https://i.ibb.co.com/3YcMwDhT/rsz-1adobestock-189974152.jpg",
+    "title": "Better Sleep Habits",
+    "category": "Health Tips",
+    "shortDescription": "Tips and routines to improve your sleep quality for a healthier mind and body.",
+    "link": "/education/3",
+    "date": "June 12, 2025",
+    "readCount": "1.1K Reads"
+  },
+  {
+    "id": 4,
+    "image": "https://source.unsplash.com/640x480/?meditation",
+    "title": "Stress Management Strategies",
+    "category": "Wellbeing",
+    "shortDescription": "Learn how to manage stress effectively through daily habits and relaxation techniques.",
+    "link": "/education/4",
+    "date": "June 15, 2025",
+    "readCount": "870 Reads"
+  },
+  {
+    "id": 5,
+    "image": "https://source.unsplash.com/640x480/?mentalhealth",
+    "title": "Coping with Depression",
+    "category": "Awareness",
+    "shortDescription": "Understand depression symptoms and discover ways to seek help and support.",
+    "link": "/education/5",
+    "date": "June 18, 2025",
+    "readCount": "1.5K Reads"
+  },
+  {
+    "id": 6,
+    "image": "https://source.unsplash.com/640x480/?yoga",
+    "title": "Yoga for Mental Health",
+    "category": "Wellbeing",
+    "shortDescription": "Practice yoga poses that can help improve your mood and mental clarity.",
+    "link": "/education/6",
+    "date": "June 20, 2025",
+    "readCount": "780 Reads"
+  },
+  {
+    "id": 7,
+    "image": "https://source.unsplash.com/640x480/?nutrition",
+    "title": "Nutrition and Mental Health",
+    "category": "Health Tips",
+    "shortDescription": "Discover the impact of diet on mental wellbeing and foods that boost mood.",
+    "link": "/education/7",
+    "date": "June 22, 2025",
+    "readCount": "920 Reads"
+  },
+  {
+    "id": 8,
+    "image": "https://source.unsplash.com/640x480/?exercise",
+    "title": "Exercise for Emotional Balance",
+    "category": "Wellbeing",
+    "shortDescription": "Learn exercises and routines that support mental health and emotional stability.",
+    "link": "/education/8",
+    "date": "June 25, 2025",
+    "readCount": "810 Reads"
+  },
+  {
+    "id": 9,
+    "image": "https://source.unsplash.com/640x480/?therapy",
+    "title": "Benefits of Counseling",
+    "category": "Awareness",
+    "shortDescription": "Understand how counseling and therapy sessions can help improve mental wellbeing.",
+    "link": "/education/9",
+    "date": "June 28, 2025",
+    "readCount": "1K Reads"
+  },
+  {
+    "id": 10,
+    "image": "https://source.unsplash.com/640x480/?mindfulness",
+    "title": "Mindful Journaling",
+    "category": "Wellbeing",
+    "shortDescription": "Learn the art of journaling to increase awareness and reduce stress.",
+    "link": "/education/10",
+    "date": "June 30, 2025",
+    "readCount": "650 Reads"
+  },
+  {
+    "id": 11,
+    "image": "https://source.unsplash.com/640x480/?brain",
+    "title": "Boost Your Cognitive Health",
+    "category": "Health Tips",
+    "shortDescription": "Tips and exercises to improve focus, memory, and overall brain health.",
+    "link": "/education/11",
+    "date": "July 2, 2025",
+    "readCount": "720 Reads"
+  },
+  {
+    "id": 12,
+    "image": "https://source.unsplash.com/640x480/?selfcare",
+    "title": "Self-Care Strategies",
+    "category": "Wellbeing",
+    "shortDescription": "Effective self-care practices to maintain mental and emotional balance.",
+    "link": "/education/12",
+    "date": "July 5, 2025",
+    "readCount": "890 Reads"
+  }
+]
