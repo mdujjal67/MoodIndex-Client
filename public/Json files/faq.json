@@ -1,0 +1,46 @@
+[
+  {
+    "question": "What is the purpose of this e-mental health website?",
+    "answer": "This platform helps users understand mental health topics and complete simple self-assessment tools. The structure and content were improved using card sorting to make navigation easier for people with different abilities."
+  },
+  {
+    "question": "Why did you use the card sorting method in this project?",
+    "answer": "Card sorting helps identify how real users mentally group information. It allows the website navigation to follow user logic instead of developer assumptions, ensuring accessibility and usability."
+  },
+  {
+    "question": "Who were the participants in the card sorting study?",
+    "answer": "Participants included a mix of general users and individuals with accessibility needs. This diversity ensured that final categories reflected real user expectations and challenges."
+  },
+  {
+    "question": "How does card sorting improve accessibility?",
+    "answer": "Card sorting reduces cognitive load by simplifying navigation, grouping related topics, improving labeling, and ensuring users with disabilities can easily predict where content belongs."
+  },
+  {
+    "question": "What types of mental health topics are included on this website?",
+    "answer": "The website covers stress, anxiety, depression, emotional wellbeing, lifestyle habits, mindfulness, and accessibility-focused features for assisted navigation."
+  },
+  {
+    "question": "Is the assessment test considered a medical diagnosis?",
+    "answer": "No. The assessment gives general indicators based on user inputs. It is not a clinical diagnosis and cannot replace a consultation with a certified mental health professional."
+  },
+  {
+    "question": "How was the Information Architecture (IA) decided?",
+    "answer": "The IA was created using Open Card Sorting, cluster analysis, and the Interactive Dialogue Model (IDM), ensuring the final website structure is research-driven and user-centered."
+  },
+  {
+    "question": "Can users with low digital skills use this platform easily?",
+    "answer": "Yes. Clear labels, simple navigation, consistent layout, large clickable areas, and keyboard-friendly interaction all ensure that users with limited digital literacy can navigate easily."
+  },
+  {
+    "question": "What accessibility features were implemented?",
+    "answer": "Features include keyboard navigation, ARIA labels, readable typography, high color contrast, structured headings, simplified menus, and screen-reader friendly content organization."
+  },
+  {
+    "question": "What improvements were made after the card sorting results?",
+    "answer": "Content categories were renamed in plain language, merged into intuitive groups, unnecessary items removed, and redundant paths were reorganized to reduce confusion."
+  },
+  {
+    "question": "Is my data stored when I complete an assessment?",
+    "answer": "No personal data is saved. All assessments work locally in the browser, ensuring user privacy and anonymity."
+  }
+]

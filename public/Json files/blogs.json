@@ -1,0 +1,111 @@
+[
+  {
+    "id": 1,
+    "slug": "managing-anxiety-during-exams",
+    "title": "Managing Anxiety During Exams",
+    "category": "Mental Health",
+    "shortDescription": "Learn practical strategies to manage anxiety during exams, including breathing techniques, time management, and mindfulness tips.",
+    "fullDescription": "Exam anxiety is common among students. This article covers practical methods to reduce stress, such as deep breathing, guided meditation, regular breaks, and prioritizing study tasks. Implementing these strategies helps improve focus, performance, and mental well-being during exam periods.",
+    "image": "https://i.ibb.co.com/B532Yk5h/mental-health-img.webp",
+    "link": "/blog/managing-anxiety-during-exams",
+    "date": "June 2, 2025",
+    "readCount": "980 views"
+  },
+  {
+    "id": 2,
+    "slug": "improving-sleep-quality",
+    "title": "Improving Sleep Quality",
+    "category": "Health & Wellness",
+    "shortDescription": "Discover techniques to enhance sleep quality, including sleep routines, environment adjustments, and lifestyle changes.",
+    "fullDescription": "Quality sleep is essential for mental and physical health. Learn how to create a consistent bedtime routine, reduce screen exposure before sleep, and optimize your bedroom environment. Incorporating light exercise and managing caffeine intake can also significantly improve your sleep patterns.",
+    "image": "https://i.ibb.co.com/BkXQnv7/quotes-about-health-201711-1510898189.jpg",
+    "link": "/blog/improving-sleep-quality",
+    "date": "July 2, 2025",
+    "readCount": "1.1k views"
+    
+  },
+  {
+    "id": 3,
+    "slug": "boosting-focus-and-productivity",
+    "title": "Boosting Focus and Productivity",
+    "category": "Self-Improvement",
+    "shortDescription": "Enhance your focus and productivity with actionable methods like task prioritization, Pomodoro technique, and goal setting.",
+    "fullDescription": "Staying focused is challenging in a world full of distractions. This guide provides actionable tips to prioritize tasks, manage time effectively, and use productivity techniques such as the Pomodoro method. With these strategies, you can maintain concentration, reduce procrastination, and achieve your goals efficiently.",
+    "image": "https://i.ibb.co.com/xqk5LvK8/self-imorovement.webp",
+    "link": "/blog/boosting-focus-and-productivity",
+    "date": "June 8, 2025",
+    "readCount": "900 views"
+  },
+  {
+    "id": 4,
+    "slug": "coping-with-stress",
+    "title": "Coping with Stress",
+    "category": "Mental Health",
+    "shortDescription": "Learn practical strategies to cope with everyday stress and prevent burnout, including mindfulness, exercise, and journaling.",
+    "fullDescription": "Stress affects both physical and mental health. Discover techniques such as mindfulness meditation, regular physical activity, journaling, and time management to reduce stress levels. Recognizing stress triggers and responding proactively can help maintain emotional balance and overall wellbeing.",
+    "image": "https://i.ibb.co.com/TM3nLT88/sentinelassam-english-2025-03-01-91vhaya2-social-leaders-mental-health-wrong.jpg",
+    "link": "/blog/coping-with-stress",
+    "date": "June 11, 2025",
+    "readCount": "1.3 views"
+  },
+  {
+    "id": 5,
+    "slug": "healthy-diet-for-mental-wellbeing",
+    "title": "Healthy Diet for Mental Wellbeing",
+    "category": "Nutrition",
+    "shortDescription": "Understand how nutrition impacts mental health and discover foods that promote better mood, focus, and energy.",
+    "fullDescription": "Your diet directly influences brain function and emotional health. Learn about nutrient-rich foods that support cognitive function, reduce anxiety, and improve mood. Tips include incorporating omega-3 fatty acids, whole grains, fruits, and vegetables into your daily meals while reducing processed foods and sugar.",
+    "image": "https://i.ibb.co.com/VWnLXC5C/nutrition.png",
+    "link": "/blog/healthy-diet-for-mental-wellbeing",
+    "date": "June 2, 2025",
+    "readCount": "1.4k views"
+  },
+  {
+    "id": 6,
+    "slug": "understanding-adhd",
+    "title": "Understanding ADHD",
+    "category": "Mental Health",
+    "shortDescription": "A beginner-friendly guide to understanding ADHD symptoms, challenges, and strategies to improve focus and organization.",
+    "fullDescription": "ADHD affects attention, impulsivity, and activity levels. This article explains common signs, diagnostic considerations, and practical strategies for daily management. Tips include creating structured routines, using reminders, and adopting mindfulness practices to support productivity and emotional stability.",
+    "image": "https://i.ibb.co.com/j9KF1x11/image.png",
+    "link": "/blog/understanding-adhd",
+    "date": "June 2, 2025",
+    "readCount": "980 views"
+  },
+  {
+    "id": 7,
+    "slug": "building-healthy-habits",
+    "title": "Building Healthy Habits",
+    "category": "Self-Improvement",
+    "shortDescription": "Learn to create and maintain productive habits that improve health, focus, and overall wellbeing over time.",
+    "fullDescription": "Healthy habits form the foundation for long-term success and wellbeing. Learn practical methods to establish routines, overcome procrastination, and stay consistent. Topics include morning rituals, goal setting, habit tracking, and gradual behavior change to build sustainable habits.",
+    "image": "https://i.ibb.co.com/vCCGycV9/image.png",
+    "link": "/blog/building-healthy-habits",
+    "date": "June 2, 2025",
+    "readCount": "940 views"
+  },
+  {
+    "id": 8,
+    "slug": "managing-mood-swings",
+    "title": "Managing Mood Swings",
+    "category": "Mental Health",
+    "shortDescription": "Discover techniques to manage sudden emotional changes and maintain emotional stability in daily life.",
+    "fullDescription": "Mood swings can be triggered by stress, hormones, or environmental factors. Learn to identify triggers, use emotional regulation strategies, and apply mindfulness and breathing techniques to maintain a balanced state of mind. These practices enhance emotional resilience and social interactions.",
+    "image": "https://i.ibb.co.com/bgMDZr8y/controlling-mood-swings.jpg",
+    "link": "/blog/managing-mood-swings",
+    "date": "June 2, 2025",
+    "readCount": "2.1k views"
+  },
+  {
+    "id": 9,
+    "slug": "digital-wellbeing",
+    "title": "Digital Wellbeing",
+    "category": "Lifestyle",
+    "shortDescription": "Maintain a healthy relationship with technology through screen time management, mindfulness, and digital detox practices.",
+    "fullDescription": "Digital devices affect mental health and attention span. Learn strategies to reduce screen fatigue, set boundaries for social media use, and practice digital mindfulness. Implementing these changes can enhance focus, improve sleep, and support overall mental wellbeing.",
+    "image": "https://i.ibb.co.com/0R0RMtP2/dr-good-equilibrio-digital-digital-balance.webp",
+    "link": "/blog/digital-wellbeing",
+    "date": "June 2, 2025",
+    "readCount": "980 views"
+  }
+]

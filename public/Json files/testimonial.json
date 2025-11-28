@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "avatar": "https://randomuser.me/api/portraits/women/44.jpg",
+    "name": "Emily Johnson",
+    "rating": 5,
+    "review": "This platform has helped me manage my anxiety effectively. The tools and guided exercises are easy to use, very supportive, and build confidence daily."
+  },
+  {
+    "id": 2,
+    "avatar": "https://randomuser.me/api/portraits/men/35.jpg",
+    "name": "Michael Smith",
+    "rating": 4,
+    "review": "I love the self-assessment features. They helped me understand my stress triggers better and gave actionable advice to handle challenges successfully."
+  },
+  {
+    "id": 3,
+    "avatar": "https://randomuser.me/api/portraits/women/68.jpg",
+    "name": "Sophia Williams",
+    "rating": 5,
+    "review": "The guided exercises are excellent. I've noticed improvements in my mental clarity and mood, making daily tasks feel much easier to manage."
+  },
+  {
+    "id": 4,
+    "avatar": "https://randomuser.me/api/portraits/men/23.jpg",
+    "name": "James Brown",
+    "rating": 4,
+    "review": "Very practical advice and resources. It feels like having a mental health coach in my pocket, always ready to guide me through stress."
+  },
+  {
+    "id": 5,
+    "avatar": "https://randomuser.me/api/portraits/women/51.jpg",
+    "name": "Olivia Davis",
+    "rating": 5,
+    "review": "I can track my moods and see progress over time. The interface is clean, user-friendly, and encourages me to stay consistent daily."
+  },
+  {
+    "id": 6,
+    "avatar": "https://randomuser.me/api/portraits/men/47.jpg",
+    "name": "William Miller",
+    "rating": 4,
+    "review": "Excellent mental health support. The articles and tools make it easy to practice stress management and feel more confident every day."
+  },
+  {
+    "id": 7,
+    "avatar": "https://randomuser.me/api/portraits/women/39.jpg",
+    "name": "Isabella Taylor",
+    "rating": 5,
+    "review": "Highly recommend this website. It helped me deal with anxiety, improve overall wellbeing, and maintain a calmer, focused mindset daily."
+  },
+  {
+    "id": 8,
+    "avatar": "https://randomuser.me/api/portraits/men/59.jpg",
+    "name": "Benjamin Wilson",
+    "rating": 4,
+    "review": "Great platform for mental health awareness and self-care. The exercises and tools are easy to use and encourage a balanced daily routine."
+  }
+]
