@@ -64,7 +64,7 @@ const TestHomeSection = () => {
                         />
                         <div className="flex flex-col justify-center flex-1 p-6 dark:bg-gray-50">
                             <span className="text-xs uppercase dark:text-white bg-green-600 p-1 rounded-md max-w-[35px]">Free</span>
-                            <h3 className="text-3xl font-bold font-serif">Stress Test</h3>
+                            <h3 className="text-3xl font-bold font-serif">Addiction Test</h3>
                             <p className="my-4 dark:text-gray-600">
                                 Quickly assess your stress levels and discover practical coping strategies.
                             </p>
