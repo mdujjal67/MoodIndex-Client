@@ -1,4 +1,6 @@
+// src/components/Stats.jsx
 import React from 'react';
+import Counter from './Counter'; // Import the Counter component
 
 const Stats = () => {
     return (
@@ -10,39 +12,46 @@ const Stats = () => {
                 </div>
 
                 <div className="container mx-auto grid justify-center grid-cols-2 text-center lg:grid-cols-3 gap-4">
+                    
+                    {/* Stat 1: Users Supported (5,000+) */}
                     <div className="flex flex-col justify-start m-2 lg:m-6">
-                        <p className="text-4xl font-bold leading-none lg:text-6xl">5K+</p>
-                        <p className="text-sm sm:text-base">Users Supported</p>
+                        <Counter endValue={5000} suffix="+" />
+                        <p className="text-sm sm:text-base mt-2">Users Supported</p>
                     </div>
 
+                    {/* Stat 2: Self-Assessment Tools (12+) */}
                     <div className="flex flex-col justify-start m-2 lg:m-6">
-                        <p className="text-4xl font-bold leading-none lg:text-6xl">12+</p>
-                        <p className="text-sm sm:text-base">Self-Assessment Tools</p>
+                        <Counter endValue={12} suffix="+" />
+                        <p className="text-sm sm:text-base mt-2">Self-Assessment Tools</p>
                     </div>
 
+                    {/* Stat 3: User Satisfaction (98%) */}
                     <div className="flex flex-col justify-start m-2 lg:m-6">
-                        <p className="text-4xl font-bold leading-none lg:text-6xl">98%</p>
-                        <p className="text-sm sm:text-base">User Satisfaction</p>
+                        {/* Example: Using precision for percentage if needed (e.g., 98.0%) */}
+                        <Counter endValue={98} suffix="%" /> 
+                        <p className="text-sm sm:text-base mt-2">User Satisfaction</p>
                     </div>
 
+                    {/* Stat 4: Mental-Health Articles (120+) */}
                     <div className="flex flex-col justify-start m-2 lg:m-6">
-                        <p className="text-4xl font-bold leading-none lg:text-6xl">120+</p>
-                        <p className="text-sm sm:text-base">Mental-Health Articles</p>
+                        <Counter endValue={120} suffix="+" />
+                        <p className="text-sm sm:text-base mt-2">Mental-Health Articles</p>
                     </div>
 
+                    {/* Stat 5: Verified Expert Resources (30+) */}
                     <div className="flex flex-col justify-start m-2 lg:m-6">
-                        <p className="text-4xl font-bold leading-none lg:text-6xl">30+</p>
-                        <p className="text-sm sm:text-base">Verified Expert Resources</p>
+                        <Counter endValue={30} suffix="+" />
+                        <p className="text-sm sm:text-base mt-2">Verified Expert Resources</p>
                     </div>
 
+                    {/* Stat 6: Accessibility Modes (3+) */}
                     <div className="flex flex-col justify-start m-2 lg:m-6">
-                        <p className="text-4xl font-bold leading-none lg:text-6xl">3+</p>
-                        <p className="text-sm sm:text-base">Accessibility Modes</p>
+                        <Counter endValue={3} suffix="+" />
+                        <p className="text-sm sm:text-base mt-2">Accessibility Modes</p>
                     </div>
 
                 </div>
             </section>
-
         </div>
     );
 };
