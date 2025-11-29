@@ -27,7 +27,9 @@ const Navbar = () => {
                 </div>
                 <ul tabIndex={0}
                     className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0">
-                    <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Anxiety Test</a></li>
+                    <Link to='/assessments/anxiety-test'>
+                        <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Anxiety Test</a></li>
+                    </Link>
                     <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Depression Test</a></li>
                     <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Addiction Test</a></li>
                     <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Bipolar Test</a></li>
@@ -194,7 +196,7 @@ const Navbar = () => {
 
                 {/* LOGO */}
                 <a href="/" className="flex items-center gap-2 font-bold text-2xl px-2 cursor-pointer rounded-lg bg-white text-[#0A77FF]">
-                    <span><img src="https://i.ibb.co.com/gbX301qT/Mood-Index-logo3.png" alt="" className='flex min-h-14 min-w-14' /></span>
+                    <span><img src="https://i.ibb.co.com/gbX301qT/Mood-Index-logo3.png" alt="" className='flex lg:h-20 lg:w-16' /></span>
                     <span className="health-blue">Mood</span>
                     <span className="sort-green -mx-2">Index</span>
                 </a>

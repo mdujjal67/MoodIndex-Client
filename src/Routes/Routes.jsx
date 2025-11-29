@@ -13,6 +13,8 @@ import BlogDetail from '../pages/Blogs/BlogDetails';
 import MissionVisionPage from '../pages/MissionVision/MissionVision';
 import AboutProjectPage from '../pages/AboutTheProject/AboutProject';
 import EduAwarenessDetails from '../pages/EducationAwareness/EduAwarenessDetails';
+import UnderDevelopment from '../pages/UnderDevelopment/UnderDevelopment';
+import AnxietyTest from '../pages/AssessmentPages/AnxietyTestPage/AnxietyTest';
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +22,7 @@ export const router = createBrowserRouter([
     Component: Root,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
+
       {
         index: true,
         // loader:()=>fetch('../../public/Json files/blogs.json'),     for importing single json data file----------
@@ -76,6 +79,10 @@ export const router = createBrowserRouter([
       {
         path: '/team-members',
         Component: Team,
+        loader: async () => {
+          const teamMembers = await fetch("/Json files/teamMembers.json").then(res => res.json());
+          return teamMembers;
+        }
       },
 
       {
@@ -101,6 +108,17 @@ export const router = createBrowserRouter([
       {
         path: '/help-center',
         Component: HelpCenter,
+      },
+
+      {
+        path: '/accessibility-support',
+        Component: UnderDevelopment,
+      },
+
+
+      {
+        path: '/assessments/anxiety-test',
+        Component: AnxietyTest,
       },
     ]
   },

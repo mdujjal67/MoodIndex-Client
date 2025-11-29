@@ -49,6 +49,7 @@ const EducationAwareness = ({data: propData, isHome}) => {
                 </div>
                 <div className="mt-2">
                   <button
+                    title={`Read more about: ${item.title}`}
                     onClick={() => navigate(`/education-awareness/${item.id}`)}
                     className="btn btn-sm w-full text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
                   >
@@ -70,6 +71,7 @@ const EducationAwareness = ({data: propData, isHome}) => {
                 Explore all our resources and tips to support your mental health.
               </p>
               <button
+                title="Click to see all the posts"
                 onClick={() => navigate("/education-awareness")}
                 className="btn btn-sm w-full text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
               >

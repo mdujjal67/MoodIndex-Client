@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 
 const BlogDetail = () => {
   const blog = useLoaderData(); // loader provides the blog directly
@@ -18,12 +18,14 @@ const BlogDetail = () => {
       />
       {/* <p className="text-gray-700 mb-4">{blog.shortDescription}</p> */}
       <p className="text-gray-700">{blog.fullDescription || blog.shortDescription}</p>
-      <button
-        onClick={() => navigate("/blogs")}
-        className="mt-6 text-white bg-[#1BA9B5] px-4 py-2 rounded hover:bg-gray-500 cursor-pointer"
-      >
-        Back to Blogs
-      </button>
+      <Link to='/blogs'>
+        <button
+          onClick={() => navigate("/blogs")}
+          className="mt-6 text-white bg-[#1BA9B5] px-4 py-2 rounded hover:bg-gray-500 cursor-pointer"
+        >
+          Back to Blogs
+        </button>
+      </Link>
     </section>
   );
 };

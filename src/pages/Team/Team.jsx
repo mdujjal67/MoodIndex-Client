@@ -1,58 +1,14 @@
 import React from "react";
+import { useLoaderData } from "react-router-dom";
 
-const teamMembers = [
-  {
-    id: 1,
-    name: "Dr. Aisha Rahman",
-    role: "Clinical Psychologist (MSc, PhD)",
-    img: "https://images.unsplash.com/photo-1594824476967-48c8b9642738",
-  },
-  {
-    id:2,
-    name: "Dr. Ethan Collins",
-    role: "Psychiatrist (Specialist in Anxiety Disorders)",
-    img: "https://i.ibb.co.com/5M2w7Hk/pexels-fauxels-3184360.jpg",
-  },
-  {
-    id:3,
-    name: "Dr. Sofia Martinez",
-    role: "Child & Adolescent Psychotherapist",
-    img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
-  },
-  {
-    id:4,
-    name: "Dr. Liam Parker",
-    role: "Licensed Mental Health Counselor (LMHC)",
-    img: "https://i.ibb.co.com/5M2w7Hk/pexels-fauxels-3184360.jpg",
-  },
-  {
-    id:5,
-    name: "Dr. Noor Ahmed",
-    role: "Behavioral Therapist (CBT Specialist)",
-    img: "https://i.ibb.co.com/5M2w7Hk/pexels-fauxels-3184360.jpg",
-  },
-  {
-    id:6,
-    name: "Dr. Emily Chen",
-    role: "Trauma & Stress Disorders Specialist",
-    img: "https://i.ibb.co.com/5M2w7Hk/pexels-fauxels-3184360.jpg",
-  },
-  {
-    id:7,
-    name: "Dr. Arif Hasan",
-    role: "Tele-Mental Health Consultant",
-    img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde",
-  },
-  {
-    id:8,
-    name: "Dr. Maya Thompson",
-    role: "Depression & Mood Disorders Specialist",
-    img: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce",
-  },
-  // Add more items easily...
-];
 
-const Team = () => {
+const Team = ({teamMembers:propData}) => {
+
+  const loaderData = useLoaderData(); // ALWAYS call the hook
+
+  const teamMembers = propData || loaderData; 
+  console.log(teamMembers)
+
   return (
     <section className="py-6 dark:bg-gray-100 dark:text-gray-800 mt-20">
       <div className="container p-4 mx-auto space-y-16 sm:p-10">
@@ -73,7 +29,7 @@ const Team = () => {
               <img
                 alt=""
                 src={member.img}
-                className="object-cover h-56 mx-auto mb-4 bg-center rounded-sm dark:bg-gray-500"
+                className="object-cover h-56 mx-auto mb-4 bg-center rounded-sm dark:bg-gray-500 hover:shadow-xl transition duration-500 transform hover:-translate-y-2"
               />
 
               <div className="flex flex-col items-center">

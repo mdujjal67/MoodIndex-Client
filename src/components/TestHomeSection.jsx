@@ -12,7 +12,7 @@ const TestHomeSection = () => {
                     </h2>
 
                     {/* Card 1 */}
-                    <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row">
+                    <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row hover:shadow-xl transition duration-500 transform hover:-translate-y-2">
                         <img
                             src="https://i.ibb.co.com/QvVPPFPf/134817147-56a7948c3df78cf7729754b7.jpgy"
                             alt="Anxiety Test"
@@ -34,7 +34,7 @@ const TestHomeSection = () => {
                     </div>
 
                     {/* Card 2 */}
-                    <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row-reverse">
+                    <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row-reverse hover:shadow-xl transition duration-500 transform hover:-translate-y-2">
                         <img
                             src="https://i.ibb.co.com/k633n2v6/Who-Is-Most-Prone-To-Depression-1.jpg"
                             alt="Depression Test"
@@ -56,7 +56,7 @@ const TestHomeSection = () => {
                     </div>
 
                     {/* Card 3 */}
-                    <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row mb-6">
+                    <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row mb-6 hover:shadow-xl transition duration-500 transform hover:-translate-y-2">
                         <img
                             src="https://i.ibb.co.com/spLzpMrq/hero-shutterstock-2525475415.jpg"
                             alt="Stress Test"

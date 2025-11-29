@@ -49,6 +49,7 @@ const Blogs = ({ data: propData, isHome }) => {
                 </div>
                 <div className="mt-2">
                   <button
+                    title={`Read more about: ${blog.title}`}
                     onClick={() => navigate(`/blog/${blog.id}`)}
                     className="btn btn-sm text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
                   >
@@ -61,7 +62,7 @@ const Blogs = ({ data: propData, isHome }) => {
 
           {/* Empty "More Blogs" card shows only on Home page */}
           {isHome && (
-            <article className="flex flex-col dark:bg-gray-100 shadow-md hover:shadow-lg transition-shadow duration-300 items-center justify-center p-6 text-center">
+            <article className="flex flex-col dark:bg-gray-100 shadow-md hover:shadow-xl transition duration-500 transform hover:-translate-y-2 items-center justify-center p-6 text-center">
               <div className="flex flex-col flex-1 justify-center items-center space-y-4">
                 <h3 className="text-lg font-semibold leading-snug font-serif">
                   More Blogs
@@ -70,6 +71,7 @@ const Blogs = ({ data: propData, isHome }) => {
                   Explore all our articles on mental health, wellbeing, and lifestyle.
                 </p>
                 <button
+                title="Click to see all blogs"
                   onClick={() => navigate("/blogs")}
                   className="btn btn-sm text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
                 >
