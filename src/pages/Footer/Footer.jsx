@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Footer = () => {
 	return (
 		<div>
 			<footer className="mt-20 px-4 divide-y dark:bg-gray-100 dark:text-gray-800">
-				<div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0" bis_skin_checked="1">
+				<div className="container flex flex-col justify-between py-14 mx-auto space-y-8 lg:flex-row lg:space-y-0" bis_skin_checked="1">
 					<div className="lg:w-1/3" bis_skin_checked="1">
 						<a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
-							<img src="https://i.ibb.co.com/gbX301qT/Mood-Index-logo3.png" alt="" className='flex h-16 w-14'/>
+							<img src="https://i.ibb.co.com/gbX301qT/Mood-Index-logo3.png" alt="" className='flex h-16 w-14' />
 							<span className="self-center text-2xl font-semibold">
 								<a href="/" className="font-bold text-2xl cursor-pointer text-[#0A77FF]">
 									<span className="health-blue">Mood</span>
@@ -20,18 +21,26 @@ const Footer = () => {
 						<div className="space-y-3" bis_skin_checked="1">
 							<h3 className="tracking-wide uppercase dark:text-gray-900 font-semibold">Product</h3>
 							<ul className="space-y-1">
-								<li className='hover:text-[#1BA9B5]'>
-									<a rel="noopener noreferrer" href="#">Features</a>
-								</li>
-								<li className='hover:text-[#1BA9B5]'>
-									<a rel="noopener noreferrer" href="#">Integrations</a>
-								</li>
-								<li className='hover:text-[#1BA9B5]'>
-									<a rel="noopener noreferrer" href="#">Pricing</a>
-								</li>
-								<li className='hover:text-[#1BA9B5]'>
-									<a rel="noopener noreferrer" href="#">FAQ</a>
-								</li>
+								<Link to='/features'>
+									<li className='hover:text-[#1BA9B5] mb-1'>
+										<a rel="noopener noreferrer">Features</a>
+									</li>
+								</Link>
+								<Link to='/integrations'>
+									<li className='hover:text-[#1BA9B5]'>
+										<a rel="noopener noreferrer">Integrations</a>
+									</li>
+								</Link>
+								<Link to='/pricing'>
+									<li className='hover:text-[#1BA9B5] my-1'>
+										<a rel="noopener noreferrer">Pricing</a>
+									</li>
+								</Link>
+								<Link to='/faqs'>
+									<li className='hover:text-[#1BA9B5]'>
+										<a rel="noopener noreferrer">FAQs</a>
+									</li>
+								</Link>
 							</ul>
 						</div>
 						<div className="space-y-3" bis_skin_checked="1">
@@ -48,15 +57,21 @@ const Footer = () => {
 						<div className="space-y-3" bis_skin_checked="1">
 							<h3 className="uppercase dark:text-gray-900 font-semibold">Developers</h3>
 							<ul className="space-y-1">
-								<li className='hover:text-[#1BA9B5]'>
-									<a rel="noopener noreferrer" href="#">Public API</a>
-								</li>
-								<li className='hover:text-[#1BA9B5]'>
-									<a rel="noopener noreferrer" href="#">Documentation</a>
-								</li>
-								<li className='hover:text-[#1BA9B5]'>
-									<a rel="noopener noreferrer" href="#">Guides</a>
-								</li>
+								<Link to='/public-api'>
+									<li className='hover:text-[#1BA9B5]'>
+										<a rel="noopener noreferrer" href="#">Public API</a>
+									</li>
+								</Link>
+								<Link to='/documentation'>
+									<li className='hover:text-[#1BA9B5] my-1'>
+										<a rel="noopener noreferrer" href="#">Documentation</a>
+									</li>
+								</Link>
+								<Link to='guides'>
+									<li className='hover:text-[#1BA9B5]'>
+										<a rel="noopener noreferrer" href="#">Guides</a>
+									</li>
+								</Link>
 							</ul>
 						</div>
 						<div className="space-y-3" bis_skin_checked="1">

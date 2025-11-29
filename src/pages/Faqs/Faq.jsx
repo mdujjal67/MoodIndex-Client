@@ -1,9 +1,9 @@
 import React from "react";
-import faqData from "../../../../public/Json files/faq.json";
+import faqData from "../../../public/Json files/faq.json";
 
 const Faq = () => {
   return (
-    <section className="w-full dark:bg-gray-100 dark:text-gray-800 py-10">
+    <section className="w-full dark:bg-gray-100 dark:text-gray-800 py-10 mt-20">
       <div className="max-w-5xl mx-auto px-4 md:px-8">
         <h2 className="text-3xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
         <p className="mt-4 mb-8 text-gray-600">

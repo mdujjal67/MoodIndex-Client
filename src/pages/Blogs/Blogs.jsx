@@ -1,8 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // If you are using react-router
+import { useNavigate, useLoaderData } from "react-router-dom";
 
-const Blogs = ({ data }) => {
+const Blogs = ({ data: propData, isHome }) => {
   const navigate = useNavigate();
+  const loaderData = useLoaderData(); // ALWAYS call the hook
+
+  const data = propData || loaderData; // then decide which data to use
 
   return (
     <section className="w-full py-6 sm:py-12 dark:bg-gray-100 mt-20 dark:text-gray-800">
@@ -13,6 +16,7 @@ const Blogs = ({ data }) => {
             Explore our latest blogs on mental health, wellbeing, and lifestyle tips.
           </p>
         </div>
+
         <div className="grid grid-cols-1 mt-14 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
           {data.map((blog) => (
             <article
@@ -51,29 +55,29 @@ const Blogs = ({ data }) => {
                     Read More
                   </button>
                 </div>
-
               </div>
             </article>
-
           ))}
 
-          {/* Empty card for "See All Blogs" */}
-          <article className="flex flex-col dark:bg-gray-100 shadow-md hover:shadow-lg transition-shadow duration-300 items-center justify-center p-6 text-center">
-            <div className="flex flex-col flex-1 justify-center items-center space-y-4">
-              <h3 className="text-lg font-semibold leading-snug font-serif">
-                More Blogs
-              </h3>
-              <p className="text-gray-600 font-sans">
-                Explore all our articles on mental health, wellbeing, and lifestyle.
-              </p>
-              <button
-                onClick={() => navigate("/blogs")} // Redirect to Blogs page
-                className="btn btn-sm text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
-              >
-                See All Blogs
-              </button>
-            </div>
-          </article>
+          {/* Empty "More Blogs" card shows only on Home page */}
+          {isHome && (
+            <article className="flex flex-col dark:bg-gray-100 shadow-md hover:shadow-lg transition-shadow duration-300 items-center justify-center p-6 text-center">
+              <div className="flex flex-col flex-1 justify-center items-center space-y-4">
+                <h3 className="text-lg font-semibold leading-snug font-serif">
+                  More Blogs
+                </h3>
+                <p className="text-gray-600 font-sans">
+                  Explore all our articles on mental health, wellbeing, and lifestyle.
+                </p>
+                <button
+                  onClick={() => navigate("/blogs")}
+                  className="btn btn-sm text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
+                >
+                  See All Blogs
+                </button>
+              </div>
+            </article>
+          )}
         </div>
       </div>
     </section>

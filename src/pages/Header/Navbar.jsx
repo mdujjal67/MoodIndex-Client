@@ -1,15 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Navbar = () => {
 
     const navLinks = (
         <>
             {/* Home (NO DROPDOWN) */}
-            <li className='mx-1'>
+            <Link to='/'><li className='mx-1'>
                 <a className='font-[Open_Sans] inline-block hover:bg-[#1BA9B5] hover:text-white hover:font-semibold p-2 rounded-lg transition-colors duration-300 cursor-pointer'>
                     Home
                 </a>
-            </li>
+            </li></Link>
 
             {/* Self-Assessments DROPDOWN */}
             <li className="relative dropdown dropdown-hover mx-1 group">
@@ -61,15 +62,17 @@ const Navbar = () => {
                     tabIndex={0}
                     className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0"
                 >
-                    <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                        <a>Blogs</a>
-                    </li>
+                    <Link to='/blogs'>
+                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
+                            <a>Blogs</a>
+                        </li>
+                    </Link>
                     <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
                         <a>Education & Awareness</a>
                     </li>
-                    <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
+                    <Link to='/faqs'><li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
                         <a>FAQs</a>
-                    </li>
+                    </li></Link>
                 </ul>
             </li>
 
@@ -100,9 +103,11 @@ const Navbar = () => {
                     tabIndex={0}
                     className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0"
                 >
-                    <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                        <a>Team Members</a>
-                    </li>
+                    <Link to='/team-members'>
+                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
+                            <a>Team Members</a>
+                        </li>
+                    </Link>
                     <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
                         <a>About the Project</a>
                     </li>
@@ -140,15 +145,21 @@ const Navbar = () => {
                     tabIndex={0}
                     className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0"
                 >
-                    <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                        <a>Help Center</a>
-                    </li>
-                    <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                        <a>Contact Support</a>
-                    </li>
-                    <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                        <a>Accessibility Support</a>
-                    </li>
+                    <Link to='/help-center'>
+                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
+                            <a>Help Center</a>
+                        </li>
+                    </Link>
+                    <Link to='/contact-support'>
+                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
+                            <a>Contact Support</a>
+                        </li>
+                    </Link>
+                    <Link to='accessibility-support'>
+                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
+                            <a>Accessibility Support</a>
+                        </li>
+                    </Link>
                 </ul>
             </li>
 
@@ -177,8 +188,8 @@ const Navbar = () => {
                 </div>
 
                 {/* LOGO */}
-                <a href="/" className="flex items-center gap-2 font-bold text-2xl p-2 cursor-pointer rounded-lg bg-white text-[#0A77FF]">
-                <span><img src="https://i.ibb.co.com/gbX301qT/Mood-Index-logo3.png" alt="" className='flex h-16 w-14'/></span>
+                <a href="/" className="flex items-center gap-2 font-bold text-2xl px-2 cursor-pointer rounded-lg bg-white text-[#0A77FF]">
+                    <span><img src="https://i.ibb.co.com/gbX301qT/Mood-Index-logo3.png" alt="" className='flex min-h-14 min-w-14' /></span>
                     <span className="health-blue">Mood</span>
                     <span className="sort-green -mx-2">Index</span>
                 </a>
