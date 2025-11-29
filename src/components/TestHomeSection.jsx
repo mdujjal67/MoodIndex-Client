@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const TestHomeSection = () => {
     return (
@@ -24,12 +25,14 @@ const TestHomeSection = () => {
                             <p className="my-4 dark:text-gray-600">
                                 Take this short test to assess your anxiety levels and get personalized tips.
                             </p>
-                            <button
-                                type="button"
-                                className="btn self-start px-4 py-2 text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white rounded-mg transition-colors"
-                            >
-                                Take Test
-                            </button>
+                            <Link to='/assessments/anxiety-test'>
+                                <button
+                                    type="button"
+                                    className="btn self-start px-4 py-2 text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white rounded-mg transition-colors"
+                                >
+                                    Take Test
+                                </button>
+                            </Link>
                         </div>
                     </div>
 
@@ -46,12 +49,14 @@ const TestHomeSection = () => {
                             <p className="my-4 dark:text-gray-600">
                                 Understand your mood patterns with this simple depression assessment test.
                             </p>
-                            <button
-                                type="button"
-                                className="btn self-start px-4 py-2 text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white rounded-mg transition-colors"
-                            >
-                                Take Test
-                            </button>
+                            <Link to='/assessments/depression-test'>
+                                <button
+                                    type="button"
+                                    className="btn self-start px-4 py-2 text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white rounded-mg transition-colors"
+                                >
+                                    Take Test
+                                </button>
+                            </Link>
                         </div>
                     </div>
 
@@ -68,12 +73,14 @@ const TestHomeSection = () => {
                             <p className="my-4 dark:text-gray-600">
                                 Quickly assess your stress levels and discover practical coping strategies.
                             </p>
-                            <button
-                                type="button"
-                                className="btn self-start px-4 py-2 text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white rounded-mg transition-colors"
-                            >
-                                Take Test
-                            </button>
+                            <Link to='/assessments/addiction-test'>
+                                <button
+                                    type="button"
+                                    className="btn self-start px-4 py-2 text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white rounded-mg transition-colors"
+                                >
+                                    Take Test
+                                </button>
+                            </Link>
                         </div>
                     </div>
 

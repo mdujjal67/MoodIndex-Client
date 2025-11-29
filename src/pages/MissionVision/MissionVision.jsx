@@ -8,7 +8,7 @@ const MissionVisionPage = () => {
 
                 {/* --- Header Section --- */}
                 <div className="text-center">
-                    <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                    <h1 className="text-4xl font-serif font-bold tracking-tight text-gray-900 sm:text-5xl">
                         Our Mission & Vision
                     </h1>
                     <p className="mt-3 max-w-2xl mx-auto text-gray-500 sm:mt-4">

@@ -30,10 +30,18 @@ const Navbar = () => {
                     <Link to='/assessments/anxiety-test'>
                         <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Anxiety Test</a></li>
                     </Link>
-                    <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Depression Test</a></li>
-                    <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Addiction Test</a></li>
-                    <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Bipolar Test</a></li>
-                    <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>View All Tests</a></li>
+                    <Link to='/assessments/depression-test'>
+                        <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Depression Test</a></li>
+                    </Link>
+                    <Link to='/assessments/addiction-test'>
+                        <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Addiction Test</a></li>
+                    </Link>
+                    <Link to='/assessments/bipolar-test'>
+                        <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Bipolar Test</a></li>
+                    </Link>
+                    <Link to='/assessments'>
+                        <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>View All Tests</a></li>
+                    </Link>
                 </ul>
             </li>
 

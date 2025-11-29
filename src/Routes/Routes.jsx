@@ -15,6 +15,14 @@ import AboutProjectPage from '../pages/AboutTheProject/AboutProject';
 import EduAwarenessDetails from '../pages/EducationAwareness/EduAwarenessDetails';
 import UnderDevelopment from '../pages/UnderDevelopment/UnderDevelopment';
 import AnxietyTest from '../pages/AssessmentPages/AnxietyTestPage/AnxietyTest';
+import AllTests from '../pages/AssessmentPages/AllTests/AllTests';
+import DepressionTest from '../pages/AssessmentPages/DepressionTestPage/DepressionTest';
+import AddictionTest from '../pages/AssessmentPages/AddictionTestPage/AddictionTest';
+import BipolarTest from '../pages/AssessmentPages/BipolarTestPage/BipolarTest';
+import EatingDisorderTest from '../pages/AssessmentPages/EatingDisorderPage/EatingDisorderTest';
+import ADHDTest from '../pages/AssessmentPages/ADHDTestPage/ADHDTest';
+import OCDTest from '../pages/AssessmentPages/OCDTestPage/OCDTest';
+import GamblingAddictTest from '../pages/AssessmentPages/GamblingAddictTestPage/GamblingAddictTest';
 
 export const router = createBrowserRouter([
   {
@@ -116,9 +124,42 @@ export const router = createBrowserRouter([
       },
 
 
+      // -------routes for the all tests--------     
+      {
+        path: '/assessments',
+        Component: AllTests,
+      },
       {
         path: '/assessments/anxiety-test',
         Component: AnxietyTest,
+      },
+      {
+        path:'/assessments/depression-test',
+        Component: DepressionTest,
+      },
+      {
+        path: '/assessments/addiction-test',
+        Component: AddictionTest,
+      },
+      {
+        path: '/assessments/bipolar-test',
+        Component: BipolarTest,
+      },
+      {
+        path: '/assessments/eating-disorder-test',
+        Component: EatingDisorderTest,
+      },
+      {
+        path: '/assessments/adhd-test',
+        Component: ADHDTest,
+      },
+      {
+        path: '/assessments/ocd-test',
+        Component: OCDTest,
+      },
+      {
+        path:'/assessments/gambling-addiction-test',
+        Component: GamblingAddictTest,
       },
     ]
   },
