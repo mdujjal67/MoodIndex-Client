@@ -17,13 +17,13 @@ const Blogs = ({ data: propData, isHome }) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 mt-14 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 mt-14 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4 ">
           {data.map((blog) => (
             <article
               key={blog.id}
-              className="flex flex-col dark:bg-gray-50 shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="flex flex-col dark:bg-gray-50 shadow-md hover:shadow-xl transition duration-500 transform hover:-translate-y-2"
             >
-              <a href={blog.link} aria-label={blog.title}>
+              <a aria-label={blog.title}>
                 <img
                   alt={blog.title}
                   src={blog.image}

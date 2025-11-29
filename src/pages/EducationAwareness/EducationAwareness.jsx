@@ -21,7 +21,7 @@ const EducationAwareness = ({data: propData, isHome}) => {
           {data.map((item) => (
             <article
               key={item.id}
-              className="flex flex-col dark:bg-gray-50 shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="flex flex-col dark:bg-gray-50 shadow-md hover:shadow-xl transition duration-500 transform hover:-translate-y-2"
             >
               <a href={item.link} aria-label={item.title}>
                 <img

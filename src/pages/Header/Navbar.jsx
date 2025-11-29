@@ -76,7 +76,7 @@ const Navbar = () => {
                         <a>FAQs</a>
                     </li></Link>
                 </ul>
-            </li>           
+            </li>
 
             {/* About DROPDOWN */}
             <li className="relative dropdown dropdown-hover mx-1 group">
@@ -109,12 +109,16 @@ const Navbar = () => {
                             <a>Team Members</a>
                         </li>
                     </Link>
-                    <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                        <a>About the Project</a>
-                    </li>
-                    <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                        <a>Mission & Vision</a>
-                    </li>
+                    <Link to='/about-project'>
+                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
+                            <a>About the Project</a>
+                        </li>
+                    </Link>
+                    <Link to='/mission-vision'>
+                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
+                            <a>Mission & Vision</a>
+                        </li>
+                    </Link>
                 </ul>
             </li>
 
