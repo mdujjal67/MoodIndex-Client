@@ -12,6 +12,7 @@ import EducationAwareness from '../pages/EducationAwareness/EducationAwareness';
 import BlogDetail from '../pages/Blogs/BlogDetails';
 import MissionVisionPage from '../pages/MissionVision/MissionVision';
 import AboutProjectPage from '../pages/AboutTheProject/AboutProject';
+import EduAwarenessDetails from '../pages/EducationAwareness/EduAwarenessDetails';
 
 export const router = createBrowserRouter([
   {
@@ -58,6 +59,17 @@ export const router = createBrowserRouter([
         loader: async () => {
           const edu = await fetch('/Json files/EducationAwareness.json').then(res => res.json());
           return edu;
+        }
+      },
+
+      {
+        path: "/education-awareness/:id",
+        Component: EduAwarenessDetails,
+        loader: async ({ params }) => {
+          const eduPosts = await fetch("/Json files/EducationAwareness.json").then(res => res.json());
+          const eduPost = eduPosts.find(b => b.id.toString() === params.id);
+          if (!eduPost) throw new Response("Not Found", { status: 404 });
+          return eduPost;
         }
       },
 

@@ -49,7 +49,7 @@ const EducationAwareness = ({data: propData, isHome}) => {
                 </div>
                 <div className="mt-2">
                   <button
-                    onClick={() => navigate(`/education/${item.id}`)}
+                    onClick={() => navigate(`/education-awareness/${item.id}`)}
                     className="btn btn-sm w-full text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
                   >
                     Read More
@@ -61,7 +61,7 @@ const EducationAwareness = ({data: propData, isHome}) => {
 
           {/* Empty "More Blogs" card shows only on Home page */}
           {isHome && (
-            <article className="flex flex-col dark:bg-gray-100 shadow-md hover:shadow-lg transition-shadow duration-300 items-center justify-center p-6 text-center">
+            <article className="flex flex-col dark:bg-gray-100 shadow-md hover:shadow-xl transition duration-500 transform hover:-translate-y-2 items-center justify-center p-6 text-center">
             <div className="flex flex-col flex-1 justify-center items-center space-y-4">
               <h3 className="text-lg font-semibold leading-snug font-serif">
                 More Education & Awareness
@@ -70,7 +70,7 @@ const EducationAwareness = ({data: propData, isHome}) => {
                 Explore all our resources and tips to support your mental health.
               </p>
               <button
-                onClick={() => navigate("/education")}
+                onClick={() => navigate("/education-awareness")}
                 className="btn btn-sm w-full text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
               >
                 See All
