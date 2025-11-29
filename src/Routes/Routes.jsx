@@ -8,6 +8,7 @@ import Contact from '../pages/Contact/Contact'
 import HelpCenter from '../pages/Contact/HelpCenter';
 import Team from '../pages/Team/Team'
 import Blogs from '../pages/Blogs/Blogs';
+import EducationAwareness from '../pages/EducationAwareness/EducationAwareness';
 
 export const router = createBrowserRouter([
   {
@@ -34,8 +35,15 @@ export const router = createBrowserRouter([
           const blogs = await fetch('/Json files/blogs.json').then(res => res.json());
           return blogs;
         }
-      }
-      ,
+      },
+      {
+        path: '/education-awareness',
+        Component: EducationAwareness,
+        loader: async () => {
+          const edu = await fetch('/Json files/EducationAwareness.json').then(res => res.json());
+          return edu;
+        }
+      },
       {
         path: '/team-members',
         Component: Team,

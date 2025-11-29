@@ -16,7 +16,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Blogs data={blogs.slice(0, 3)} isHome={true}></Blogs>
-            <EducationAwareness data={edu.slice(0, 3)}></EducationAwareness>
+            <EducationAwareness data={edu.slice(0, 3)} isHome={true}></EducationAwareness>
             <TestHomeSection></TestHomeSection>
             <Stats></Stats>
             <Testimonials></Testimonials>

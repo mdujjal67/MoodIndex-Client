@@ -1,9 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // If you are using react-router
+import { useLoaderData, useNavigate } from "react-router-dom"; // If you are using react-router
 // import data from '../../../public/Json files/EducationAwareness.json'
 
-const EducationAwareness = ({data}) => {
+const EducationAwareness = ({data: propData, isHome}) => {
   const navigate = useNavigate();
+
+  const loaderData = useLoaderData();// ALWAYS call the hook
+  const data =propData || loaderData;// then decide which data to use
 
   return (
     <section className="w-full py-6 sm:py-12 dark:bg-gray-100 mt-20 dark:text-gray-800">
@@ -56,8 +59,9 @@ const EducationAwareness = ({data}) => {
             </article>
           ))}
 
-          {/* Empty card for "See All Education & Awareness" */}
-          <article className="flex flex-col dark:bg-gray-100 shadow-md hover:shadow-lg transition-shadow duration-300 items-center justify-center p-6 text-center">
+          {/* Empty "More Blogs" card shows only on Home page */}
+          {isHome && (
+            <article className="flex flex-col dark:bg-gray-100 shadow-md hover:shadow-lg transition-shadow duration-300 items-center justify-center p-6 text-center">
             <div className="flex flex-col flex-1 justify-center items-center space-y-4">
               <h3 className="text-lg font-semibold leading-snug font-serif">
                 More Education & Awareness
@@ -73,6 +77,7 @@ const EducationAwareness = ({data}) => {
               </button>
             </div>
           </article>
+          )}
         </div>
       </div>
     </section>

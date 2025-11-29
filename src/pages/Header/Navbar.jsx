@@ -67,15 +67,16 @@ const Navbar = () => {
                             <a>Blogs</a>
                         </li>
                     </Link>
-                    <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                        <a>Education & Awareness</a>
-                    </li>
+                    <Link to='/education-awareness'>
+                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
+                            <a>Education & Awareness</a>
+                        </li>
+                    </Link>
                     <Link to='/faqs'><li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
                         <a>FAQs</a>
                     </li></Link>
                 </ul>
-            </li>
-
+            </li>           
 
             {/* About DROPDOWN */}
             <li className="relative dropdown dropdown-hover mx-1 group">
