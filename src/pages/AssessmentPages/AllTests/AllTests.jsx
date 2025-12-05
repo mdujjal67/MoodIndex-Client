@@ -1,86 +1,103 @@
-// src/components/MentalHealthTests.jsx
-import React, { useState } from 'react';
+// src/components/AllTests.jsx
+import React, { useState } from "react";
+import { NavLink, useLoaderData } from "react-router-dom";
+import { PlusCircleIcon, XCircleIcon } from "@heroicons/react/24/outline";
 
-// --- Data Definition (Based on your image/description) ---
-const mentalHealthTestsData = [
-  { id: 1, title: "DEPRESSION TEST", description: "For people who may be experiencing symptoms of depression, including persistent sadness, loss of interest, and fatigue.", link: "/test/depression" },
-  { id: 2, title: "ADHD TEST", description: "For people of all ages who have trouble focusing, remembering things, completing tasks, and/or sitting still.", link: "/assessments/adhd-test" },
-  { id: 3, title: "ANXIETY TEST", description: "For those experiencing excessive worry, nervousness, or panic that interferes with daily life.", link: "/assessments/anxiety-test" },
-  { id: 4, title: "OCD TEST", description: "For individuals with recurrent, unwanted thoughts (obsessions) and/or repetitive behaviors (compulsions).", link: "/assessments/ocd-test" },
-  { id: 5, title: "BIPOLAR TEST", description: "For people experiencing significant mood swings, including periods of elevated mood (mania) and periods of depression.", link: "/test/bipolar" },
-  { id: 6, title: "PSYCHOSIS & SCHIZOPHRENIA TEST", description: "For individuals experiencing distortions of reality, such as hallucinations or delusions.", link: "/test/psychosis-schizophrenia" },
-  { id: 7, title: "EATING DISORDER TEST", description: "For those with unhealthy relationships with food, body image concerns, and disordered eating patterns.", link: "assessments/eating-disorder-test" },
-  { id: 8, title: "PTSD TEST", description: "For individuals who have experienced trauma and are showing symptoms like flashbacks, nightmares, or avoidance.", link: "/test/ptsd" },
-  { id: 9, title: "ADDICTION TEST", description: "For people concerned about problematic substance use or compulsive behaviors impacting their life.", link: "/assessments/addiction-test" },
-  { id: 10, title: "GAMBLING ADDICTION TEST", description: "For individuals struggling with compulsive gambling behaviors and their impact on personal and financial well-being.", link: "/assessments/gambling-addiction-test" },
-  { id: 11, title: "POSTPARTUM DEPRESSION TEST (NEW & EXPECTING PARENTS)", description: "For new or expecting parents experiencing symptoms of depression or anxiety during pregnancy or after childbirth.", link: "/test/postpartum-depression" },
-  { id: 12, title: "PARENT TEST: YOUR CHILD'S MENTAL HEALTH", description: "A screening tool for parents to assess potential mental health concerns in their children.", link: "/test/child-mental-health" },
-  { id: 13, title: "YOUTH MENTAL HEALTH TEST", description: "For young individuals (ages 12-25) to screen for common mental health concerns and identify areas for support.", link: "/test/youth-mental-health" },
-];
+const AllTests = ({ allTest: propData }) => {
+  const loaderData = useLoaderData(); // Always call the hook
+  const allTest = propData || loaderData;
 
-
-const MentalHealthTests = () => {
-  // State to track which test card is currently open. 
-  // We store the ID of the open test, or null if none are open.
   const [openTestId, setOpenTestId] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("All");
 
-  const toggleTest = (id) => {
-    setOpenTestId(openTestId === id ? null : id);
-  };
+  const toggleTest = (id) => setOpenTestId(openTestId === id ? null : id);
+
+  const filteredTests = allTest.filter((test) => {
+    const matchesCategory = categoryFilter === "All" || test.category === categoryFilter;
+    const matchesSearch = test.title.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  const categories = ["All", ...new Set(allTest.map((t) => t.category))];
 
   return (
     <section className="py-12 bg-gray-50">
       <div className="container mx-auto px-4 max-w-7xl">
-        
-        {/* Universal Screen Header */}
+        {/* Header */}
         <div className="text-center mb-10">
           <div className="inline-block px-8 py-3 bg-[#1BA9B5] text-white rounded-full text-lg font-semibold tracking-wide shadow-xl">
             TRY THE UNIVERSAL MENTAL HEALTH SCREEN
           </div>
         </div>
 
-        {/* Tests Grid Container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          {mentalHealthTestsData.map(test => {
-            const isOpen = test.id === openTestId;
-            const isBlue = test.id % 2 === 0; // Simple alternating color based on ID
+        {/* Search & Filter */}
+        <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
+          <input
+            type="text"
+            placeholder="Search tests..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="px-4 py-2 rounded-lg border border-gray-300 shadow-sm w-full md:w-1/2 focus:outline-none focus:ring-2 focus:ring-[#1BA9B5]"
+          />
+          <select
+            value={categoryFilter}
+            onChange={(e) => setCategoryFilter(e.target.value)}
+            className="px-4 py-2 rounded-lg border border-gray-300 shadow-sm w-full md:w-1/4 focus:outline-none focus:ring-2 focus:ring-[#1BA9B5]"
+          >
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
+        </div>
 
-            // Tailwind classes for consistency and styling
-            const baseBg = isBlue ? 'bg-[#20b2aa]' : 'bg-[#1e88e5]'; // Custom colors for alternating look
-            const expandedBg = 'bg-[#e0f7fa]';
-            const cardClasses = `relative p-4 rounded-xl shadow-md cursor-pointer transition-all duration-300 ease-in-out 
-                                 ${isOpen ? expandedBg : baseBg + ' text-white'}`;
-            const buttonClasses = "mt-4 inline-block px-4 py-2 bg-[#1BA9B5] text-white rounded-lg hover:bg-[#158e98] transition duration-300 shadow-md";
+        {/* Tests Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredTests.map((test) => {
+            const isOpen = test.id === openTestId;
+            const baseBg = "bg-[#1e88e5] text-white";
+            const expandedBg = "bg-[#e0f7fa] text-gray-900";
 
             return (
               <div
                 key={test.id}
-                className={cardClasses}
+                tabIndex={0} // keyboard focus
+                aria-expanded={isOpen}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    toggleTest(test.id);
+                  }
+                }}
                 onClick={() => toggleTest(test.id)}
+                className={`relative p-4 rounded-xl shadow-md cursor-pointer transition-all duration-500 ease-in-out hover:shadow-xl hover:-translate-y-1 focus:outline-none hover:text-white hover:bg-[#1BA9B5] ${isOpen ? expandedBg : baseBg
+                  }`}
               >
-                {/* Card Header (Always visible) */}
+                {/* Header */}
                 <div className="flex justify-between items-center font-bold text-lg">
-                  <span className={`${isOpen ? 'text-gray-900' : 'text-white'}`}>{test.title}</span>
-                  <span className={`text-2xl transition-transform duration-300 ${isOpen ? 'text-gray-700 transform rotate-45' : 'text-white'}`}>
-                    {/* Shows + or X (which looks like a minus sign rotated) */}
-                    {isOpen ? '✕' : '+'}
+                  <span className="flex items-center gap-2">
+                    <span className="text-2xl">{test.icon}</span>
+                    {test.title}
+                  </span>
+                  <span className="text-2xl">
+                    {isOpen ? <XCircleIcon className="w-6 h-6" /> : <PlusCircleIcon className="w-6 h-6" />}
                   </span>
                 </div>
 
-                {/* Expandable Content (Conditionally rendered) */}
-                {isOpen && (
-                  <div className="mt-4 text-gray-700 text-sm">
-                    <p className="mb-4 text-sm">{test.description}</p>
-                    <a 
-                        href={test.link} 
-                        onClick={(e) => e.stopPropagation()} // Prevents collapsing the card when button is clicked
-                        className={buttonClasses}
-                    >
-                      TAKE TEST
-                    </a>
-                  </div>
-                )}
+                {/* Expandable Content with smooth slide */}
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out mt-4 ${isOpen ? "max-h-96" : "max-h-0"
+                    }`}
+                >
+                  <p className="mb-4 text-sm">{test.description}</p>
+                  <NavLink
+                    to={test.link}
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-block font-sans px-4 py-2 bg-[#1e88e5] text-white rounded-lg hover:bg-gray-500 hover:text-white transition duration-300 shadow-md "
+                  >
+                    Take Test
+                  </NavLink>
+                </div>
               </div>
             );
           })}
@@ -90,4 +107,4 @@ const MentalHealthTests = () => {
   );
 };
 
-export default MentalHealthTests;
+export default AllTests;

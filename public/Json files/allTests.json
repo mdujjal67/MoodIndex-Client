@@ -3,78 +3,104 @@
     "id": 1,
     "title": "DEPRESSION TEST",
     "description": "For people who may be experiencing symptoms of depression, including persistent sadness, loss of interest, and fatigue.",
-    "link": "/assessments/depression-test"
+    "link": "/assessments/depression",
+    "category": "Mood",
+    "icon": "😔"
   },
   {
     "id": 2,
     "title": "ADHD TEST",
     "description": "For people of all ages who have trouble focusing, remembering things, completing tasks, and/or sitting still.",
-    "link": "/assessments/adhd-test"
+    "link": "/assessments/adhd-test",
+    "category": "Focus",
+    "icon": "🧠"
   },
   {
     "id": 3,
     "title": "ANXIETY TEST",
     "description": "For those experiencing excessive worry, nervousness, or panic that interferes with daily life.",
-    "link": "/assessments/anxiety-test"
+    "link": "/assessments/anxiety-test",
+    "category": "Mood",
+    "icon": "😟"
   },
   {
     "id": 4,
     "title": "OCD TEST",
     "description": "For individuals with recurrent, unwanted thoughts (obsessions) and/or repetitive behaviors (compulsions).",
-    "link": "/assessments/ocd-test"
+    "link": "/assessments/ocd-test",
+    "category": "Compulsion",
+    "icon": "♻️"
   },
   {
     "id": 5,
     "title": "BIPOLAR TEST",
     "description": "For people experiencing significant mood swings, including periods of elevated mood (mania) and periods of depression.",
-    "link": "/test/bipolar"
+    "link": "/assessments/bipolar",
+    "category": "Mood",
+    "icon": "⚡"
   },
   {
     "id": 6,
     "title": "PSYCHOSIS & SCHIZOPHRENIA TEST",
     "description": "For individuals experiencing distortions of reality, such as hallucinations or delusions.",
-    "link": "/test/psychosis-schizophrenia"
+    "link": "/assessments/psychosis-schizophrenia",
+    "category": "Severe",
+    "icon": "🌀"
   },
   {
     "id": 7,
     "title": "EATING DISORDER TEST",
     "description": "For those with unhealthy relationships with food, body image concerns, and disordered eating patterns.",
-    "link": "assessments/eating-disorder-test"
+    "link": "/assessments/eating-disorder-test",
+    "category": "Mood",
+    "icon": "🍽️"
   },
   {
     "id": 8,
     "title": "PTSD TEST",
     "description": "For individuals who have experienced trauma and are showing symptoms like flashbacks, nightmares, or avoidance.",
-    "link": "/test/ptsd"
+    "link": "/assessments/ptsd",
+    "category": "Trauma",
+    "icon": "💥"
   },
   {
     "id": 9,
     "title": "ADDICTION TEST",
     "description": "For people concerned about problematic substance use or compulsive behaviors impacting their life.",
-    "link": "/assessments/addiction-test"
+    "link": "/assessments/addiction-test",
+    "category": "Behavior",
+    "icon": "🚬"
   },
   {
     "id": 10,
     "title": "GAMBLING ADDICTION TEST",
     "description": "For individuals struggling with compulsive gambling behaviors and their impact on personal and financial well-being.",
-    "link": "/assessments/gambling-addiction-test"
+    "link": "/assessments/gambling-addiction-test",
+    "category": "Behavior",
+    "icon": "🎰"
   },
   {
     "id": 11,
     "title": "POSTPARTUM DEPRESSION TEST (NEW & EXPECTING PARENTS)",
     "description": "For new or expecting parents experiencing symptoms of depression or anxiety during pregnancy or after childbirth.",
-    "link": "/test/postpartum-depression"
+    "link": "/assessments/postpartum-depression",
+    "category": "Mood",
+    "icon": "🤰"
   },
   {
     "id": 12,
     "title": "PARENT TEST: YOUR CHILD'S MENTAL HEALTH",
     "description": "A screening tool for parents to assess potential mental health concerns in their children.",
-    "link": "/test/child-mental-health"
+    "link": "/assessments/child-mental-health",
+    "category": "Children",
+    "icon": "👶"
   },
   {
     "id": 13,
     "title": "YOUTH MENTAL HEALTH TEST",
     "description": "For young individuals (ages 12-25) to screen for common mental health concerns and identify areas for support.",
-    "link": "/test/youth-mental-health"
+    "link": "/assessments/youth-mental-health",
+    "category": "Youth",
+    "icon": "🧑‍🎓"
   }
 ]

@@ -7,7 +7,7 @@ const Team = ({teamMembers:propData}) => {
   const loaderData = useLoaderData(); // ALWAYS call the hook
 
   const teamMembers = propData || loaderData; 
-  console.log(teamMembers)
+  // console.log(teamMembers)
 
   return (
     <section className="py-6 dark:bg-gray-100 dark:text-gray-800 mt-20">

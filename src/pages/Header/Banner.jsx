@@ -36,7 +36,7 @@ const Banner = () => {
 
                             {/* Secondary CTA */}
                             <a
-                                href="#resources"
+                                href="/resources"
                                 className="btn btn-outline text-white border-white hover:bg-white hover:text-[#1BA9B5]"
                             >
                                 Browse Resources

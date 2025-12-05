@@ -23,6 +23,7 @@ import EatingDisorderTest from '../pages/AssessmentPages/EatingDisorderPage/Eati
 import ADHDTest from '../pages/AssessmentPages/ADHDTestPage/ADHDTest';
 import OCDTest from '../pages/AssessmentPages/OCDTestPage/OCDTest';
 import GamblingAddictTest from '../pages/AssessmentPages/GamblingAddictTestPage/GamblingAddictTest';
+import ResourcesPage from '../pages/Resources/ResourcesPage';
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,11 @@ export const router = createBrowserRouter([
           return { blogs, edu };
         },
         Component: Home,
+      },
+
+      {
+        path:'/resources',
+        Component:ResourcesPage,
       },
 
       {
@@ -128,6 +134,10 @@ export const router = createBrowserRouter([
       {
         path: '/assessments',
         Component: AllTests,
+        loader: async () => {
+          const allTest = await fetch("/Json files/allTests.json").then(res => res.json());
+          return allTest;
+        }
       },
       {
         path: '/assessments/anxiety-test',

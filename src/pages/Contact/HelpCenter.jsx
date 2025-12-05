@@ -18,19 +18,19 @@ const HelpCenter = () => {
                     </div>
                     <div className="flex flex-col w-full divide-y sm:flex-row sm:divide-y-0 sm:divide-x sm:px-8 lg:px-12 xl:px-32 dark:divide-gray-300" bis_skin_checked="1">
                         <div className="flex flex-col w-full divide-y dark:divide-gray-300" bis_skin_checked="1">
-                            <a rel="noopener noreferrer" href="help-center/billing" className="flex items-center justify-center p-4 sm:py-8 lg:py-12">Billing</a>
-                            <a rel="noopener noreferrer" href="help-center/support" className="flex items-center justify-center p-4 sm:py-8 lg:py-12">Support</a>
-                            <a rel="noopener noreferrer" href="help-center/account" className="flex items-center justify-center p-4 sm:py-8 lg:py-12">Account</a>
+                            <a rel="noopener noreferrer" href="help-center/billing" className="flex items-center justify-center p-4 sm:py-8 lg:py-12  hover:text-[#1BA9B5]">Billing</a>
+                            <a rel="noopener noreferrer" href="help-center/support" className="flex items-center justify-center p-4 sm:py-8 lg:py-12 hover:text-[#1BA9B5]">Support</a>
+                            <a rel="noopener noreferrer" href="help-center/account" className="flex items-center justify-center p-4 sm:py-8 lg:py-12 hover:text-[#1BA9B5]">Account</a>
                         </div>
                         <div className="flex flex-col w-full divide-y dark:divide-gray-300" bis_skin_checked="1">
-                            <a rel="noopener noreferrer" href="help-center/features" className="flex items-center justify-center p-4 sm:py-8 lg:py-12">Features</a>
-                            <a rel="noopener noreferrer" href="help-center/contact-us" className="flex items-center justify-center p-4 sm:py-8 lg:py-12">Contact us</a>
-                            <a rel="noopener noreferrer" href="help-center/my-orders" className="flex items-center justify-center p-4 sm:py-8 lg:py-12">My orders</a>
+                            <a rel="noopener noreferrer" href="help-center/features" className="flex items-center justify-center p-4 sm:py-8 lg:py-12 hover:text-[#1BA9B5]">Features</a>
+                            <a rel="noopener noreferrer" href="help-center/contact-us" className="flex items-center justify-center p-4 sm:py-8 lg:py-12 hover:text-[#1BA9B5]">Contact us</a>
+                            <a rel="noopener noreferrer" href="help-center/my-orders" className="flex items-center justify-center p-4 sm:py-8 lg:py-12 hover:text-[#1BA9B5]">My orders</a>
                         </div>
                         <div className="hidden w-full divide-y sm:flex-col sm:flex dark:divide-gray-300" bis_skin_checked="1">
-                            <a rel="noopener noreferrer" href="help-center/enterprise" className="flex items-center justify-center p-4 sm:py-8 lg:py-12">Enterprise</a>
-                            <a rel="noopener noreferrer" href="help-center/privacy" className="flex items-center justify-center p-4 sm:py-8 lg:py-12">Privacy</a>
-                            <a rel="noopener noreferrer" href="help-center/developers" className="flex items-center justify-center p-4 sm:py-8 lg:py-12">Developers</a>
+                            <a rel="noopener noreferrer" href="help-center/enterprise" className="flex items-center justify-center p-4 sm:py-8 lg:py-12 hover:text-[#1BA9B5]">Enterprise</a>
+                            <a rel="noopener noreferrer" href="help-center/privacy" className="flex items-center justify-center p-4 sm:py-8 lg:py-12 hover:text-[#1BA9B5]">Privacy</a>
+                            <a rel="noopener noreferrer" href="help-center/developers" className="flex items-center justify-center p-4 sm:py-8 lg:py-12 hover:text-[#1BA9B5]">Developers</a>
                         </div>
                     </div>
                 </div>

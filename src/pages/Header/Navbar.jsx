@@ -1,240 +1,386 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React, { useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();
+  const [openDropdown, setOpenDropdown] = useState(null);
 
-    const navLinks = (
-        <>
-            {/* Home (NO DROPDOWN) */}
-            <Link to='/'><li className='mx-1'>
-                <a className='font-[Open_Sans] inline-block hover:bg-[#1BA9B5] hover:text-white hover:font-semibold p-2 rounded-lg transition-colors duration-300 cursor-pointer'>
-                    Home
-                </a>
-            </li></Link>
+  const baseClass =
+    "font-[Open_Sans] inline-block p-2 rounded-lg transition-colors duration-300 cursor-pointer";
+  const activeClass = "bg-[#1BA9B5] text-white font-semibold";
+  const hoverClass = "hover:bg-[#1BA9B5] hover:text-white hover:font-semibold";
 
-            {/* Self-Assessments DROPDOWN */}
-            <li className="relative dropdown dropdown-hover mx-1 group">
-                <div tabIndex={0} role="button"
-                    className="font-[Open_Sans] inline-flex items-center gap-1 p-2 rounded-lg 
-               hover:bg-[#1BA9B5] hover:text-white hover:font-semibold 
-               transition-colors duration-300 cursor-pointer">
-                    Self-Assessments
-                    <svg className="w-3 h-3 mt-0.5 transition-transform duration-300 
-                    group-hover:rotate-180"
-                        fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
-                <ul tabIndex={0}
-                    className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0">
-                    <Link to='/assessments/anxiety-test'>
-                        <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Anxiety Test</a></li>
-                    </Link>
-                    <Link to='/assessments/depression-test'>
-                        <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Depression Test</a></li>
-                    </Link>
-                    <Link to='/assessments/addiction-test'>
-                        <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Addiction Test</a></li>
-                    </Link>
-                    <Link to='/assessments/bipolar-test'>
-                        <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>Bipolar Test</a></li>
-                    </Link>
-                    <Link to='/assessments'>
-                        <li className='hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg'><a>View All Tests</a></li>
-                    </Link>
-                </ul>
-            </li>
+  const toggleDropdown = (name) => {
+    setOpenDropdown((prev) => (prev === name ? null : name));
+  };
 
+  const closeDropdown = () => setOpenDropdown(null);
 
-            {/* Resources DROPDOWN */}
-            <li className="relative dropdown dropdown-hover mx-1 group">
-                <div
-                    tabIndex={0}
-                    role="button"
-                    className="font-[Open_Sans] inline-flex items-center gap-1 p-2 rounded-lg 
-               hover:bg-[#1BA9B5] hover:text-white hover:font-semibold 
-               transition-colors duration-300 cursor-pointer"
-                >
-                    Resources
-                    {/* Arrow Icon */}
-                    <svg
-                        className="w-3 h-3 mt-0.5 transition-transform duration-300 group-hover:rotate-180"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
+  // Determine active parent links
+  const isAssessmentsActive = location.pathname.startsWith("/assessments");
+  const isResourcesActive =
+    location.pathname.startsWith("/resources") ||
+    location.pathname.startsWith("/blogs") ||
+    location.pathname.startsWith("/education-awareness") ||
+    location.pathname.startsWith("/faqs");
 
-                <ul
-                    tabIndex={0}
-                    className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0"
-                >
-                    <Link to='/blogs'>
-                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                            <a>Blogs</a>
-                        </li>
-                    </Link>
-                    <Link to='/education-awareness'>
-                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                            <a>Education & Awareness</a>
-                        </li>
-                    </Link>
-                    <Link to='/faqs'><li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                        <a>FAQs</a>
-                    </li></Link>
-                </ul>
-            </li>
+  const isAboutActive =
+    location.pathname.startsWith("/team-members") ||
+    location.pathname.startsWith("/about-project") ||
+    location.pathname.startsWith("/mission-vision");
+    
+  const isContactActive =
+    location.pathname.startsWith("/help-center") ||
+    location.pathname.startsWith("/contact-support") ||
+    location.pathname.startsWith("/accessibility-support");
 
-            {/* About DROPDOWN */}
-            <li className="relative dropdown dropdown-hover mx-1 group">
-                <div
-                    tabIndex={0}
-                    role="button"
-                    className="font-[Open_Sans] inline-flex items-center gap-1 p-2 rounded-lg 
-               hover:bg-[#1BA9B5] hover:text-white hover:font-semibold 
-               transition-colors duration-300 cursor-pointer"
-                >
-                    About
-                    {/* Arrow Icon */}
-                    <svg
-                        className="w-3 h-3 mt-0.5 transition-transform duration-300 group-hover:rotate-180"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
+  const navLinks = (
+    <>
+      {/* HOME */}
+      <li className="mx-1">
+        <NavLink
+          to="/"
+          className={({ isActive }) => `${baseClass} ${isActive ? activeClass : hoverClass}`}
+          onClick={closeDropdown}
+        >
+          Home
+        </NavLink>
+      </li>
 
-                <ul
-                    tabIndex={0}
-                    className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0"
-                >
-                    <Link to='/team-members'>
-                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                            <a>Team Members</a>
-                        </li>
-                    </Link>
-                    <Link to='/about-project'>
-                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                            <a>About the Project</a>
-                        </li>
-                    </Link>
-                    <Link to='/mission-vision'>
-                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                            <a>Mission & Vision</a>
-                        </li>
-                    </Link>
-                </ul>
-            </li>
+      {/* SELF-ASSESSMENTS */}
+      <li className="relative dropdown dropdown-hover mx-1 group">
+        <NavLink
+          to="/assessments"
+          className={`${baseClass} ${hoverClass} inline-flex gap-1 items-center ${
+            isAssessmentsActive ? activeClass : ""
+          }`}
+        >
+          Self-Assessments
+          <svg
+            className="w-3 h-3 mt-0.5 transition-transform duration-300 group-hover:rotate-180"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </NavLink>
 
+        <ul
+          tabIndex={0}
+          className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0"
+        >
+          <li>
+            <NavLink
+              to="/assessments/anxiety-test"
+              className={({ isActive }) =>
+                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
+              }
+            >
+              Anxiety Test
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/assessments/depression-test"
+              className={({ isActive }) =>
+                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
+              }
+            >
+              Depression Test
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/assessments/addiction-test"
+              className={({ isActive }) =>
+                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
+              }
+            >
+              Addiction Test
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/assessments/bipolar-test"
+              className={({ isActive }) =>
+                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
+              }
+            >
+              Bipolar Test
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/assessments"
+              className={({ isActive }) =>
+                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
+              }
+            >
+              View All Tests
+            </NavLink>
+          </li>
+        </ul>
+      </li>
 
+      {/* RESOURCES */}
+      <li className="relative dropdown dropdown-hover mx-1 group">
+        <NavLink
+          to="/resources"
+          className={`${baseClass} ${hoverClass} inline-flex gap-1 items-center ${
+            isResourcesActive ? activeClass : ""
+          }`}
+        >
+          Resources
+          <svg
+            className="w-3 h-3 mt-0.5 transition-transform duration-300 group-hover:rotate-180"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </NavLink>
 
-            {/* Contact DROPDOWN */}
-            <li className="relative dropdown dropdown-hover mx-1 group">
-                <div
-                    tabIndex={0}
-                    role="button"
-                    className="font-[Open_Sans] inline-flex items-center gap-1 p-2 rounded-lg 
-               hover:bg-[#1BA9B5] hover:text-white hover:font-semibold 
-               transition-colors duration-300 cursor-pointer"
-                >
-                    Contact
-                    {/* Arrow Icon */}
-                    <svg
-                        className="w-3 h-3 mt-0.5 transition-transform duration-300 group-hover:rotate-180"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
+        <ul
+          tabIndex={0}
+          className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0"
+        >
+          <li>
+            <NavLink
+              to="/blogs"
+              className={({ isActive }) =>
+                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
+              }
+            >
+              Blogs
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/education-awareness"
+              className={({ isActive }) =>
+                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
+              }
+            >
+              Education & Awareness
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/faqs"
+              className={({ isActive }) =>
+                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
+              }
+            >
+              FAQs
+            </NavLink>
+          </li>
+        </ul>
+      </li>
 
-                <ul
-                    tabIndex={0}
-                    className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0"
-                >
-                    <Link to='/help-center'>
-                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                            <a>Help Center</a>
-                        </li>
-                    </Link>
-                    <Link to='/contact-support'>
-                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                            <a>Contact Support</a>
-                        </li>
-                    </Link>
-                    <Link to='accessibility-support'>
-                        <li className="hover:bg-[#1BA9B5] hover:text-white hover:font-semibold rounded-lg">
-                            <a>Accessibility Support</a>
-                        </li>
-                    </Link>
-                </ul>
-            </li>
-
-        </>
-    );
-
-    return (
-        <div className="navbar bg-base-100 shadow-sm justify-between">
-
-            {/* LEFT — MOBILE MENU */}
-            <div className="navbar-start">
-                <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                d="M4 6h16M4 12h8m-8 6h16" />
-                        </svg>
-                    </div>
-
-                    {/* MOBILE DROPDOWN MENU */}
-                    <ul tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
-                        {navLinks}
-                    </ul>
-                </div>
-
-                {/* LOGO */}
-                <a href="/" className="flex items-center gap-2 font-bold text-2xl px-2 cursor-pointer rounded-lg bg-white text-[#0A77FF]">
-                    <span><img src="https://i.ibb.co.com/gbX301qT/Mood-Index-logo3.png" alt="" className='flex lg:h-20 lg:w-16' /></span>
-                    <span className="health-blue">Mood</span>
-                    <span className="sort-green -mx-2">Index</span>
-                </a>
-            </div>
-
-            {/* CENTER — DESKTOP MENU */}
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    {navLinks}
-                </ul>
-            </div>
-
-            {/* RIGHT — AVATAR MENU */}
-            <div className="dropdown dropdown-end">
-                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        <img alt="User"
-                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                    </div>
-                </div>
-                <ul tabIndex={0}
-                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
-                    <li><a className="justify-between">Profile <span className="badge">New</span></a></li>
-                    <li><a>Settings</a></li>
-                    <li><a>Logout</a></li>
-                </ul>
-            </div>
-
+      {/* ABOUT */}
+      <li className="relative dropdown dropdown-hover mx-1 group">
+        <div
+          tabIndex={0}
+          role="button"
+          className={`${baseClass} ${hoverClass} inline-flex gap-1 items-center ${
+            isAboutActive ? activeClass : ""
+          }`}
+        >
+          About
+          <svg
+            className="w-3 h-3 mt-0.5 transition-transform duration-300 group-hover:rotate-180"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
         </div>
-    );
+
+        <ul
+          tabIndex={0}
+          className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0"
+        >
+          <li>
+            <NavLink
+              to="/team-members"
+              className={({ isActive }) =>
+                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
+              }
+            >
+              Team Members
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/about-project"
+              className={({ isActive }) =>
+                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
+              }
+            >
+              About the Project
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/mission-vision"
+              className={({ isActive }) =>
+                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
+              }
+            >
+              Mission & Vision
+            </NavLink>
+          </li>
+        </ul>
+      </li>
+
+      {/* CONTACT */}
+      <li className="relative dropdown dropdown-hover mx-1 group">
+        <div
+          tabIndex={0}
+          role="button"
+          className={`${baseClass} ${hoverClass} inline-flex gap-1 items-center ${
+            isContactActive ? activeClass : ""
+          }`}
+        >
+          Contact
+          <svg
+            className="w-3 h-3 mt-0.5 transition-transform duration-300 group-hover:rotate-180"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+
+        <ul
+          tabIndex={0}
+          className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0"
+        >
+          <li>
+            <NavLink
+              to="/help-center"
+              className={({ isActive }) =>
+                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
+              }
+            >
+              Help Center
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/contact-support"
+              className={({ isActive }) =>
+                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
+              }
+            >
+              Contact Support
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/accessibility-support"
+              className={({ isActive }) =>
+                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
+              }
+            >
+              Accessibility Support
+            </NavLink>
+          </li>
+        </ul>
+      </li>
+
+      {/* AVATAR */}
+      <li className="relative dropdown dropdown-end mx-1 group pl-10">
+        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+          <div className="w-10 rounded-full">
+            <img
+              alt="User"
+              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+            />
+          </div>
+        </div>
+        <ul
+          tabIndex={0}
+          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 absolute right-0 top-full mt-3 w-52 p-2 shadow"
+        >
+          <li>
+            <a href="/profile" className={`${baseClass} ${hoverClass} p-2 block`}>Profile</a>
+          </li>
+          <li>
+            <a href="/settings" className={`${baseClass} ${hoverClass} p-2 block`}>Settings</a>
+          </li>
+          <li>
+            <a href="/logout" className={`${baseClass} ${hoverClass} p-2 block`}>Logout</a>
+          </li>
+        </ul>
+      </li>
+    </>
+  );
+
+  return (
+    <div className="navbar bg-base-100 shadow-sm justify-between">
+
+      {/* MOBILE */}
+      <div className="navbar-start">
+        <div className="dropdown">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost lg:hidden"
+            onClick={() => toggleDropdown("mobile")}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+            </svg>
+          </div>
+
+          <ul
+            tabIndex={0}
+            className={`menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow ${
+              openDropdown === "mobile" ? "block" : "hidden"
+            }`}
+          >
+            {navLinks}
+          </ul>
+        </div>
+
+        {/* LOGO */}
+        <a
+          href="/"
+          className="flex items-center gap-2 font-bold text-2xl px-2 cursor-pointer rounded-lg bg-white text-[#0A77FF]"
+        >
+          <span>
+            <img
+              src="https://i.ibb.co.com/gbX301qT/Mood-Index-logo3.png"
+              alt=""
+              className="flex lg:h-20 lg:w-16"
+            />
+          </span>
+          <span className="health-blue">Mood</span>
+          <span className="sort-green -mx-2">Index</span>
+        </a>
+      </div>
+
+      {/* DESKTOP */}
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+      </div>
+    </div>
+  );
 };
 
 export default Navbar;

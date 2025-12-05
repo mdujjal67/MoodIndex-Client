@@ -60,14 +60,14 @@ const AboutProjectPage = () => {
             Platform Features (Current & Future Scope)
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <FeatureItem title="Interactive Tools" description="Guided journaling, mood tracking, and stress-reduction exercises." />
+            <FeatureItem title="Interactive Tools" description="Guided journaling , mood tracking, and stress-reduction exercises." />
             <FeatureItem title="Resource Library" description="Curated articles, videos, and self-help guides created or reviewed by professionals." />
             <FeatureItem title="Community Support" description="Future Scope: Moderated forums or group sessions to foster a sense of connection." />
           </div>
 
-          <blockquote className="mt-8 pt-4 border-t border-gray-300 text-center text-gray-600 italic">
+          {/* <blockquote className="mt-8 pt-4 border-t border-gray-300 text-center text-gray-600 italic">
              "As a thesis project, this platform serves as both a proof-of-concept and a foundation for future expansion. We are dedicated to continuous refinement based on user experience and psychological research."
-          </blockquote>
+          </blockquote> */}
         </div>
 
       </div>
