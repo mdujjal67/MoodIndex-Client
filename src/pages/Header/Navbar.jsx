@@ -1,9 +1,23 @@
-import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Contexts/AuthContext";
+import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext)
   const location = useLocation();
+  const navigate = useNavigate();
   const [openDropdown, setOpenDropdown] = useState(null);
+
+  const handleLogout = () => {
+    console.log("User trying to logout");
+    logOut()
+      .then(() => {
+        alert("User logout successfully")
+      }).catch((error) => {
+        console.log(error)
+      });
+  }
 
   const baseClass =
     "font-[Open_Sans] inline-block p-2 rounded-lg transition-colors duration-300 cursor-pointer";
@@ -28,7 +42,7 @@ const Navbar = () => {
     location.pathname.startsWith("/team-members") ||
     location.pathname.startsWith("/about-project") ||
     location.pathname.startsWith("/mission-vision");
-    
+
   const isContactActive =
     location.pathname.startsWith("/help-center") ||
     location.pathname.startsWith("/contact-support") ||
@@ -51,9 +65,8 @@ const Navbar = () => {
       <li className="relative dropdown dropdown-hover mx-1 group">
         <NavLink
           to="/assessments"
-          className={`${baseClass} ${hoverClass} inline-flex gap-1 items-center ${
-            isAssessmentsActive ? activeClass : ""
-          }`}
+          className={`${baseClass} ${hoverClass} inline-flex gap-1 items-center ${isAssessmentsActive ? activeClass : ""
+            }`}
         >
           Self-Assessments
           <svg
@@ -128,9 +141,8 @@ const Navbar = () => {
       <li className="relative dropdown dropdown-hover mx-1 group">
         <NavLink
           to="/resources"
-          className={`${baseClass} ${hoverClass} inline-flex gap-1 items-center ${
-            isResourcesActive ? activeClass : ""
-          }`}
+          className={`${baseClass} ${hoverClass} inline-flex gap-1 items-center ${isResourcesActive ? activeClass : ""
+            }`}
         >
           Resources
           <svg
@@ -186,9 +198,8 @@ const Navbar = () => {
         <div
           tabIndex={0}
           role="button"
-          className={`${baseClass} ${hoverClass} inline-flex gap-1 items-center ${
-            isAboutActive ? activeClass : ""
-          }`}
+          className={`${baseClass} ${hoverClass} inline-flex gap-1 items-center ${isAboutActive ? activeClass : ""
+            }`}
         >
           About
           <svg
@@ -244,9 +255,8 @@ const Navbar = () => {
         <div
           tabIndex={0}
           role="button"
-          className={`${baseClass} ${hoverClass} inline-flex gap-1 items-center ${
-            isContactActive ? activeClass : ""
-          }`}
+          className={`${baseClass} ${hoverClass} inline-flex gap-1 items-center ${isContactActive ? activeClass : ""
+            }`}
         >
           Contact
           <svg
@@ -298,30 +308,56 @@ const Navbar = () => {
       </li>
 
       {/* AVATAR */}
-      <li className="relative dropdown dropdown-end mx-1 group pl-10">
-        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-          <div className="w-10 rounded-full">
-            <img
-              alt="User"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-            />
+      {user ?
+        <li className="relative dropdown dropdown-end mx-1 group pl-10">
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+            <div className="w-10 rounded-full">
+              {user?.photoURL ? (
+                <p>{user.photoURL}</p>
+              ) : (
+                <img
+                  alt="User"
+                  src="https://i.ibb.co.com/RG5L20GF/user-icon-on-transparent-background-free-png.png"
+                />
+              )}
+            </div>
           </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 absolute right-0 top-full mt-3 w-52 p-2 shadow"
+          >
+            <li>
+              <Link to="/profile" className={`${baseClass} ${hoverClass} p-2 block`}>Profile</Link>
+            </li>
+            <li>
+              <Link to="/settings" className={`${baseClass} ${hoverClass} p-2 block`}>Settings</Link>
+            </li>
+            <li>
+              <button
+                onClick={handleLogout}
+                className={`${baseClass} ${hoverClass} p-2 block text-left w-full`}
+              >
+                Logout
+              </button>
+            </li>
+          </ul>
+        </li>
+        :
+        <div className="ml-4">
+          <button
+            onClick={() => navigate('/login')}
+            className="btn btn-sm rounded-lg text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
+          >
+            Login
+          </button>
+          <button
+            onClick={() => navigate('/register')}
+            className="btn btn-sm rounded-lg text-white ml-2 bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
+          >
+            Register
+          </button>
         </div>
-        <ul
-          tabIndex={0}
-          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 absolute right-0 top-full mt-3 w-52 p-2 shadow"
-        >
-          <li>
-            <a href="/profile" className={`${baseClass} ${hoverClass} p-2 block`}>Profile</a>
-          </li>
-          <li>
-            <a href="/settings" className={`${baseClass} ${hoverClass} p-2 block`}>Settings</a>
-          </li>
-          <li>
-            <a href="/logout" className={`${baseClass} ${hoverClass} p-2 block`}>Logout</a>
-          </li>
-        </ul>
-      </li>
+      }
     </>
   );
 
@@ -350,9 +386,8 @@ const Navbar = () => {
 
           <ul
             tabIndex={0}
-            className={`menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow ${
-              openDropdown === "mobile" ? "block" : "hidden"
-            }`}
+            className={`menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow ${openDropdown === "mobile" ? "block" : "hidden"
+              }`}
           >
             {navLinks}
           </ul>

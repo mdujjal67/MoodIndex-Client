@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
 	return (
@@ -7,15 +7,15 @@ const Footer = () => {
 			<footer className="mt-20 px-4 divide-y dark:bg-gray-100 dark:text-gray-800">
 				<div className="container flex flex-col justify-between py-14 mx-auto space-y-8 lg:flex-row lg:space-y-0" bis_skin_checked="1">
 					<div className="lg:w-1/3" bis_skin_checked="1">
-						<a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
+						<Link to='/' rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
 							<img src="https://i.ibb.co.com/gbX301qT/Mood-Index-logo3.png" alt="" className='flex h-16 w-14' />
 							<span className="self-center text-2xl font-semibold">
-								<a href="/" className="font-bold text-2xl cursor-pointer text-[#0A77FF]">
+								<span className="font-bold text-2xl cursor-pointer text-[#0A77FF]">
 									<span className="health-blue">Mood</span>
 									<span className="sort-green">Index</span>
-								</a>
+								</span>
 							</span>
-						</a>
+						</Link>
 					</div>
 					<div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4" bis_skin_checked="1">
 						<div className="space-y-3" bis_skin_checked="1">

@@ -24,6 +24,10 @@ import ADHDTest from '../pages/AssessmentPages/ADHDTestPage/ADHDTest';
 import OCDTest from '../pages/AssessmentPages/OCDTestPage/OCDTest';
 import GamblingAddictTest from '../pages/AssessmentPages/GamblingAddictTestPage/GamblingAddictTest';
 import ResourcesPage from '../pages/Resources/ResourcesPage';
+import Login from '../pages/Login/Login';
+import SignUp from '../pages/Register/SignUp';
+import UserProfile from '../pages/UserProfile/UserProfile';
+import PrivateRoutes from './PrivateRoutes';
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +47,21 @@ export const router = createBrowserRouter([
           return { blogs, edu };
         },
         Component: Home,
+      },
+
+      {
+        path:'/register',
+        Component: SignUp,
+      },
+
+      {
+        path: '/login',
+        Component: Login
+      },
+
+      {
+        path:'/profile',
+        element: <PrivateRoutes><UserProfile></UserProfile></PrivateRoutes>
       },
 
       {
