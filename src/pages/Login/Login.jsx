@@ -2,32 +2,49 @@ import React, { useContext, useState } from 'react';
 import { FaEye, FaEyeSlash, FaRegUser } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from 'react-router';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContext';
 import toast, { Toaster } from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 
 const Login = () => {
+    const [loginError, setLoginError] = useState('');
     const [showPassword, setShowPassword] =useState(null);
-    const{signIn} = useContext(AuthContext)
+    const{signIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const handleLogin = (e) =>{
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log({email, password});
+        // console.log({email, password});
 
         signIn(email, password)
         .then(result => {
             const user = result.user
                 console.log(user)
-                toast.success('Login Successful!');
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Login successful",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
                 // reset();
+                form.reset();
+                
+                // setLoginError('');
+                navigate(from, { replace: true });
             })
             .catch((error) => {
-                console.log(error)
-                return toast.error("This didn't work.")
+                setLoginError('Wrong Email ID or Password! Please enter correct information.')
+                toast.error('Please try again!', error)
+                // navigate('/');
+                form.reset();
             });
     }
     return (
@@ -37,7 +54,7 @@ const Login = () => {
                     <div className="lg:w-1/2">
                         <img src='https://i.ibb.co.com/NdDvCS7S/Login-removebg-preview.png' alt="" className="w-[400px]" />
                     </div>
-                     <Toaster position="top-center" reverseOrder={false} />
+                    <Toaster position="top-center" reverseOrder={false} />
                     <div className="card lg:ml-20 lg:w-1/2 w-[300px] shadow-lg border bg-base-100">
                         <h1 className="text-2xl text-center font-bold mt-5"> Please! Login</h1>
                         <form onSubmit={handleLogin} className="card-body">
@@ -63,16 +80,16 @@ const Login = () => {
                                 </a>
                                 {/* input field error show */}
                                 <div>
-                                    {/* {
-                                        loginError && <p className="text-[12px] text-red-500">{loginError}</p>
-                                    } */}
+                                    {
+                                        loginError && <p className="text-xs text-red-500">{loginError}</p>
+                                    }
                                 </div>
 
                                 <label className="label">
                                     <Link to='/forgot-password' className="pt-1 label-text-alt link link-hover text-xs">Forgot password?</Link>
                                 </label>
                                 <label className="">
-                                    <p className="text-[14px] w-[220px] mx-auto mt-2 text-[#00000082]">Do not have an account? <Link to='/register' className="hover:link font-semibold text-[14px] text-[#00396a]">Sign Up</Link>
+                                    <p className="text-[14px] w-[220px] mx-auto mt-2 text-[#00000082]">Do not have an account? <Link to='/register' className="hover:link font-semibold text-[14px] text-[#00396a]">Register</Link>
                                     </p>
                                 </label>
                             </div>

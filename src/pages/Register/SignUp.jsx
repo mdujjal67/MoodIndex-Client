@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { FaRegUser } from "react-icons/fa";
+import React, { useContext, useState } from 'react';
+import { FaEye, FaEyeSlash, FaRegUser } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from 'react-router';
@@ -11,6 +11,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const SignUp = () => {
     const { createUser } = useContext(AuthContext);
+    const [showPassword, setShowPassword] =useState(null);
 
     const handleSignUp = e => {
         e.preventDefault();
@@ -45,7 +46,7 @@ const SignUp = () => {
                     </div>
                      <Toaster position="top-center" reverseOrder={false} />
                     <div className="card lg:ml-20 lg:w-1/2 w-[300px] shadow-lg border bg-base-100">
-                        <h1 className="text-2xl text-center font-bold mt-5">Please! Sign Up</h1>
+                        <h1 className="text-2xl text-center font-bold mt-5">Please! Register</h1>
                         <form onSubmit={handleSignUp} className="card-body">
 
                             {/* This is for Name field */}
@@ -74,9 +75,9 @@ const SignUp = () => {
                                     className="input input-bordered border-[#00396a] -mt-1 rounded-full pl-10" required />
                                 <MdPassword className="absolute left-4 top-3 text-gray-500" />
                                 <a className="relative" href="#">
-                                    {/* <span className="absolute right-4 -top-8" onClick={() => setShowPassword(!showPassword)}>
+                                    <span className="absolute right-4 top-1" onClick={() => setShowPassword(!showPassword)}>
                                                 {showPassword ? <FaEye /> : <FaEyeSlash />}
-                                            </span> */}
+                                            </span>
                                 </a>
                                 {/* input field error show */}
                                 <div>

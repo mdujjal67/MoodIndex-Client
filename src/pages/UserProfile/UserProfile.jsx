@@ -9,8 +9,8 @@ const UserProfile = () => {
     console.log(user)
 
     useEffect((() => {
-        document.title = "Haven Vista | User-Profile"
-    }), [])
+        document.title = "MoodIndex | User-Profile"
+    }), []);
 
     return (
         <div>

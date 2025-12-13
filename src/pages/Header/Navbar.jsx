@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthContext";
 import { FaUser } from "react-icons/fa";
+import toast, { Toaster } from "react-hot-toast";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext)
@@ -13,7 +14,7 @@ const Navbar = () => {
     console.log("User trying to logout");
     logOut()
       .then(() => {
-        alert("User logout successfully")
+        toast("Logout successful!")
       }).catch((error) => {
         console.log(error)
       });
@@ -363,6 +364,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-base-100 shadow-sm justify-between">
+      <Toaster position="top-center" reverseOrder={false} />
 
       {/* MOBILE */}
       <div className="navbar-start">

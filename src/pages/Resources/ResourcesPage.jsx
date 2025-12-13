@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const ResourcesPage = () => {
   const navigate = useNavigate();
+  
+  // dynamic title
+      useEffect((() => {
+          document.title = "MoodIndex | Resources"
+      }), []);
 
   const resources = [
     {

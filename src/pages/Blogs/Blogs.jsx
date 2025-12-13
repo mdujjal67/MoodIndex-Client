@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useLoaderData } from "react-router-dom";
 
 const Blogs = ({ data: propData, isHome }) => {
@@ -6,6 +6,11 @@ const Blogs = ({ data: propData, isHome }) => {
   const loaderData = useLoaderData(); // ALWAYS call the hook
 
   const data = propData || loaderData; // then decide which data to use
+
+  // dynamic title
+      useEffect((() => {
+          document.title = "MoodIndex | Blogs"
+      }), []);
 
   return (
     <section className="w-full py-6 sm:py-12 dark:bg-gray-100 mt-20 dark:text-gray-800">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Banner from '../Header/Banner';
 import Faq from '../Faqs/Faq';
 import Blogs from '../Blogs/Blogs';
@@ -12,6 +12,11 @@ import { useLoaderData } from 'react-router';
 
 const Home = () => {
     const {blogs, edu} =useLoaderData();
+    
+    // dynamic title
+    useEffect((() => {
+        document.title = "MoodIndex | Home"
+    }), []);
     return (
         <div>
             <Banner></Banner>

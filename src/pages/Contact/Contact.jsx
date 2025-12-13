@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Contact = () => {
+
+    // dynamic title
+        useEffect((() => {
+            document.title = "MoodIndex | Contact"
+        }), []);
+    
     return (
         <div>
             <section className="py-14 mt-20 dark:bg-gray-100 dark:text-gray-900">
