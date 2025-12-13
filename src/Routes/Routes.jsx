@@ -14,20 +14,22 @@ import MissionVisionPage from '../pages/MissionVision/MissionVision';
 import AboutProjectPage from '../pages/AboutTheProject/AboutProject';
 import EduAwarenessDetails from '../pages/EducationAwareness/EduAwarenessDetails';
 import UnderDevelopment from '../pages/UnderDevelopment/UnderDevelopment';
-import AnxietyTest from '../pages/AssessmentPages/AnxietyTestPage/AnxietyTest';
+// import AnxietyTest from '../pages/AssessmentPages/AnxietyTestPage/AnxietyTest';
 import AllTests from '../pages/AssessmentPages/AllTests/AllTests';
-import DepressionTest from '../pages/AssessmentPages/DepressionTestPage/DepressionTest';
-import AddictionTest from '../pages/AssessmentPages/AddictionTestPage/AddictionTest';
-import BipolarTest from '../pages/AssessmentPages/BipolarTestPage/BipolarTest';
-import EatingDisorderTest from '../pages/AssessmentPages/EatingDisorderPage/EatingDisorderTest';
-import ADHDTest from '../pages/AssessmentPages/ADHDTestPage/ADHDTest';
-import OCDTest from '../pages/AssessmentPages/OCDTestPage/OCDTest';
-import GamblingAddictTest from '../pages/AssessmentPages/GamblingAddictTestPage/GamblingAddictTest';
+// import DepressionTest from '../pages/AssessmentPages/DepressionTestPage/DepressionTest';
+// import AddictionTest from '../pages/AssessmentPages/AddictionTestPage/AddictionTest';
+// import BipolarTest from '../pages/AssessmentPages/BipolarTestPage/BipolarTest';
+// import EatingDisorderTest from '../pages/AssessmentPages/EatingDisorderPage/EatingDisorderTest';
+// import ADHDTest from '../pages/AssessmentPages/ADHDTestPage/ADHDTest';
+// import OCDTest from '../pages/AssessmentPages/OCDTestPage/OCDTest';
+// import GamblingAddictTest from '../pages/AssessmentPages/GamblingAddictTestPage/GamblingAddictTest';
 import ResourcesPage from '../pages/Resources/ResourcesPage';
 import Login from '../pages/Login/Login';
 import SignUp from '../pages/Register/SignUp';
 import UserProfile from '../pages/UserProfile/UserProfile';
 import PrivateRoutes from './PrivateRoutes';
+import UniversalTest from '../pages/AssessmentPages/UniversalTestPage/UniversalTest';
+import AssessmentHistory from '../pages/AssessmentHistoryPage/AssessmentHistory';
 
 export const router = createBrowserRouter([
   {
@@ -158,38 +160,27 @@ export const router = createBrowserRouter([
           return allTest;
         }
       },
+      // DYNAMIC TEST ROUTE (Replaces individual routes)
       {
-        path: '/assessments/anxiety-test',
-        Component: AnxietyTest,
+        path: '/assessments/:testSlug',
+        Component: UniversalTest,
+        loader: async ({ params }) => {
+          const allTests = await fetch("/Json files/allTests.json").then(res => res.json());
+          // Match the URL slug to the JSON 'slug'
+          const testData = allTests.find(t => t.slug === params.testSlug);
+          if (!testData) throw new Response("Test Not Found", { status: 404 });
+          return testData;
+        }
       },
+
       {
-        path:'/assessments/depression-test',
-        Component: DepressionTest,
-      },
-      {
-        path: '/assessments/addiction-test',
-        Component: AddictionTest,
-      },
-      {
-        path: '/assessments/bipolar-test',
-        Component: BipolarTest,
-      },
-      {
-        path: '/assessments/eating-disorder-test',
-        Component: EatingDisorderTest,
-      },
-      {
-        path: '/assessments/adhd-test',
-        Component: ADHDTest,
-      },
-      {
-        path: '/assessments/ocd-test',
-        Component: OCDTest,
-      },
-      {
-        path:'/assessments/gambling-addiction-test',
-        Component: GamblingAddictTest,
-      },
+        path:'/assessment-history',
+        element: <PrivateRoutes><AssessmentHistory></AssessmentHistory></PrivateRoutes>,
+        loader: async () => {
+          const allTest = await fetch("/Json files/allTests.json").then(res => res.json());
+          return allTest;
+        }
+      }
     ]
   },
 ]);

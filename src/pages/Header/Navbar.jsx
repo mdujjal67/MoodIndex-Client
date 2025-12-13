@@ -85,7 +85,7 @@ const Navbar = () => {
           tabIndex={0}
           className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0"
         >
-          <li>
+          <li className="my-0.5">
             <NavLink
               to="/assessments/anxiety-test"
               className={({ isActive }) =>
@@ -95,7 +95,7 @@ const Navbar = () => {
               Anxiety Test
             </NavLink>
           </li>
-          <li>
+          <li className="my-1">
             <NavLink
               to="/assessments/depression-test"
               className={({ isActive }) =>
@@ -115,7 +115,7 @@ const Navbar = () => {
               Addiction Test
             </NavLink>
           </li>
-          <li>
+          <li className="my-1">
             <NavLink
               to="/assessments/bipolar-test"
               className={({ isActive }) =>
@@ -161,7 +161,7 @@ const Navbar = () => {
           tabIndex={0}
           className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0"
         >
-          <li>
+          <li className="my-1">
             <NavLink
               to="/blogs"
               className={({ isActive }) =>
@@ -228,7 +228,7 @@ const Navbar = () => {
               Team Members
             </NavLink>
           </li>
-          <li>
+          <li className="my-1">
             <NavLink
               to="/about-project"
               className={({ isActive }) =>
@@ -285,7 +285,7 @@ const Navbar = () => {
               Help Center
             </NavLink>
           </li>
-          <li>
+          <li className="my-1">
             <NavLink
               to="/contact-support"
               className={({ isActive }) =>
@@ -331,6 +331,9 @@ const Navbar = () => {
               <Link to="/profile" className={`${baseClass} ${hoverClass} p-2 block`}>Profile</Link>
             </li>
             <li>
+              <Link to="/assessment-history" className={`${baseClass} ${hoverClass} p-2 block mt-1`}>Assessment History</Link>
+            </li>
+            <li className="my-1">
               <Link to="/settings" className={`${baseClass} ${hoverClass} p-2 block`}>Settings</Link>
             </li>
             <li>

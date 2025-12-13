@@ -1,106 +1,241 @@
 [
   {
     "id": 1,
+    "slug": "depression-test",
     "title": "DEPRESSION TEST",
     "description": "For people who may be experiencing symptoms of depression, including persistent sadness, loss of interest, and fatigue.",
-    "link": "/assessments/depression",
+    "link": "/assessments/depression-test",
     "category": "Mood",
-    "icon": "😔"
+    "icon": "😔",
+    "maxScore": 60,
+    "questions": [
+      "I feel down or sad.", "I have lost interest in activities.", "I have difficulty sleeping.",
+      "I feel tired or have low energy.", "I feel worthless or guilty.", "I have trouble concentrating.",
+      "I experience changes in appetite.", "I feel hopeless about the future.", "I cry more than usual.",
+      "I feel restless or slowed down.", "I avoid social interactions.", "I experience negative thoughts.",
+      "I have low motivation.", "I feel life is not enjoyable.", "I have thoughts of self-harm."
+    ],
+    "thresholds": [
+      { "max": 14, "level": "Low Depression", "color": "#22c55e", "advice": "Low indicators found. Maintain a healthy routine." },
+      { "max": 29, "level": "Mild Depression", "color": "#facc15", "advice": "Mild indicators found. Consider talking to someone." },
+      { "max": 44, "level": "Moderate Depression", "color": "#f97316", "advice": "Moderate indicators found. Professional support is recommended." },
+      { "max": 60, "level": "High Depression", "color": "#dc2626", "advice": "Significant indicators detected. Reach out to a professional." }
+    ]
   },
   {
     "id": 2,
+    "slug": "adhd-test",
     "title": "ADHD TEST",
     "description": "For people of all ages who have trouble focusing, remembering things, completing tasks, and/or sitting still.",
     "link": "/assessments/adhd-test",
     "category": "Focus",
-    "icon": "🧠"
+    "icon": "🧠",
+    "maxScore": 60,
+    "questions": [
+      "I have trouble paying attention to details.", "I make careless mistakes.", "I have difficulty staying focused on tasks.",
+      "I often forget daily tasks.", "I fidget or squirm.", "I leave my seat when I shouldn't.",
+      "I feel restless.", "I talk excessively.", "I have difficulty waiting my turn.",
+      "I interrupt others.", "I lose things necessary for tasks.", "I avoid tasks that require sustained mental effort.",
+      "I am easily distracted.", "I act impulsively.", "I struggle to follow instructions."
+    ],
+    "thresholds": [
+      { "max": 20, "level": "Low Likelihood", "color": "#22c55e", "advice": "ADHD traits are unlikely." },
+      { "max": 40, "level": "Moderate Likelihood", "color": "#f97316", "advice": "Moderate traits detected. Consider evaluation." },
+      { "max": 60, "level": "High Likelihood", "color": "#dc2626", "advice": "Strong likelihood of ADHD traits. Consult a specialist." }
+    ]
   },
   {
     "id": 3,
+    "slug": "anxiety-test",
     "title": "ANXIETY TEST",
     "description": "For those experiencing excessive worry, nervousness, or panic that interferes with daily life.",
     "link": "/assessments/anxiety-test",
     "category": "Mood",
-    "icon": "😟"
+    "icon": "😟",
+    "maxScore": 60,
+    "questions": [
+      "I feel nervous or on edge.", "I have trouble relaxing.", "I worry about many things.",
+      "I have difficulty concentrating.", "I experience restlessness.", "I feel irritable.",
+      "I experience sudden feelings of panic.", "I have difficulty sleeping because of anxiety.",
+      "I avoid situations due to worry.", "I feel tense in social settings.",
+      "I experience muscle tension.", "I have racing thoughts.",
+      "I feel overwhelmed by responsibilities.", "I experience stomach discomfort from anxiety.",
+      "I feel a sense of impending doom."
+    ],
+    "thresholds": [
+      { "max": 14, "level": "Low Anxiety", "color": "#22c55e", "advice": "Results suggest low levels of anxiety." },
+      { "max": 29, "level": "Mild Anxiety", "color": "#facc15", "advice": "You are experiencing mild anxiety." },
+      { "max": 44, "level": "Moderate Anxiety", "color": "#f97316", "advice": "Moderate anxiety levels detected." },
+      { "max": 60, "level": "High Anxiety", "color": "#dc2626", "advice": "High levels detected. Seek clinical support." }
+    ]
   },
   {
     "id": 4,
+    "slug": "ocd-test",
     "title": "OCD TEST",
     "description": "For individuals with recurrent, unwanted thoughts (obsessions) and/or repetitive behaviors (compulsions).",
     "link": "/assessments/ocd-test",
     "category": "Compulsion",
-    "icon": "♻️"
+    "icon": "♻️",
+    "maxScore": 80,
+    "questions": [
+      "I feel compelled to check things repeatedly.", "I have unwanted intrusive thoughts.", "I wash or clean excessively.",
+      "I feel anxious if things are not in order.", "I repeat actions until they “feel right.”", "I avoid situations that trigger obsessions.",
+      "I count or repeat words silently.", "I fear contamination.", "I spend too much time on rituals.",
+      "I ask for reassurance repeatedly.", "I doubt my memory frequently.", "I arrange things symmetrically.",
+      "I experience distress when I try to resist compulsions.", "I have fears of harming myself or others.", "I avoid touching certain objects.",
+      "I feel responsible for preventing harm.", "I get stuck on thoughts I can’t ignore.", "I hoard items I don’t need.",
+      "I repeat tasks until “perfect.”", "I feel guilty for having intrusive thoughts."
+    ],
+    "thresholds": [
+      { "max": 28, "level": "Low Traits", "color": "#22c55e", "advice": "OCD traits are minimal." },
+      { "max": 48, "level": "Mild Traits", "color": "#facc15", "advice": "Some repetitive behaviors present." },
+      { "max": 72, "level": "Moderate Traits", "color": "#f97316", "advice": "Compulsions may affect daily life." },
+      { "max": 80, "level": "High Traits", "color": "#dc2626", "advice": "High indicators. Specialized therapy is recommended." }
+    ]
   },
   {
     "id": 5,
+    "slug": "bipolar-test",
     "title": "BIPOLAR TEST",
     "description": "For people experiencing significant mood swings, including periods of elevated mood (mania) and periods of depression.",
-    "link": "/assessments/bipolar",
+    "link": "/assessments/bipolar-test",
     "category": "Mood",
-    "icon": "⚡"
+    "icon": "⚡",
+    "maxScore": 60,
+    "questions": [
+      "I experience periods of high energy.", "I have periods of excessive happiness.", "I talk faster than usual.",
+      "I take impulsive risks.", "I have racing thoughts.", "I sleep less than usual but feel energetic.",
+      "I feel easily irritated during high energy periods.", "I have periods of sadness.", "I lose interest in activities.",
+      "I feel hopeless at times.", "I have mood swings.", "I experience irritability during low moods.",
+      "I experience rapid shifts between high and low moods.", "I feel creative during high moods.",
+      "I struggle to maintain relationships due to mood changes."
+    ],
+    "thresholds": [
+      { "max": 20, "level": "Low Traits", "color": "#22c55e", "advice": "Mood shifts appear within normal range." },
+      { "max": 40, "level": "Moderate Traits", "color": "#f97316", "advice": "Moderate signs of mood instability detected." },
+      { "max": 60, "level": "High Traits", "color": "#dc2626", "advice": "Significant indicators. Professional evaluation recommended." }
+    ]
   },
   {
     "id": 6,
+    "slug": "psychosis-schizophrenia",
     "title": "PSYCHOSIS & SCHIZOPHRENIA TEST",
     "description": "For individuals experiencing distortions of reality, such as hallucinations or delusions.",
     "link": "/assessments/psychosis-schizophrenia",
     "category": "Severe",
-    "icon": "🌀"
+    "icon": "🌀",
+    "maxScore": 80,
+    "questions": [
+      "I hear voices others cannot hear.", "I see things others cannot see.", "I believe people are watching me.",
+      "I feel external forces control my thoughts.", "I have unusual beliefs.", "I have trouble organizing my thoughts.",
+      "My thoughts feel “blocked.”", "I speak in a way others struggle to understand.", "I withdraw from family and friends.",
+      "I feel emotionally flat or blank.", "I neglect personal hygiene.", "I lose interest in activities.",
+      "I feel disconnected from reality.", "I experience sudden confusion.", "I find it hard to express emotions.",
+      "I feel suspicious of others.", "I have difficulty making decisions.", "I experience sudden agitation.",
+      "I have trouble differentiating dreams from reality.", "I feel my thoughts are being broadcast."
+    ],
+    "thresholds": [
+      { "max": 28, "level": "Low Indicators", "color": "#22c55e", "advice": "No significant indicators found." },
+      { "max": 48, "level": "Mild Indicators", "color": "#facc15", "advice": "Mild indicators detected. Monitor closely." },
+      { "max": 72, "level": "Moderate Indicators", "color": "#f97316", "advice": "Moderate indicators. Clinical evaluation necessary." },
+      { "max": 80, "level": "High Indicators", "color": "#dc2626", "advice": "High risk detected. Urgent evaluation advised." }
+    ]
   },
   {
     "id": 7,
+    "slug": "eating-disorder-test",
     "title": "EATING DISORDER TEST",
     "description": "For those with unhealthy relationships with food, body image concerns, and disordered eating patterns.",
     "link": "/assessments/eating-disorder-test",
     "category": "Mood",
-    "icon": "🍽️"
+    "icon": "🍽️",
+    "maxScore": 80,
+    "questions": [
+      "I worry about gaining weight.", "I feel unhappy with my body shape.", "I avoid eating in front of others.",
+      "I feel guilty after eating.", "I restrict food even when I’m hungry.", "I binge eat large amounts of food.",
+      "I make myself vomit after eating.", "I use laxatives or diet pills to control weight.",
+      "I exercise excessively.", "I feel out of control when eating.", "I skip meals frequently.",
+      "I feel anxious during mealtimes.", "I eat secretly.", "I compare my body to others.",
+      "My weight affects my mood heavily.", "I feel ashamed about my eating habits.",
+      "I avoid social events involving food.", "I feel pressure to be thin.", "I track calories obsessively.",
+      "My body is never good enough."
+    ],
+    "thresholds": [
+      { "max": 28, "level": "Low Concern", "color": "#22c55e", "advice": "Healthy relationship with food indicated." },
+      { "max": 48, "level": "Mild Concern", "color": "#facc15", "advice": "Pay attention to body image habits." },
+      { "max": 72, "level": "Moderate Concern", "color": "#f97316", "advice": "Patterns of disordered eating. Seek support." },
+      { "max": 80, "level": "High Concern", "color": "#dc2626", "advice": "Serious indicators. Consult a specialist." }
+    ]
   },
   {
     "id": 8,
+    "slug": "ptsd",
     "title": "PTSD TEST",
     "description": "For individuals who have experienced trauma and are showing symptoms like flashbacks, nightmares, or avoidance.",
     "link": "/assessments/ptsd",
     "category": "Trauma",
-    "icon": "💥"
+    "icon": "💥",
+    "maxScore": 80,
+    "questions": [
+      "I experience flashbacks.", "I have recurring distressing memories.", "I have nightmares.",
+      "I avoid reminders of trauma.", "I feel emotionally numb.", "I feel constantly on guard.",
+      "I startle easily.", "I feel irritable/angry.", "I have trouble sleeping.",
+      "I avoid talking about trauma.", "I feel detached.", "I have difficulty enjoying life.",
+      "I experience sudden fear.", "I blame myself.", "I feel hopeless.",
+      "I feel distrustful.", "I struggle to concentrate.", "I feel physically tense.",
+      "I avoid related places.", "I experience outbursts."
+    ],
+    "thresholds": [
+      { "max": 28, "level": "Low Indicators", "color": "#22c55e", "advice": "Minimal indicators of PTSD." },
+      { "max": 48, "level": "Mild Indicators", "color": "#facc15", "advice": "Some trauma-related distress detected." },
+      { "max": 72, "level": "Moderate Indicators", "color": "#f97316", "advice": "Moderate PTSD symptoms. Therapy can help." },
+      { "max": 80, "level": "High Indicators", "color": "#dc2626", "advice": "Please seek specialized trauma care." }
+    ]
   },
   {
     "id": 9,
+    "slug": "addiction-test",
     "title": "ADDICTION TEST",
     "description": "For people concerned about problematic substance use or compulsive behaviors impacting their life.",
     "link": "/assessments/addiction-test",
     "category": "Behavior",
-    "icon": "🚬"
+    "icon": "🚬",
+    "maxScore": 60,
+    "questions": [
+      "I consume substances despite negative consequences.", "I have cravings.", "I try to cut down but fail.",
+      "I neglect responsibilities due to use.", "I use in dangerous situations.", "I spend a lot of time obtaining substance.",
+      "I experience withdrawal.", "I hide use from others.", "I experience tolerance.",
+      "I feel guilty about use.", "I neglect hobbies.", "I feel anxious without use.",
+      "I continue use despite health issues.", "I feel unable to control use.", "I prioritize substance."
+    ],
+    "thresholds": [
+      { "max": 20, "level": "Low Risk", "color": "#22c55e", "advice": "Substance use behaviors appear low risk." },
+      { "max": 40, "level": "Moderate Risk", "color": "#f97316", "advice": "Possible patterns of dependency. Seek support." },
+      { "max": 60, "level": "High Risk", "color": "#dc2626", "advice": "Professional intervention is strongly advised." }
+    ]
   },
   {
     "id": 10,
-    "title": "GAMBLING ADDICTION TEST",
-    "description": "For individuals struggling with compulsive gambling behaviors and their impact on personal and financial well-being.",
-    "link": "/assessments/gambling-addiction-test",
-    "category": "Behavior",
-    "icon": "🎰"
-  },
-  {
-    "id": 11,
-    "title": "POSTPARTUM DEPRESSION TEST (NEW & EXPECTING PARENTS)",
-    "description": "For new or expecting parents experiencing symptoms of depression or anxiety during pregnancy or after childbirth.",
-    "link": "/assessments/postpartum-depression",
+    "slug": "stress-test",
+    "title": "STRESS LEVEL TEST",
+    "description": "Assess how often you feel overwhelmed or unable to cope with daily pressures.",
+    "link": "/assessments/stress-test",
     "category": "Mood",
-    "icon": "🤰"
-  },
-  {
-    "id": 12,
-    "title": "PARENT TEST: YOUR CHILD'S MENTAL HEALTH",
-    "description": "A screening tool for parents to assess potential mental health concerns in their children.",
-    "link": "/assessments/child-mental-health",
-    "category": "Children",
-    "icon": "👶"
-  },
-  {
-    "id": 13,
-    "title": "YOUTH MENTAL HEALTH TEST",
-    "description": "For young individuals (ages 12-25) to screen for common mental health concerns and identify areas for support.",
-    "link": "/assessments/youth-mental-health",
-    "category": "Youth",
-    "icon": "🧑‍🎓"
+    "icon": "😫",
+    "maxScore": 60,
+    "questions": [
+      "I feel overwhelmed.", "I have difficulty relaxing.", "I experience headaches.",
+      "I feel irritable.", "I have trouble sleeping.", "I feel anxious.",
+      "I have trouble concentrating.", "I feel fatigued.", "I have digestive issues.",
+      "I feel short-tempered.", "I struggle with time management.", "I have increased heart rate.",
+      "I feel nervous.", "I procrastinate.", "I experience mood swings."
+    ],
+    "thresholds": [
+      { "max": 14, "level": "Low Stress", "color": "#22c55e", "advice": "Stress levels are well-managed." },
+      { "max": 29, "level": "Mild Stress", "color": "#facc15", "advice": "Try incorporating relaxation exercises." },
+      { "max": 44, "level": "Moderate Stress", "color": "#f97316", "advice": "Consider adjusting workload." },
+      { "max": 60, "level": "High Stress", "color": "#dc2626", "advice": "Prioritize rest and guidance." }
+    ]
   }
 ]
