@@ -22,7 +22,7 @@ const Blogs = ({ data: propData, isHome }) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 mt-14 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4 ">
+        <div className="grid grid-cols-1 mt-14 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4 animate__animated animate__fadeInUp">
           {data.map((blog) => (
             <article
               key={blog.id}

@@ -420,7 +420,7 @@ const Navbar = () => {
             />
           </span>
           <span className="health-blue">Mood</span>
-          <span className="sort-green -mx-2">Index</span>
+          <span className="sort-green -mx-2 text-[#1BA9B5]">Index</span>
         </a>
       </div>
 

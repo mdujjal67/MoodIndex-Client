@@ -12,7 +12,7 @@ const Footer = () => {
 							<span className="self-center text-2xl font-semibold">
 								<span className="font-bold text-2xl cursor-pointer text-[#0A77FF]">
 									<span className="health-blue">Mood</span>
-									<span className="sort-green">Index</span>
+									<span className="sort-green text-[#1BA9B5]">Index</span>
 								</span>
 							</span>
 						</Link>
