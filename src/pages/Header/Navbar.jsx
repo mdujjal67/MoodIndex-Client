@@ -3,18 +3,21 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthContext";
 import { FaUser } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext)
+  const { user, logOut, loading } = useContext(AuthContext)
   const location = useLocation();
   const navigate = useNavigate();
   const [openDropdown, setOpenDropdown] = useState(null);
 
+  // Prioritize the stable URL if you find it in the user object
+    const stablePhotoURL = user?.reloadUserInfo?.photoUrl || user?.photoURL;
+
   const handleLogout = () => {
-    console.log("User trying to logout");
     logOut()
       .then(() => {
-        toast("Logout successful!")
+        Swal.fire("Logout Successful!");
       }).catch((error) => {
         console.log(error)
       });
@@ -309,17 +312,23 @@ const Navbar = () => {
       </li>
 
       {/* AVATAR */}
-      {user ?
+      {/* ✅ AUTHENTICATION SECTION WITH LOADING HANDLER */}
+      {loading ? (
+        <li className="pl-10 flex items-center">
+            <div className="w-10 h-10 rounded-full bg-gray-200 animate-pulse"></div>
+        </li>
+      ) : user ? (
         <li className="relative dropdown dropdown-end mx-1 group pl-10">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
+            <div className="w-10 h-10 rounded-full">
               {user?.photoURL ? (
-                <p>{user.photoURL}</p>
-              ) : (
                 <img
+                  className="rounded-full w-full h-full object-cover"
+                  src={stablePhotoURL}
                   alt="User"
-                  src="https://i.ibb.co.com/RG5L20GF/user-icon-on-transparent-background-free-png.png"
                 />
+              ) : (
+                <FaUser className="text-4xl text-gray-400" />
               )}
             </div>
           </div>
@@ -346,7 +355,7 @@ const Navbar = () => {
             </li>
           </ul>
         </li>
-        :
+      ) : (
         <div className="ml-4">
           <button
             onClick={() => navigate('/login')}
@@ -361,7 +370,7 @@ const Navbar = () => {
             Register
           </button>
         </div>
-      }
+      )}
     </>
   );
 

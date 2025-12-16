@@ -21,26 +21,18 @@ const Footer = () => {
 						<div className="space-y-3" bis_skin_checked="1">
 							<h3 className="tracking-wide uppercase dark:text-gray-900 font-semibold">Product</h3>
 							<ul className="space-y-1">
-								<Link to='/features'>
-									<li className='hover:text-[#1BA9B5] mb-1'>
-										<a rel="noopener noreferrer">Features</a>
+								<li className='hover:text-[#1BA9B5] mb-1'>
+									<Link to='/features'>Features</Link>
+								</li>
+								<li className='hover:text-[#1BA9B5]'>
+									<Link to='/integration'>Integrations</Link>
+								</li>
+								<li className='hover:text-[#1BA9B5] my-1'>
+										<Link to='/pricing'>Pricing</Link>
 									</li>
-								</Link>
-								<Link to='/integrations'>
-									<li className='hover:text-[#1BA9B5]'>
-										<a rel="noopener noreferrer">Integrations</a>
-									</li>
-								</Link>
-								<Link to='/pricing'>
-									<li className='hover:text-[#1BA9B5] my-1'>
-										<a rel="noopener noreferrer">Pricing</a>
-									</li>
-								</Link>
-								<Link to='/faqs'>
-									<li className='hover:text-[#1BA9B5]'>
-										<a rel="noopener noreferrer">FAQs</a>
-									</li>
-								</Link>
+								<li className='hover:text-[#1BA9B5]'>
+									<Link to='/faqs'>FAQs</Link>
+								</li>
 							</ul>
 						</div>
 						<div className="space-y-3" bis_skin_checked="1">
@@ -57,21 +49,15 @@ const Footer = () => {
 						<div className="space-y-3" bis_skin_checked="1">
 							<h3 className="uppercase dark:text-gray-900 font-semibold">Developers</h3>
 							<ul className="space-y-1">
-								<Link to='/public-api'>
-									<li className='hover:text-[#1BA9B5]'>
-										<a rel="noopener noreferrer" href="#">Public API</a>
+								<li className='hover:text-[#1BA9B5]'>
+										<Link to='/public-api'>Public API</Link>
 									</li>
-								</Link>
-								<Link to='/documentation'>
-									<li className='hover:text-[#1BA9B5] my-1'>
-										<a rel="noopener noreferrer" href="#">Documentation</a>
+								<li className='hover:text-[#1BA9B5] my-1'>
+										<Link to='/documentations'>Documentations</Link>
 									</li>
-								</Link>
-								<Link to='/guides'>
-									<li className='hover:text-[#1BA9B5]'>
-										<a rel="noopener noreferrer" href="#">Guides</a>
+								<li className='hover:text-[#1BA9B5]'>
+										<Link to='/guides'>Guides</Link>
 									</li>
-								</Link>
 							</ul>
 						</div>
 						<div className="space-y-3" bis_skin_checked="1">

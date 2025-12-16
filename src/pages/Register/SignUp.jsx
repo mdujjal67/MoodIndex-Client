@@ -2,37 +2,85 @@ import React, { useContext, useState } from 'react';
 import { FaEye, FaEyeSlash, FaRegUser } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoMdLink } from "react-icons/io";
 import { HiOutlineMail } from "react-icons/hi";
 import { AuthContext } from '../../Contexts/AuthContext';
 import toast, { Toaster } from 'react-hot-toast';
+import Swal from 'sweetalert2';
 // import toast from "react-hot-toast";
 
 const SignUp = () => {
-    const { createUser } = useContext(AuthContext);
-    const [showPassword, setShowPassword] =useState(null);
+    const { createUser, googleLogin } = useContext(AuthContext);
+    const [showPassword, setShowPassword] = useState(null);
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/";
 
     const handleSignUp = e => {
         e.preventDefault();
         const form = e.target;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log({email, password});
-        // console.log(createUser)
+        const photoURL = form.photoURL.value;
 
         // create user in the firebase
         createUser(email, password)
             .then(result => {
-                console.log(result.user)
-                toast.success('Successfully Sign Up!')
-                // reset();
+                const user = result.user;
+                console.log(user);
+                toast.success('Successfully Signed Up!');
+                const creationTime = user?.metadata?.creationTime;
+
+                //  Construct the full user data object to send to the database
+                const userData = {
+                    name,
+                    email,
+                    password,
+                    photoURL,
+                    role: 'user', // Default role for authorization (e.g., role: 'user/premiumUser/admin')
+                    creationTime: creationTime
+                };
+
+                // send the full data to MongoDB
+                fetch('http://localhost:9000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify(userData)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // if (data.insertedId) {
+                        //     Swal.fire({
+                        //         position: "top-end",
+                        //         icon: "success",
+                        //         title: "Your work has been saved",
+                        //         showConfirmButton: false,
+                        //         timer: 1500
+                        //     });
+                        // }
+                        console.log('After database save', data);
+                         // reset();
+                form.reset();
+
+                // setLoginError('');
+                navigate(from, { replace: true });
+                    })
             })
             .catch((error) => {
                 console.log(error)
-                return toast.error('This User Already Exists!');
+                return toast.error('Please try again later!');
             });
+    };
 
+    //   for google login
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                console.log(result.user)
+            })
     };
 
 
@@ -44,7 +92,7 @@ const SignUp = () => {
                     <div className="lg:w-1/2">
                         <img src='https://i.ibb.co.com/bRG42YwT/sign-up-illustration-svg-download-png-6430773.webp' alt="" className="w-[400px]" />
                     </div>
-                     <Toaster position="top-center" reverseOrder={false} />
+                    <Toaster position="top-center" reverseOrder={false} />
                     <div className="card lg:ml-20 lg:w-1/2 w-[300px] shadow-lg border bg-base-100">
                         <h1 className="text-2xl text-center font-bold mt-5">Please! Register</h1>
                         <form onSubmit={handleSignUp} className="card-body">
@@ -76,8 +124,8 @@ const SignUp = () => {
                                 <MdPassword className="absolute left-4 top-3 text-gray-500" />
                                 <a className="relative" href="#">
                                     <span className="absolute right-4 top-1" onClick={() => setShowPassword(!showPassword)}>
-                                                {showPassword ? <FaEye /> : <FaEyeSlash />}
-                                            </span>
+                                        {showPassword ? <FaEye /> : <FaEyeSlash />}
+                                    </span>
                                 </a>
                                 {/* input field error show */}
                                 <div>
@@ -105,13 +153,13 @@ const SignUp = () => {
                             <p className="px-4 text-[#00000082]">Or </p>
                             <hr className="w-full mr-8" />
                         </div>
-                        <div className="form-control w-full mt-3 px-8 flex flex-row gap-5 mx-auto items-center pb-7">
-                            {/* <div className="bg-gray-100 hover:bg-gray-200 w-8 h-8 items-center mx-auto rounded-full">
-                                        <button><IoLogoGithub className="text-black text-[20px] ml-[6px] mt-[6px] mx-auto items-center" /></button>
-                                    </div> */}
-                            <div className="cursor-pointer bg-gray-100 hover:bg-gray-200 w-full items-center mx-auto rounded-full">
-                                <button className='mx-auto p-2 cursor-pointer'><FcGoogle className="text-black text-[20px] ml-1.5 mt-1.5 mx-auto items-center" /></button>
-                            </div>
+
+                        <div className=" mt-4 px-8 pb-6 w-full">
+                            <button onClick={handleGoogleLogin} className="btn w-full border-none bg-[#00396a] hover:bg-gray-400 text-white rounded-full">
+                                <FcGoogle className=" text-[24px]" />
+                                <span>Continue with Google</span>
+                            </button>
+                            {/* <FcGoogle className="absolute top-3 left-[60px] text-[24px]" /> */}
                         </div>
                     </div>
                 </div>

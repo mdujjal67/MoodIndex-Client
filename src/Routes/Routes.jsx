@@ -150,6 +150,11 @@ export const router = createBrowserRouter([
         Component: UnderDevelopment,
       },
 
+      {
+        path: '/under-development',
+        Component: UnderDevelopment,
+      },
+
 
       // -------routes for the all tests--------     
       {

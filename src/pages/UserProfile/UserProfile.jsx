@@ -6,7 +6,9 @@ import { FaUser } from "react-icons/fa";
 const UserProfile = () => {
 
     const { user } = useContext(AuthContext);
-    console.log(user)
+    console.log(user);
+    // Prioritize the stable URL if you find it in the user object
+    const stablePhotoURL = user?.photoURL;
 
     useEffect((() => {
         document.title = "MoodIndex | User-Profile"
@@ -14,18 +16,26 @@ const UserProfile = () => {
 
     return (
         <div>
-            
+
             <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800 container mx-auto mt-10 md:mt-16 lg:mt-20 py-10">
                 <h2 className="text-2xl font-bold text-center">Welcome {user.displayName}</h2>
-            <div className="w-24 lg:w-32 lg:h-32 h-24 rounded-full mx-auto mt-10 bg-gray-200">
-                <img className="rounded-full text-center mt-10 w-full" src={user?.photoURL || <FaUser />} alt="User photo" />
-            </div>
+                <div className="w-24 lg:w-32 lg:h-32 h-24 rounded-full mx-auto mt-10 bg-gray-200">
+                    {user?.photoURL ? (
+                        <img
+                            className="rounded-full w-full h-full object-cover"
+                            src={stablePhotoURL}
+                            alt="User profile"
+                        />
+                    ) : (
+                        <FaUser className="text-4xl text-gray-400" />
+                    )}
+                </div>
                 <div className="space-y-4 text-center divide-y dark:divide-gray-300">
                     <div className="my-2 space-y-1">
                         <h2 className="Montserrat text-xl font-semibold sm:text-2xl">{user?.displayName}</h2>
                         <h2 className="work-sans font-normal">{user?.email}</h2>
                         <div className=" flex items-center text-center mb-5">
-                            <MdWorkspacePremium className="text-yellow-400 ml-14 text-[14px] "/>
+                            <MdWorkspacePremium className="text-yellow-400 ml-14 text-[14px] " />
                             <p className="pr-5 text-[14px] dark:text-gray-600 ">New User</p>
                         </div>
                     </div>

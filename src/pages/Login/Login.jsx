@@ -10,13 +10,13 @@ import Swal from 'sweetalert2';
 
 const Login = () => {
     const [loginError, setLoginError] = useState('');
-    const [showPassword, setShowPassword] =useState(null);
-    const{signIn} = useContext(AuthContext);
+    const [showPassword, setShowPassword] = useState(null);
+    const { signIn, googleLogin } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
-    const handleLogin = (e) =>{
+    const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
@@ -24,8 +24,8 @@ const Login = () => {
         // console.log({email, password});
 
         signIn(email, password)
-        .then(result => {
-            const user = result.user
+            .then(result => {
+                const user = result.user
                 console.log(user)
                 Swal.fire({
                     position: "center",
@@ -36,7 +36,7 @@ const Login = () => {
                 });
                 // reset();
                 form.reset();
-                
+
                 // setLoginError('');
                 navigate(from, { replace: true });
             })
@@ -46,7 +46,30 @@ const Login = () => {
                 // navigate('/');
                 form.reset();
             });
-    }
+    };
+
+    //   for google login
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                console.log(result)
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Login successful",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                navigate(location?.state?.from || '/'); // Fixed location state navigation
+            })
+            .catch(error => {
+                toast.error("Google login failed");
+                console.error(error);
+            });
+    };
+
+
+
     return (
         <div>
             <div className="hero min-h-screen bg-gray-50 container mb-20 mx-auto py-10">
@@ -86,7 +109,7 @@ const Login = () => {
                                 </div>
 
                                 <label className="label">
-                                    <Link to='/forgot-password' className="pt-1 label-text-alt link link-hover text-xs">Forgot password?</Link>
+                                    <Link to='/under-development' className="pt-1 label-text-alt link link-hover text-xs">Forgot password?</Link>
                                 </label>
                                 <label className="">
                                     <p className="text-[14px] w-[220px] mx-auto mt-2 text-[#00000082]">Do not have an account? <Link to='/register' className="hover:link font-semibold text-[14px] text-[#00396a]">Register</Link>
@@ -104,14 +127,13 @@ const Login = () => {
                             <p className="px-4 text-[#00000082]">Or</p>
                             <hr className="w-full mr-8" />
                         </div>
-                        <div className="form-control w-full mt-3 px-8 flex flex-row gap-5 mx-auto items-center pb-7">
-                            {/* <div className="bg-gray-100 hover:bg-gray-200 w-8 h-8 items-center mx-auto rounded-full">
-                                <button><IoLogoGithub className="text-black text-[20px] ml-[6px] mt-[6px] mx-auto items-center" /></button>
-                            </div> */}
-                            <div className="cursor-pointer bg-gray-100 hover:bg-gray-200 w-full items-center mx-auto rounded-full">
-                                <button className='mx-auto p-2 cursor-pointer'><FcGoogle className="text-black text-[20px] ml-1.5 mt-1.5 mx-auto items-center" /></button>
+                        <div className=" mt-4 px-8 pb-6 w-full">
+                                <button onClick={handleGoogleLogin} className="btn w-full border-none bg-[#00396a] hover:bg-gray-400 text-white rounded-full">
+                                    <FcGoogle className=" text-[24px]" />
+                                    <span>Continue with Google</span>
+                                </button>
+                                {/* <FcGoogle className="absolute top-3 left-[60px] text-[24px]" /> */}
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
