@@ -1,66 +1,89 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../Contexts/AuthContext';
+import { useNavigate } from 'react-router';
+import { auth } from '../Firebase/firebase.config';
 
 const DeleteAccountModal = () => {
-
-  const { deleteUserAccount, user, logOut } = useContext(AuthContext);
+  const { deleteAccount, user, setUser, setLoading: setGlobalLoading } = useContext(AuthContext);
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  // ⭐️ LOGIC FIX: Check the entire provider list
+  const providers =
+    auth.currentUser?.providerData?.map(p => p.providerId) || [];
+
+  const isEmailUser = providers.includes('password');
+  const isGoogleUser = providers.includes('google.com');
+
 
   const handleDelete = async () => {
-    if (!password) {
-      toast.error('Password required');
+    // Stop if it's an email user and they haven't typed a password
+    if (isEmailUser && !password) {
+      toast.error("Please enter your password to confirm.");
       return;
     }
 
     setLoading(true);
+    if (setGlobalLoading) setGlobalLoading(true);
 
     try {
-      // 1️⃣ Delete Firebase account
-      await deleteUserAccount(password);
+      await deleteAccount(password);
 
-      // 2️⃣ Delete MongoDB data
-      await fetch(`http://localhost:9000/users/${user.email}`, {
-        method: 'DELETE'
-      });
+      const userEmail = user?.email;
+      if (userEmail) {
+        await fetch(`http://localhost:9000/users/${userEmail}`, { method: 'DELETE' });
+      }
 
-      toast.success('Account permanently deleted');
-      logOut();
-      window.location.href = '/';
-
+      toast.success('Account deleted');
+      navigate('/');
     } catch (error) {
-      toast.error(error.message);
-    } finally {
+      if (setGlobalLoading) setGlobalLoading(false);
       setLoading(false);
+      toast.error(error.message || "Failed to delete account");
     }
   };
 
   return (
     <div className="modal-box">
-      <h3 className="font-bold text-xl text-red-600">
-        Delete Account
-      </h3>
+      <h3 className="font-bold text-lg text-red-600">Delete Account</h3>
+      <p className="py-2 text-gray-500">This action cannot be undone.</p>
 
-      <p className="text-sm text-gray-500 mt-2">
-        This action is irreversible. All data will be permanently removed.
-      </p>
+      {/* ⭐️ THE FIX: Forced display logic */}
+      {/* ⭐️ FIX: If they have a password, show the field. Period. */}
+      {isEmailUser && (
+        <div className="form-control w-full mt-4">
+          <label className="label">
+            <span className="label-text">Confirm Password</span>
+          </label>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            className="input input-bordered w-full" // Added classes for visibility
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+      )}
 
-      <input
-        type="password"
-        placeholder="Confirm Password"
-        className="input input-bordered w-full mt-4"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
+      {/* Show the Google message ONLY if they don't have a password */}
+      {!isEmailUser && isGoogleUser && (
+        <div className="bg-blue-50 p-4 rounded-lg mt-4">
+          <p className="text-sm text-blue-800 font-medium">
+            Logged in via Google. A verification popup will appear.
+          </p>
+        </div>
+      )}
+
 
       <div className="modal-action">
         <button
-          className="btn btn-error w-full"
+          className="btn btn-error w-full text-white"
           onClick={handleDelete}
           disabled={loading}
         >
-          {loading ? 'Deleting...' : 'Delete My Account'}
+          {loading ? "Processing..." : "Delete Permanently"}
         </button>
       </div>
     </div>

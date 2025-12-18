@@ -90,7 +90,6 @@ const SignUp = () => {
                     <div className="lg:w-1/2">
                         <img src='https://i.ibb.co.com/bRG42YwT/sign-up-illustration-svg-download-png-6430773.webp' alt="" className="w-[400px]" />
                     </div>
-                    <Toaster position="top-center" reverseOrder={false} />
                     <div className="card lg:ml-20 lg:w-1/2 w-[300px] shadow-lg border bg-base-100">
                         <h1 className="text-2xl text-center font-bold mt-5">Please! Register</h1>
                         <form onSubmit={handleSignUp} className="card-body pb-2 w-full">
@@ -137,14 +136,17 @@ const SignUp = () => {
                                     </span>
                                 </a>
                                 {passwordError && (
-                                    <div className="text-[12px] text-red-500 mt-1">
+                                    <div className="text-[11px] text-red-500 mt-1 leading-tight wrap-break-words lg:max-w-60 pl-2">
                                         {passwordError}
                                     </div>
                                 )}
-                                <label className="label">
+                                {/* <label className="label">
                                     <Link to='/forgot-password' className="pt-1 label-text-alt link link-hover text-xs ml-1">Forgot password?</Link>
-                                </label>
+                                </label> */}
                             </div>
+                            <p className=" text-center sm:px-6 dark:text-gray-600 col-span-2 text-[14px]">Already have an account?
+                                <Link to="/login" rel="noopener noreferrer" className="underline hover:link font-semibold text-[14px] text-[#00396a] ml-1">Login</Link>
+                            </p>
 
                             <div className="form-control mt-3">
                                 <button className="btn w-full border-none bg-[#00396a] hover:bg-gray-400 text-white rounded-full">Sign Up</button>

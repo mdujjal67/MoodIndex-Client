@@ -12,7 +12,7 @@ const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
 
   // Prioritize the stable URL if you find it in the user object
-    const stablePhotoURL = user?.reloadUserInfo?.photoUrl || user?.photoURL;
+  const stablePhotoURL = user?.reloadUserInfo?.photoUrl || user?.photoURL;
 
   const handleLogout = () => {
     logOut()
@@ -278,7 +278,7 @@ const Navbar = () => {
           tabIndex={0}
           className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0"
         >
-          <li>
+          {/* <li>
             <NavLink
               to="/help-center"
               className={({ isActive }) =>
@@ -287,7 +287,7 @@ const Navbar = () => {
             >
               Help Center
             </NavLink>
-          </li>
+          </li> */}
           <li className="my-1">
             <NavLink
               to="/contact-support"
@@ -313,15 +313,16 @@ const Navbar = () => {
 
       {/* AVATAR */}
       {/* ✅ AUTHENTICATION SECTION WITH LOADING HANDLER */}
-      {loading ? (
+      {/* ✅ AUTHENTICATION SECTION - FIXED LOGIC */}
+      {loading && user ? (
         <li className="pl-10 flex items-center">
-            <div className="w-10 h-10 rounded-full bg-gray-200 animate-pulse"></div>
+          <div className="w-10 h-10 rounded-full bg-gray-200 animate-pulse"></div>
         </li>
       ) : user ? (
         <li className="relative dropdown dropdown-end mx-1 group pl-10">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 h-10 rounded-full">
-              {user?.photoURL ? (
+              {stablePhotoURL ? (
                 <img
                   className="rounded-full w-full h-full object-cover"
                   src={stablePhotoURL}
@@ -336,15 +337,8 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 absolute right-0 top-full mt-3 w-52 p-2 shadow"
           >
-            <li>
-              <Link to="/profile" className={`${baseClass} ${hoverClass} p-2 block`}>Profile</Link>
-            </li>
-            <li>
-              <Link to="/assessment-history" className={`${baseClass} ${hoverClass} p-2 block mt-1`}>Assessment History</Link>
-            </li>
-            <li className="my-1">
-              <Link to="/settings" className={`${baseClass} ${hoverClass} p-2 block`}>Settings</Link>
-            </li>
+            <li><Link to="/profile" className={`${baseClass} ${hoverClass} p-2 block`}>Profile</Link></li>
+            <li><Link to="/assessment-history" className={`${baseClass} ${hoverClass} p-2 block mt-1`}>Assessment History</Link></li>
             <li>
               <button
                 onClick={handleLogout}
@@ -356,7 +350,8 @@ const Navbar = () => {
           </ul>
         </li>
       ) : (
-        <div className="ml-4">
+        /* This will now show immediately when user is null */
+        <div className="ml-4 flex items-center">
           <button
             onClick={() => navigate('/login')}
             className="btn btn-sm rounded-lg text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
@@ -376,7 +371,6 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-base-100 shadow-sm justify-between">
-      <Toaster position="top-center" reverseOrder={false} />
 
       {/* MOBILE */}
       <div className="navbar-start">

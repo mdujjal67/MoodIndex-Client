@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContext'; 
 
 const AssessmentHistory = ({ userScores = {} }) => {
     const allTestsData = useLoaderData();
     const { user } = useContext(AuthContext); 
+    const navigate = useNavigate();
     
     const [userHistory, setUserHistory] = useState([]); 
     const [selectedTest, setSelectedTest] = useState(null);
@@ -47,6 +48,8 @@ const AssessmentHistory = ({ userScores = {} }) => {
         return test.thresholds.find(t => score <= t.max) || test.thresholds[0];
     };
 
+    // Correctly initialized after the helper functions to avoid ReferenceError
+    const hasAnyResults = allTestsData.some(test => getLatestResult(test.slug));
 
     if (isLoading) {
         return <div className="text-center p-20">Loading assessment history...</div>;
@@ -60,48 +63,64 @@ const AssessmentHistory = ({ userScores = {} }) => {
             <div className="w-full lg:w-1/2 bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <h2 className="text-2xl font-bold text-indigo-900 mb-6">Assessment History</h2>
                 <div className="space-y-4">
-                    {allTestsData.map((test) => {
-                        const latestResult = getLatestResult(test.slug);
-                        
-                        // Only show tests the user has actually taken
-                        if (!latestResult) return null; 
-                        
-                        const score = latestResult.score; // Use the score from the DB
-                        const percentage = (score / test.maxScore) * 100;
-                        const status = getTestStatus(test, score); // Re-using this helper
-                        const isSelected = selectedTest?.slug === test.slug;
+                    {hasAnyResults ? (
+                        allTestsData.map((test) => {
+                            const latestResult = getLatestResult(test.slug);
+                            
+                            // Only show tests the user has actually taken
+                            if (!latestResult) return null; 
+                            
+                            const score = latestResult.score; // Use the score from the DB
+                            const percentage = (score / test.maxScore) * 100;
+                            const status = getTestStatus(test, score); // Re-using this helper
+                            const isSelected = selectedTest?.slug === test.slug;
 
-                        return (
-                            <motion.div
-                                key={test.id}
-                                onClick={() => setSelectedTest({ ...test, latestResult })}
-                                whileHover={{ x: 5 }}
-                                className={`p-4 rounded-xl cursor-pointer transition-all border-2 ${
-                                    isSelected ? 'border-indigo-600 bg-indigo-50/50' : 'border-transparent bg-gray-50 hover:bg-gray-100'
-                                }`}
-                            >
-                                <div className="flex justify-between items-center mb-2">
-                                    <div className="flex items-center gap-3">
-                                        <span className="text-2xl">{test.icon}</span>
-                                        <span className="font-bold text-indigo-900 text-sm">{test.title}</span>
+                            return (
+                                <motion.div
+                                    key={test.id}
+                                    onClick={() => setSelectedTest({ ...test, latestResult })}
+                                    whileHover={{ x: 5 }}
+                                    className={`p-4 rounded-xl cursor-pointer transition-all border-2 ${
+                                        isSelected ? 'border-indigo-600 bg-indigo-50/50' : 'border-transparent bg-gray-50 hover:bg-gray-100'
+                                    }`}
+                                >
+                                    <div className="flex justify-between items-center mb-2">
+                                        <div className="flex items-center gap-3">
+                                            <span className="text-2xl">{test.icon}</span>
+                                            <span className="font-bold text-indigo-900 text-sm">{test.title}</span>
+                                        </div>
+                                        <span className="text-xs font-bold" style={{ color: status.color }}>
+                                            {score} / {test.maxScore}
+                                        </span>
                                     </div>
-                                    <span className="text-xs font-bold" style={{ color: status.color }}>
-                                        {score} / {test.maxScore}
-                                    </span>
-                                </div>
 
-                                {/* Mini progress bar in the list */}
-                                <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                                    <motion.div 
-                                        initial={{ width: 0 }}
-                                        animate={{ width: `${percentage}%` }}
-                                        className="h-full"
-                                        style={{ backgroundColor: status.color }}
-                                    />
-                                </div>
-                            </motion.div>
-                        );
-                    })}
+                                    {/* Mini progress bar in the list */}
+                                    <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                                        <motion.div 
+                                            initial={{ width: 0 }}
+                                            animate={{ width: `${percentage}%` }}
+                                            className="h-full"
+                                            style={{ backgroundColor: status.color }}
+                                        />
+                                    </div>
+                                </motion.div>
+                            );
+                        })
+                    ) : (
+                        <div className="text-center py-12 px-6 bg-indigo-50/30 rounded-2xl border-2 border-dashed border-indigo-100">
+                            <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ repeat: Infinity, duration: 3 }} className="text-5xl mb-4">📋</motion.div>
+                            <h3 className="text-lg font-bold text-indigo-900 mb-2">No Assessments Yet</h3>
+                            <p className="text-gray-500 text-sm mb-6 leading-relaxed">
+                                Take an assessment to unlock detailed insights into your well-being and track your progress.
+                            </p>
+                            <button 
+                                onClick={() => navigate('/assessments')} 
+                                className=" px-6 py-2.5 rounded-xl font-semibold cursor-pointer text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white transition-all shadow-lg shadow-indigo-200"
+                            >
+                                Start First Test
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
 

@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { MdWorkspacePremium } from "react-icons/md";
 import { AuthContext } from "../../Contexts/AuthContext";
-import ProfilePictureUpdater from "../../components/ProfilePictureUpdater";
-import UpdateProfileForm from "../../components/UpdateProfileForm";
+import ProfilePictureUpdater from "../../components/profilePictureUpdater";
+import UpdateProfileForm from "../../components/updateProfileForm";
 
 const UserProfile = () => {
   const { user } = useContext(AuthContext);
@@ -11,7 +11,7 @@ const UserProfile = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    document.title = "MoodIndex | User Profile";
+    document.title = "MoodIndex | User-Profile";
 
     if (!user?.email) return;
 
@@ -60,7 +60,7 @@ const UserProfile = () => {
 
         <button
           onClick={() => document.getElementById("update_modal").showModal()}
-          className="w-full mt-6 py-3 bg-indigo-600 text-white rounded-xl"
+          className="btn w-full mt-6 py-3 border-none bg-[#00396a] hover:bg-gray-400 text-white rounded-lg"
         >
           Update Profile
         </button>

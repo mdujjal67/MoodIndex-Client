@@ -10,7 +10,8 @@ import {
     updateProfile,
     EmailAuthProvider,
     reauthenticateWithCredential,
-    deleteUser
+    deleteUser,
+    reauthenticateWithPopup
 } from 'firebase/auth';
 import { auth } from '../Firebase/firebase.config';
 import { AuthContext } from './AuthContext';
@@ -46,11 +47,45 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     };
 
-    const deleteAccount = () => {
-    setLoading(true);
-    // auth.currentUser is the live instance required by deleteUser()
-    return deleteUser(auth.currentUser);
+
+const deleteAccount = async (password) => {
+    const currentUser = auth.currentUser;
+    if (!currentUser) throw new Error("No active user");
+
+    const providers = currentUser.providerData.map(p => p.providerId);
+    const hasPassword = providers.includes('password');
+    const hasGoogle = providers.includes('google.com');
+
+    try {
+        // 🔐 Password-based accounts (even if Google also exists)
+        if (hasPassword) {
+            if (password) {
+                throw new Error("Password required for this account");
+            }
+
+            const credential = EmailAuthProvider.credential(
+                currentUser.email,
+                password
+            );
+            await reauthenticateWithCredential(currentUser, credential);
+        }
+
+        // 🔐 Pure Google accounts only
+        else if (hasGoogle) {
+            const provider = new GoogleAuthProvider();
+            await reauthenticateWithPopup(currentUser, provider);
+        }
+
+        await deleteUser(currentUser);
+        setUser(null);
+        setLoading(false);
+    } catch (error) {
+        setLoading(false);
+        console.error("Firebase Delete Error:", error);
+        throw error;
+    }
 };
+
     // ========================
     // 🔧 FIXED UPDATE FUNCTIONS
     // ========================

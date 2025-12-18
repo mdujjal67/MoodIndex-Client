@@ -52,15 +52,33 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(result => {
-                console.log(result)
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Login successful",
-                    showConfirmButton: false,
-                    timer: 2000
-                });
-                navigate(location?.state?.from || '/'); // Fixed location state navigation
+                const user = result.user;
+
+                // ⭐️ NEW: Save/Update user in MongoDB
+                const userData = {
+                    name: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    role: 'user' // Default role
+                };
+
+                fetch(`http://localhost:9000/users/${user.email}`, {
+                    method: 'PUT', // Use PUT for "Upsert" logic
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userData)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log("User synced with MongoDB:", data);
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Login successful",
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                        navigate(location?.state?.from || '/');
+                    });
             })
             .catch(error => {
                 toast.error("Google login failed");
@@ -77,7 +95,6 @@ const Login = () => {
                     <div className="lg:w-1/2">
                         <img src='https://i.ibb.co.com/NdDvCS7S/Login-removebg-preview.png' alt="" className="w-[400px]" />
                     </div>
-                    <Toaster position="top-center" reverseOrder={false} />
                     <div className="card lg:ml-20 lg:w-1/2 w-[300px] shadow-lg border bg-base-100">
                         <h1 className="text-2xl text-center font-bold mt-5"> Please! Login</h1>
                         <form onSubmit={handleLogin} className="card-body">
@@ -128,12 +145,12 @@ const Login = () => {
                             <hr className="w-full mr-8" />
                         </div>
                         <div className=" mt-4 px-8 pb-6 w-full">
-                                <button onClick={handleGoogleLogin} className="btn w-full border-none bg-[#00396a] hover:bg-gray-400 text-white rounded-full">
-                                    <FcGoogle className=" text-[24px]" />
-                                    <span>Continue with Google</span>
-                                </button>
-                                {/* <FcGoogle className="absolute top-3 left-[60px] text-[24px]" /> */}
-                            </div>
+                            <button onClick={handleGoogleLogin} className="btn w-full border-none bg-[#00396a] hover:bg-gray-400 text-white rounded-full">
+                                <FcGoogle className=" text-[24px]" />
+                                <span>Continue with Google</span>
+                            </button>
+                            {/* <FcGoogle className="absolute top-3 left-[60px] text-[24px]" /> */}
+                        </div>
                     </div>
                 </div>
             </div>
