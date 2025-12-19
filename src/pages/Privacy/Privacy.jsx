@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Privacy = () => {
+
+    useEffect((() => {
+        document.title = "MoodIndex | Privacy"
+    }), []);
+
     return (
         <div className="max-w-4xl mx-auto py-16 px-6 leading-relaxed">
             <h1 className="text-4xl font-bold text-[#1BA9B5] mb-6 text-center">Privacy Policy</h1>

@@ -7,79 +7,95 @@ import { IoMdLink } from "react-icons/io";
 import { HiOutlineMail } from "react-icons/hi";
 import { AuthContext } from '../../Contexts/AuthContext';
 import toast, { Toaster } from 'react-hot-toast';
+import { sendEmailVerification } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
-    const { createUser, googleLogin } = useContext(AuthContext);
+    const { createUser, googleLogin, logOut } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(null);
     const [passwordError, setPasswordError] = useState('');
     // ⭐️ 1. Add Email Error State
-    const [emailError, setEmailError] = useState(''); 
+    const [emailError, setEmailError] = useState('');
 
     // dynamic title
     useEffect((() => {
         document.title = "MoodIndex | Register"
     }), []);
-    
+
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
 
     const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
 
-    const handleSignUp = e => {
-        e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        const photoURL = form.photoURL.value;
+    const handleSignUp = async (e) => {
+    e.preventDefault();
+    const targetForm = e.target;
+    
+    const name = targetForm.name.value;
+    const email = targetForm.email.value;
+    const password = targetForm.password.value;
+    const photoURL = targetForm.photoURL.value;
 
-        // Reset errors
-        setPasswordError('');
-        setEmailError('');
+    setPasswordError('');
+    setEmailError('');
 
-        if (!passwordRegex.test(password)) {
-            setPasswordError(
-                'Password must be 8+ characters long, with one uppercase, one lowercase, and one number.'
-            );
-            return;
+    if (!passwordRegex.test(password)) {
+        setPasswordError('Password must be 8+ characters long...');
+        return;
+    }
+
+    try {
+        // 1. Create User in Firebase
+        const result = await createUser(email, password);
+        const user = result.user;
+
+        // 2. Send Verification Email
+        await sendEmailVerification(user);
+
+        // 3. Show Alert
+        await Swal.fire({
+            title: 'Verify your email',
+            text: 'A verification link has been sent to your email. Please verify before logging in.',
+            icon: 'info',
+            confirmButtonColor: '#1BA9B5',
+        });
+
+        // 4. 🔥 THE FIX: Match your backend's PUT route
+        const userData = {
+            name,
+            email,
+            photoURL,
+            role: 'user'
+        };
+
+        // Notice the URL change: added /${email} and changed method to PUT
+        const res = await fetch(`http://localhost:9000/users/${email}`, {
+            method: 'PUT',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(userData)
+        });
+
+        // 5. Success Logic
+        if (res.ok) {
+            console.log("User successfully synced to MongoDB via PUT");
+            targetForm.reset(); 
+            await logOut();
+            navigate('/login');
+            toast.success('Registration successful! Please login.');
+        } else {
+            console.error("Database sync failed");
+            toast.error("Database error occurred.");
         }
 
-        createUser(email, password)
-            .then(result => {
-                const user = result.user;
-                toast.success('Successfully Signed Up!');
-                const creationTime = user?.metadata?.creationTime;
-
-                const userData = {
-                    name,
-                    email,
-                    password,
-                    photoURL,
-                    role: 'user',
-                    creationTime: creationTime
-                };
-
-                fetch('http://localhost:9000/users', {
-                    method: 'POST',
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(userData)
-                })
-                .then(res => res.json())
-                .then(data => {
-                    form.reset();
-                    navigate(from, { replace: true });
-                })
-            })
-            .catch((error) => {
-                console.log(error.code);
-                // ⭐️ 2. Handle the specific Firebase Email Error
-                if (error.code === 'auth/email-already-in-use') {
-                    setEmailError('This email is already registered. Please login.');
-                } else {
-                    toast.error('Registration failed. Please try again later.');
-                }
-            });
-    };
+    } catch (error) {
+        console.error("Signup Error:", error);
+        if (error.code === 'auth/email-already-in-use') {
+            setEmailError('This email is already registered.');
+        } else {
+            toast.error('Registration failed. Please try again.');
+        }
+    }
+};
 
     const handleGoogleLogin = () => {
         googleLogin()
@@ -106,12 +122,12 @@ const SignUp = () => {
 
                             {/* ⭐️ 3. Updated Email field with Error Message */}
                             <div className="form-control relative mb-3 w-full">
-                                <input 
-                                    type="email" 
-                                    name="email" 
-                                    placeholder="Your Email" 
-                                    className={`input input-bordered rounded-full pl-10 ${emailError ? 'border-red-500' : 'border-[#00396a]'}`} 
-                                    required 
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Your Email"
+                                    className={`input input-bordered rounded-full pl-10 ${emailError ? 'border-red-500' : 'border-[#00396a]'}`}
+                                    required
                                 />
                                 <HiOutlineMail className="absolute left-4 top-3 text-gray-500" />
                                 {emailError && (
@@ -131,8 +147,8 @@ const SignUp = () => {
                                     type={showPassword ? "text" : "password"}
                                     name="password"
                                     placeholder="Password"
-                                    className={`input input-bordered rounded-full pl-10 ${passwordError ? 'border-red-500' : 'border-[#00396a]'}`} 
-                                    required 
+                                    className={`input input-bordered rounded-full pl-10 ${passwordError ? 'border-red-500' : 'border-[#00396a]'}`}
+                                    required
                                 />
                                 <MdPassword className="absolute left-4 top-3 text-gray-500" />
                                 <a className="relative" href="#" onClick={(e) => { e.preventDefault(); setShowPassword(!showPassword); }}>

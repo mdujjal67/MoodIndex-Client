@@ -320,12 +320,15 @@ const Navbar = () => {
 
     </>
   );
-  const navEndMenu = (<>
+  const navEndMenu = (
+  <>
+    {/* 1. If Firebase is still checking the session, show a loader/skeleton */}
     {loading && user ? (
       <li className="pl-10 flex items-center">
         <div className="w-10 h-10 rounded-full bg-gray-200 animate-pulse"></div>
       </li>
-    ) : user ? (
+    ) : (user && user.emailVerified) ? (
+      /* 2. If finished loading AND user exists, show Avatar */
       <li className="relative dropdown dropdown-end mx-1 group pl-10">
         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
           <div className="w-10 h-10 rounded-full">
@@ -346,14 +349,7 @@ const Navbar = () => {
         >
           <li><Link to="/profile" className={`${baseClass} ${hoverClass} p-2 block`}>Profile</Link></li>
           <li><Link to="/assessment-history" className={`${baseClass} ${hoverClass} p-2 block mt-1`}>Assessment History</Link></li>
-          <li>
-            <Link
-              to="/help-center"
-              className={`${baseClass} ${hoverClass} p-2 block mt-1`}
-            >
-              Help Center
-            </Link>
-          </li>
+          <li><Link to="/help-center" className={`${baseClass} ${hoverClass} p-2 block mt-1`}>Help Center</Link></li>
           <li>
             <button
               onClick={handleLogout}
@@ -365,7 +361,7 @@ const Navbar = () => {
         </ul>
       </li>
     ) : (
-      /* This will now show immediately when user is null */
+      /* 3. If finished loading AND user is null, show Auth buttons */
       <div className="ml-4 flex items-center">
         <button
           onClick={() => navigate('/login')}
@@ -381,7 +377,8 @@ const Navbar = () => {
         </button>
       </div>
     )}
-  </>)
+  </>
+);
 
   return (
     <div className="navbar bg-base-100 shadow-sm justify-between">

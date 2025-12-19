@@ -59,7 +59,7 @@ const deleteAccount = async (password) => {
     try {
         // 🔐 Password-based accounts (even if Google also exists)
         if (hasPassword) {
-            if (password) {
+            if (!password) {
                 throw new Error("Password required for this account");
             }
 
@@ -137,12 +137,27 @@ const deleteAccount = async (password) => {
     // ========================
 
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
+    const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
+        try {
+            if (currentUser) {
+                // We reload to get the latest emailVerified status
+                await currentUser.reload();
+                // After reload, we get the fresh user object
+                const refreshedUser = auth.currentUser;
+                setUser(refreshedUser);
+            } else {
+                setUser(null);
+            }
+        } catch (error) {
+            console.error("Auth state error:", error);
+            setUser(null);
+        } finally {
+            // ⭐️ IMPORTANT: Always set loading to false last
             setLoading(false);
-        });
-        return () => unSubscribe();
-    }, []);
+        }
+    });
+    return () => unSubscribe();
+}, []);
 
     const userInfo = {
         user,

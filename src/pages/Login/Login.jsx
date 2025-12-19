@@ -6,12 +6,13 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContext';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import { sendEmailVerification } from 'firebase/auth';
 
 
 const Login = () => {
     const [loginError, setLoginError] = useState('');
     const [showPassword, setShowPassword] = useState(null);
-    const { signIn, googleLogin } = useContext(AuthContext);
+    const { signIn, googleLogin, logOut, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -21,37 +22,51 @@ const Login = () => {
         document.title = "MoodIndex | Login"
     }), []);
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        // console.log({email, password});
+    // import { sendEmailVerification } from "firebase/auth"; 
 
-        signIn(email, password)
-            .then(result => {
-                const user = result.user
-                console.log(user)
+const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signIn(email, password)
+        .then(async (result) => {
+            const loggedInUser = result.user;
+
+            // 1. Get fresh data
+            await loggedInUser.reload();
+
+            // 2. Check verification
+            if (!loggedInUser.emailVerified) {
+                await logOut(); // Clears the Firebase session
+                
                 Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Login successful",
-                    showConfirmButton: false,
-                    timer: 2000
+                    title: "Verify Your Email",
+                    text: "Check your inbox. We've sent a link to verify your account.",
+                    icon: "warning"
                 });
-                // reset();
+                
                 form.reset();
+                // ⭐️ FIX: Explicitly stop any global loading here
+                setLoading(false); 
+                return; 
+            }
 
-                // setLoginError('');
-                navigate(from, { replace: true });
-            })
-            .catch((error) => {
-                setLoginError('Wrong Email ID or Password! Please enter correct information.')
-                toast.error('Please try again!', error)
-                // navigate('/');
-                form.reset();
-            });
-    };
+            // 3. Success
+            form.reset();
+            navigate(from, { replace: true });
+            Swal.fire({
+                    title: "Login Successful",                 
+                    icon: "success"
+                });
+        })
+        .catch((error) => {
+            setLoading(false); // ⭐️ FIX: Stop loading if password/email is wrong
+            setLoginError('Invalid credentials');
+            toast.error('Login failed');
+        });
+};
 
     //   for google login
     const handleGoogleLogin = () => {

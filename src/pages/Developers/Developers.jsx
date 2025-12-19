@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaReact, FaNodeJs, FaServer } from 'react-icons/fa';
 import { SiFirebase, SiMongodb, SiTailwindcss, SiExpress, SiJsonwebtokens } from 'react-icons/si';
 
 const Developers = () => {
+
+    useEffect((() => {
+        document.title = "MoodIndex | Developers"
+    }), []);
+
     const techStack = [
         { name: "React", icon: <FaReact />, color: "text-blue-400" },
         { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "text-teal-400" },

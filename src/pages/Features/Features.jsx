@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaClipboardCheck, FaChartLine, FaHistory } from 'react-icons/fa';
 
 const Features = () => {
+
+    useEffect((() => {
+        document.title = "MoodIndex | Features"
+    }), []);
+
     const featureList = [
         { icon: <FaClipboardCheck />, title: "Self-Assessments", desc: "Clinically validated tests for Anxiety, Depression, and more." },
         { icon: <FaChartLine />, title: "Progress Tracking", desc: "Visualize your mental health journey with dynamic data charts." },

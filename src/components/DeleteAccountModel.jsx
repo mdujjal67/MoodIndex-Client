@@ -1,27 +1,22 @@
 import React, { useContext, useState } from 'react';
-import toast from 'react-hot-toast';
 import { AuthContext } from '../Contexts/AuthContext';
 import { useNavigate } from 'react-router';
 import { auth } from '../Firebase/firebase.config';
+import Swal from 'sweetalert2'; // Use Swal instead of toast for the final message
 
 const DeleteAccountModal = () => {
-  const { deleteAccount, user, setUser, setLoading: setGlobalLoading } = useContext(AuthContext);
+  const { deleteAccount, user, setLoading: setGlobalLoading } = useContext(AuthContext);
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // ⭐️ LOGIC FIX: Check the entire provider list
-  const providers =
-    auth.currentUser?.providerData?.map(p => p.providerId) || [];
-
+  const providers = auth.currentUser?.providerData?.map(p => p.providerId) || [];
   const isEmailUser = providers.includes('password');
   const isGoogleUser = providers.includes('google.com');
 
-
   const handleDelete = async () => {
-    // Stop if it's an email user and they haven't typed a password
     if (isEmailUser && !password) {
-      toast.error("Please enter your password to confirm.");
+      Swal.fire({ icon: 'error', title: 'Oops...', text: 'Please enter your password to confirm.' });
       return;
     }
 
@@ -29,54 +24,70 @@ const DeleteAccountModal = () => {
     if (setGlobalLoading) setGlobalLoading(true);
 
     try {
+      const userEmail = user?.email;
+
+      // 1. Delete from Firebase
       await deleteAccount(password);
 
-      const userEmail = user?.email;
+      // 2. Delete from MongoDB
       if (userEmail) {
-        await fetch(`http://localhost:9000/users/${userEmail}`, { method: 'DELETE' });
+        await fetch(`http://localhost:9000/users/${userEmail}`, { 
+            method: 'DELETE' 
+        });
       }
 
-      toast.success('Account deleted');
+      // ⭐️ SUCCESS: Using Swal ensures the message stays visible during redirect
+      Swal.fire({
+        title: 'Account Deleted',
+        text: 'Your account and history have been permanently wiped.',
+        icon: 'success',
+        timer: 2000,
+        showConfirmButton: false
+      });
+
+      // Redirect
       navigate('/');
+
     } catch (error) {
-      if (setGlobalLoading) setGlobalLoading(false);
+      console.error(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Deletion Failed',
+        text: error.message || "Please try logging out and back in before deleting."
+      });
+    } finally {
       setLoading(false);
-      toast.error(error.message || "Failed to delete account");
+      if (setGlobalLoading) setGlobalLoading(false);
     }
   };
 
   return (
     <div className="modal-box">
       <h3 className="font-bold text-lg text-red-600">Delete Account</h3>
-      <p className="py-2 text-gray-500">This action cannot be undone.hgglkglf</p>
-      <p className="py-2 text-orange-500">Email-Password based user can not delete account within 1 month of registration</p>
-
-      {/* ⭐️ THE FIX: Forced display logic */}
-      {/* ⭐️ FIX: If they have a password, show the field. Period. */}
+      <p className="py-2 text-gray-500">This action cannot be undone. All your assessment history will be wiped.</p>
+      
       {isEmailUser && (
         <div className="form-control w-full mt-4">
           <label className="label">
-            <span className="label-text">Confirm Password</span>
+            <span className="label-text font-semibold">Confirm Password</span>
           </label>
           <input
             type="password"
             placeholder="Enter your password"
-            className="input input-bordered w-full" // Added classes for visibility
+            className="input input-bordered w-full border-red-200"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
       )}
 
-      {/* Show the Google message ONLY if they don't have a password */}
       {!isEmailUser && isGoogleUser && (
-        <div className="bg-blue-50 p-4 rounded-lg mt-4">
+        <div className="bg-blue-50 p-4 rounded-lg mt-4 border border-blue-100">
           <p className="text-sm text-blue-800 font-medium">
-            Logged in via Google. A verification popup will appear.
+            Logged in via Google. A verification popup may appear.
           </p>
         </div>
       )}
-
 
       <div className="modal-action">
         <button
@@ -84,7 +95,7 @@ const DeleteAccountModal = () => {
           onClick={handleDelete}
           disabled={loading}
         >
-          {loading ? "Processing..." : "Delete Permanently"}
+          {loading ? "Wiping Data..." : "Delete Permanently"}
         </button>
       </div>
     </div>

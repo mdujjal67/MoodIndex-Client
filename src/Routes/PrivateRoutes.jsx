@@ -19,7 +19,11 @@ const PrivateRoute = ({children}) => {
       </div>  
     }
 
-    if(user && user?.email){
+    // if(user && user?.email){
+    //     return children;
+    // }
+    // ⭐️ Check if user exists AND if they are verified
+    if (user && user.emailVerified) {
         return children;
     }
     return <Navigate to="/login" state={{ from: location }} replace></Navigate>
