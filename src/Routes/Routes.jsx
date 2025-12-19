@@ -30,6 +30,9 @@ import UserProfile from '../pages/UserProfile/UserProfile';
 import PrivateRoutes from './PrivateRoutes';
 import UniversalTest from '../pages/AssessmentPages/UniversalTestPage/UniversalTest';
 import AssessmentHistory from '../pages/AssessmentHistoryPage/AssessmentHistory';
+import Features from '../pages/Features/Features';
+import Privacy from '../pages/Privacy/Privacy';
+import Developers from '../pages/Developers/Developers';
 
 export const router = createBrowserRouter([
   {
@@ -142,7 +145,7 @@ export const router = createBrowserRouter([
       
       {
         path: '/help-center',
-        Component: HelpCenter,
+        element: <PrivateRoutes><HelpCenter></HelpCenter></PrivateRoutes>
       },
 
       {
@@ -153,6 +156,18 @@ export const router = createBrowserRouter([
       {
         path: '/under-development',
         Component: UnderDevelopment,
+      },
+      {
+        path: '/features',
+        Component: Features,
+      },
+      {
+        path: '/privacy',
+        Component: Privacy,
+      },
+      {
+        path: '/developers',
+        Component: Developers,
       },
 
 

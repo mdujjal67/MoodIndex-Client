@@ -1,9 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const UnderDevelopment = () => {
     const PRIMARY_COLOR = 'text-[#1BA9B5]'; 
     const BG_COLOR = 'bg-[#1BA9B5]';
+    const navigate = useNavigate();
+
+    // dynamic title
+    useEffect((() => {
+        document.title = "MoodIndex | Under-development"
+    }), []);
 
     return (
         // 💡 Correction 1: Use min-h-screen to ensure the container spans the full viewport height
@@ -35,15 +41,22 @@ const UnderDevelopment = () => {
                         </div>
 
                         <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 mt-8 lg:justify-start">
+                            {/* Go Back Button */}
+                            <button
+                                onClick={() => navigate(-1)}
+                                className={`px-5 py-2 font-semibold ${BG_COLOR} hover:border hover:text-[#158e98] text-white hover:bg-white transition duration-300 shadow-lg cursor-pointer rounded-xl`}
+                            >
+                                Go Back
+                            </button>
                             <Link 
                                 to="/" 
-                                className={`px-5 py-2 font-semibold rounded ${BG_COLOR} hover:border hover:text-[#158e98] text-white hover:bg-white transition duration-300 shadow-lg`}
+                                className={`px-5 py-2 font-semibold bg-[#1BA9B5] hover:border hover:text-[#158e98] text-white hover:bg-white transition duration-300 shadow-lg rounded-xl`}
                             >
                                 Back to Homepage
                             </Link>
                             <Link 
                                 to="/contact-support" 
-                                className="px-5 py-2 font-semibold border rounded hover:bg-gray-900 hover:text-white border-gray-300 text-gray-800  transition duration-300"
+                                className="px-5 py-2 font-semibold border  hover:bg-gray-900 hover:text-white border-gray-300 text-gray-800  transition duration-300 rounded-xl"
                             >
                                 Contact Support
                             </Link>

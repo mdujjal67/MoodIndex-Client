@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaEye, FaEyeSlash, FaRegUser } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
@@ -14,6 +14,11 @@ const SignUp = () => {
     const [passwordError, setPasswordError] = useState('');
     // ⭐️ 1. Add Email Error State
     const [emailError, setEmailError] = useState(''); 
+
+    // dynamic title
+    useEffect((() => {
+        document.title = "MoodIndex | Register"
+    }), []);
     
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
@@ -85,9 +90,9 @@ const SignUp = () => {
 
     return (
         <div>
-            <div className="hero min-h-screen bg-gray-50 container mb-20 mx-auto py-10">
+            <div className="hero lg:min-h-screen bg-gray-50 container mb-20 mx-auto py-10">
                 <div className="hero-content flex-col lg:flex-row flex gap-10 lg:gap-20">
-                    <div className="lg:w-1/2">
+                    <div className="lg:w-1/2 lg:flex hidden">
                         <img src='https://i.ibb.co.com/bRG42YwT/sign-up-illustration-svg-download-png-6430773.webp' alt="" className="w-[400px]" />
                     </div>
                     <div className="card lg:ml-20 lg:w-1/2 w-[300px] shadow-lg border bg-base-100">

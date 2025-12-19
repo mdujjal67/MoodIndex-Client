@@ -14,7 +14,7 @@ const UpdateProfileForm = ({ user, currentDbName }) => {
         setUser,
         deleteAccount,
         reAuthenticateUser,
-        setLoading: setAuthLoading 
+        setLoading: setAuthLoading
     } = useContext(AuthContext);
 
     const [name, setName] = useState(user?.displayName || currentDbName || '');
@@ -28,9 +28,9 @@ const UpdateProfileForm = ({ user, currentDbName }) => {
 
     const handleFileUpload = async (file) => {
         if (!file || !currentUser) return;
-        
+
         setUploading(true);
-        
+
         // Prepare data for ImgBB
         const formData = new FormData();
         formData.append('image', file);
@@ -88,7 +88,7 @@ const UpdateProfileForm = ({ user, currentDbName }) => {
             });
 
             if (!response.ok) throw new Error("DB update failed");
-            
+
             setUser(prev => ({ ...prev, displayName: name }));
             toast.success("Profile updated successfully!");
 
@@ -104,14 +104,36 @@ const UpdateProfileForm = ({ user, currentDbName }) => {
     };
 
     const handleDeleteAccount = async () => {
+        // 1. Logic Check: Identify user type and account age
+        const isGoogleUser = currentUser?.providerData.some(p => p.providerId === 'google.com');
+        const creationTime = new Date(currentUser?.metadata?.creationTime).getTime();
+        const oneMonthInMs = 30 * 24 * 60 * 60 * 1000; 
+        const currentTime = new Date().getTime();
+        const accountAge = currentTime - creationTime;
+
+        // 2. Restriction: Prevent deletion if Email user and account is < 1 month old
+        if (!isGoogleUser && accountAge < oneMonthInMs) {
+            Swal.fire({
+                title: "Deletion Restricted",
+                text: "For security reasons, email-based accounts can only be deleted after 1 month of usage.",
+                icon: "info",
+                target: document.getElementById('update_modal') || 'body',
+                customClass: { container: 'z-[99999]' },
+            });
+            return; 
+        }
+
+        // 3. Confirmation Modal (with your requested orange warning)
         const { isConfirmed } = await Swal.fire({
             title: "Delete your account?",
-            text: "This action cannot be undone!",
+            text:"This action can't be undone!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonText: "Yes, Delete",
             target: document.getElementById('update_modal') || 'body',
-            customClass: { container: 'z-[99999]' },
+            customClass: {
+                container: 'z-[99999]'
+            },
         });
 
         if (!isConfirmed) return;
@@ -122,7 +144,7 @@ const UpdateProfileForm = ({ user, currentDbName }) => {
                 const userEmail = currentUser.email;
                 await deleteAccount();
                 await fetch(`http://localhost:9000/users/${userEmail}`, { method: 'DELETE' });
-                
+
                 document.getElementById('update_modal')?.close();
                 setUser(null);
                 if (setAuthLoading) setAuthLoading(false);

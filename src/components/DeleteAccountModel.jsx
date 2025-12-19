@@ -48,7 +48,8 @@ const DeleteAccountModal = () => {
   return (
     <div className="modal-box">
       <h3 className="font-bold text-lg text-red-600">Delete Account</h3>
-      <p className="py-2 text-gray-500">This action cannot be undone.</p>
+      <p className="py-2 text-gray-500">This action cannot be undone.hgglkglf</p>
+      <p className="py-2 text-orange-500">Email-Password based user can not delete account within 1 month of registration</p>
 
       {/* ⭐️ THE FIX: Forced display logic */}
       {/* ⭐️ FIX: If they have a password, show the field. Period. */}

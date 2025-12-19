@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const AboutProjectPage = () => {
+
+  // dynamic title
+    useEffect((() => {
+        document.title = "MoodIndex | About"
+    }), []);
+
+
   return (
     <div className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">

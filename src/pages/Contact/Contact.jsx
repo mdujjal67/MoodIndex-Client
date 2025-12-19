@@ -1,8 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Swal from "sweetalert2";
 import { AuthContext } from '../../Contexts/AuthContext'; // Ensure this path is correct
 
 const Contact = () => {
+
+    // dynamic title
+    useEffect((() => {
+        document.title = "MoodIndex | Contact"
+    }), []);
+
     // 1. Get the current user from AuthContext
     const { user } = useContext(AuthContext);
 

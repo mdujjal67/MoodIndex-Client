@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom"; // If you are using react-router
 // import data from '../../../public/Json files/EducationAwareness.json'
 
@@ -7,6 +7,11 @@ const EducationAwareness = ({data: propData, isHome}) => {
 
   const loaderData = useLoaderData();// ALWAYS call the hook
   const data =propData || loaderData;// then decide which data to use
+
+  // dynamic title
+    useEffect((() => {
+        document.title = "MoodIndex | Education & Awareness"
+    }), []);
 
   return (
     <section className="w-full py-6 sm:py-12 dark:bg-gray-100 mt-20 dark:text-gray-800">

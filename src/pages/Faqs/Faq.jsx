@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import faqData from "../../../public/Json files/faq.json";
 
+
 const Faq = () => {
+
+  // dynamic title
+    useEffect((() => {
+        document.title = "MoodIndex | Faqs"
+    }), []);
+
+
   return (
     <section className="w-full dark:bg-gray-100 dark:text-gray-800 py-10 mt-20">
       <div className="max-w-5xl mx-auto px-4 md:px-8">

@@ -278,16 +278,7 @@ const Navbar = () => {
           tabIndex={0}
           className="dropdown-content menu p-2 shadow bg-base-100 rounded-lg w-52 z-10 absolute left-0 top-full mt-0"
         >
-          {/* <li>
-            <NavLink
-              to="/help-center"
-              className={({ isActive }) =>
-                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
-              }
-            >
-              Help Center
-            </NavLink>
-          </li> */}
+
           <li className="my-1">
             <NavLink
               to="/contact-support"
@@ -298,6 +289,18 @@ const Navbar = () => {
               Contact Support
             </NavLink>
           </li>
+
+          {/* <li>
+            <NavLink
+              to="/help-center"
+              className={({ isActive }) =>
+                `${baseClass} ${isActive ? activeClass : hoverClass} p-2 block`
+              }
+            >
+              Help Center
+            </NavLink>
+          </li> */}
+
           <li>
             <NavLink
               to="/accessibility-support"
@@ -314,60 +317,71 @@ const Navbar = () => {
       {/* AVATAR */}
       {/* ✅ AUTHENTICATION SECTION WITH LOADING HANDLER */}
       {/* ✅ AUTHENTICATION SECTION - FIXED LOGIC */}
-      {loading && user ? (
-        <li className="pl-10 flex items-center">
-          <div className="w-10 h-10 rounded-full bg-gray-200 animate-pulse"></div>
-        </li>
-      ) : user ? (
-        <li className="relative dropdown dropdown-end mx-1 group pl-10">
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 h-10 rounded-full">
-              {stablePhotoURL ? (
-                <img
-                  className="rounded-full w-full h-full object-cover"
-                  src={stablePhotoURL}
-                  alt="User"
-                />
-              ) : (
-                <FaUser className="text-4xl text-gray-400" />
-              )}
-            </div>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 absolute right-0 top-full mt-3 w-52 p-2 shadow"
-          >
-            <li><Link to="/profile" className={`${baseClass} ${hoverClass} p-2 block`}>Profile</Link></li>
-            <li><Link to="/assessment-history" className={`${baseClass} ${hoverClass} p-2 block mt-1`}>Assessment History</Link></li>
-            <li>
-              <button
-                onClick={handleLogout}
-                className={`${baseClass} ${hoverClass} p-2 block text-left w-full`}
-              >
-                Logout
-              </button>
-            </li>
-          </ul>
-        </li>
-      ) : (
-        /* This will now show immediately when user is null */
-        <div className="ml-4 flex items-center">
-          <button
-            onClick={() => navigate('/login')}
-            className="btn btn-sm rounded-lg text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
-          >
-            Login
-          </button>
-          <button
-            onClick={() => navigate('/register')}
-            className="btn btn-sm rounded-lg text-white ml-2 bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
-          >
-            Register
-          </button>
-        </div>
-      )}
+
     </>
   );
+  const navEndMenu = (<>
+    {loading && user ? (
+      <li className="pl-10 flex items-center">
+        <div className="w-10 h-10 rounded-full bg-gray-200 animate-pulse"></div>
+      </li>
+    ) : user ? (
+      <li className="relative dropdown dropdown-end mx-1 group pl-10">
+        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+          <div className="w-10 h-10 rounded-full">
+            {stablePhotoURL ? (
+              <img
+                className="rounded-full w-full h-full object-cover"
+                src={stablePhotoURL}
+                alt="User"
+              />
+            ) : (
+              <FaUser className="text-4xl text-gray-400" />
+            )}
+          </div>
+        </div>
+        <ul
+          tabIndex={0}
+          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 absolute right-0 top-full mt-3 w-52 p-2 shadow"
+        >
+          <li><Link to="/profile" className={`${baseClass} ${hoverClass} p-2 block`}>Profile</Link></li>
+          <li><Link to="/assessment-history" className={`${baseClass} ${hoverClass} p-2 block mt-1`}>Assessment History</Link></li>
+          <li>
+            <Link
+              to="/help-center"
+              className={`${baseClass} ${hoverClass} p-2 block mt-1`}
+            >
+              Help Center
+            </Link>
+          </li>
+          <li>
+            <button
+              onClick={handleLogout}
+              className={`${baseClass} ${hoverClass} p-2 block text-left w-full`}
+            >
+              Logout
+            </button>
+          </li>
+        </ul>
+      </li>
+    ) : (
+      /* This will now show immediately when user is null */
+      <div className="ml-4 flex items-center">
+        <button
+          onClick={() => navigate('/login')}
+          className="btn btn-sm rounded-lg text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
+        >
+          Login
+        </button>
+        <button
+          onClick={() => navigate('/register')}
+          className="btn btn-sm rounded-lg text-white ml-2 bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
+        >
+          Register
+        </button>
+      </div>
+    )}
+  </>)
 
   return (
     <div className="navbar bg-base-100 shadow-sm justify-between">
@@ -394,17 +408,17 @@ const Navbar = () => {
 
           <ul
             tabIndex={0}
-            className={`menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow ${openDropdown === "mobile" ? "block" : "hidden"
-              }`}
+            className={`menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow`}
           >
             {navLinks}
           </ul>
+
         </div>
 
         {/* LOGO */}
         <a
           href="/"
-          className="flex items-center gap-2 font-bold text-2xl px-2 cursor-pointer rounded-lg bg-white text-[#0A77FF]"
+          className="flex items-center gap-2 font-bold text-2xl lg:px-2 pr-2 cursor-pointer rounded-lg bg-white text-[#0A77FF]"
         >
           <span>
             <img
@@ -416,11 +430,17 @@ const Navbar = () => {
           <span className="health-blue">Mood</span>
           <span className="sort-green -mx-2 text-[#1BA9B5]">Index</span>
         </a>
+        <div className="lg:hidden">
+          {navEndMenu}
+        </div>
       </div>
 
       {/* DESKTOP */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+        <div>
+          {navEndMenu}
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 
 
@@ -8,6 +8,11 @@ const Team = ({teamMembers:propData}) => {
 
   const teamMembers = propData || loaderData; 
   // console.log(teamMembers)
+
+  // dynamic title
+    useEffect((() => {
+        document.title = "MoodIndex | Team"
+    }), []);
 
   return (
     <section className="py-6 dark:bg-gray-100 dark:text-gray-800 mt-20">

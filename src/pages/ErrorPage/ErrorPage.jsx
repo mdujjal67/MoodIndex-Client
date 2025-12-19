@@ -23,7 +23,7 @@ const ErrorPage = () => {
                             {/* Go Back Button */}
                             <button
                                 onClick={() => navigate(-1)}
-                                className="px-8 py-3 btn btn-md text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
+                                className="px-5 py-2 font-semibold bg-[#1BA9B5] hover:border hover:text-[#158e98] text-white hover:bg-white transition duration-300 shadow-lg rounded-xl cursor-pointer"
                             >
                                 Go Back
                             </button>
@@ -32,7 +32,7 @@ const ErrorPage = () => {
                             <a
                                 rel="noopener noreferrer"
                                 href="/"
-                                className="px-8 py-3 btn btn-md text-white bg-[#1BA9B5] hover:bg-gray-500 hover:text-white"
+                                className="px-5 py-2 font-semibold bg-[#1BA9B5] hover:border hover:text-[#158e98] text-white hover:bg-white transition duration-300 shadow-lg rounded-xl cursor-pointer"
                             >
                                 Back to Homepage
                             </a>

@@ -7,6 +7,11 @@ const AssessmentHistory = ({ userScores = {} }) => {
     const allTestsData = useLoaderData();
     const { user } = useContext(AuthContext); 
     const navigate = useNavigate();
+
+    // dynamic title
+    useEffect((() => {
+        document.title = "MoodIndex | Assessment-history"
+    }), []);
     
     const [userHistory, setUserHistory] = useState([]); 
     const [selectedTest, setSelectedTest] = useState(null);
@@ -51,8 +56,15 @@ const AssessmentHistory = ({ userScores = {} }) => {
     // Correctly initialized after the helper functions to avoid ReferenceError
     const hasAnyResults = allTestsData.some(test => getLatestResult(test.slug));
 
-    if (isLoading) {
-        return <div className="text-center p-20">Loading assessment history...</div>;
+    if(isLoading){
+        return <div className="flex items-center justify-center h-screen">
+        <div className="flex flex-col gap-4 w-52 text-red-500">
+          <div className="skeleton h-32 w-full"></div>
+          <div className="skeleton h-4 w-28"></div>
+          <div className="skeleton h-4 w-full"></div>
+          <div className="skeleton h-4 w-full"></div> 
+        </div>
+      </div>  
     }
 
 

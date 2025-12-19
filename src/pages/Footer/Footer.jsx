@@ -39,10 +39,10 @@ const Footer = () => {
 							<h3 className="tracking-wide uppercase font-semibold dark:text-gray-900">Company</h3>
 							<ul className="space-y-1">
 								<li className='hover:text-[#1BA9B5]'>
-									<a rel="noopener noreferrer" href="#">Privacy</a>
+									<a rel="noopener noreferrer" href="/privacy">Privacy</a>
 								</li>
 								<li className='hover:text-[#1BA9B5]'>
-									<a rel="noopener noreferrer" href="#">Terms of Service</a>
+									<a rel="noopener noreferrer" href="terms-of-service">Terms of Service</a>
 								</li>
 							</ul>
 						</div>
