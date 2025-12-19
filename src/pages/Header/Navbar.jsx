@@ -19,7 +19,7 @@ const Navbar = () => {
       .then(() => {
         Swal.fire("Logout Successful!");
       }).catch((error) => {
-        console.log(error)
+        // console.log(error)
       });
   }
 

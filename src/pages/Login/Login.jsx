@@ -89,7 +89,7 @@ const handleLogin = (e) => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log("User synced with MongoDB:", data);
+                        // console.log("User synced with MongoDB:", data);
                         Swal.fire({
                             position: "center",
                             icon: "success",

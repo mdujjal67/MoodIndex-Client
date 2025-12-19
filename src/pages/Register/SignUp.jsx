@@ -77,7 +77,7 @@ const SignUp = () => {
 
         // 5. Success Logic
         if (res.ok) {
-            console.log("User successfully synced to MongoDB via PUT");
+            // console.log("User successfully synced to MongoDB via PUT");
             targetForm.reset(); 
             await logOut();
             navigate('/login');
@@ -100,7 +100,7 @@ const SignUp = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
             })
     };
 
