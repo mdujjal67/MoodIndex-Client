@@ -11,7 +11,8 @@ import {
     EmailAuthProvider,
     reauthenticateWithCredential,
     deleteUser,
-    reauthenticateWithPopup
+    reauthenticateWithPopup,
+    sendPasswordResetEmail
 } from 'firebase/auth';
 import { auth } from '../Firebase/firebase.config';
 import { AuthContext } from './AuthContext';
@@ -46,6 +47,10 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return signOut(auth);
     };
+
+    const resetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+};
 
 
 const deleteAccount = async (password) => {
@@ -159,6 +164,7 @@ const deleteAccount = async (password) => {
     return () => unSubscribe();
 }, []);
 
+
     const userInfo = {
         user,
         setUser,
@@ -172,7 +178,8 @@ const deleteAccount = async (password) => {
         updateUserPassword,
         updateUserPhotoURL,
         deleteAccount,
-        reAuthenticateUser, // Make sure this is here!
+        reAuthenticateUser,
+        resetPassword,
     };
 
     return (

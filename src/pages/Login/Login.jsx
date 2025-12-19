@@ -12,7 +12,7 @@ import { sendEmailVerification } from 'firebase/auth';
 const Login = () => {
     const [loginError, setLoginError] = useState('');
     const [showPassword, setShowPassword] = useState(null);
-    const { signIn, googleLogin, logOut, setLoading } = useContext(AuthContext);
+    const { signIn, googleLogin, logOut, setLoading, resetPassword } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -105,6 +105,46 @@ const handleLogin = (e) => {
                 console.error(error);
             });
     };
+    // ⭐️ NEW: Password Reset Logic with Database Update
+    const handleForgotPassword = async () => {
+        const { value: email } = await Swal.fire({
+            title: "Reset Password",
+            input: "email",
+            inputLabel: "Enter your registered email address",
+            inputPlaceholder: "example@mail.com",
+            showCancelButton: true,
+            confirmButtonColor: "#00396a",
+            cancelButtonColor: "#d33",
+        });
+
+        if (email) {
+            resetPassword(email)
+                .then(async () => {
+                    // Update Database to record the reset event
+                    try {
+                        await fetch(`http://localhost:9000/users/${email}`, {
+                            method: 'PATCH',
+                            headers: { 'content-type': 'application/json' },
+                            body: JSON.stringify({ 
+                                lastPasswordResetRequest: new Date().toISOString() 
+                            })
+                        });
+                    } catch (dbErr) {
+                        console.error("Failed to sync reset to DB", dbErr);
+                    }
+
+                    Swal.fire({
+                        title: "Email Sent!",
+                        text: "Please check your inbox for the password reset link.",
+                        icon: "success"
+                    });
+                })
+                .catch((error) => {
+                    console.error(error);
+                    toast.error("Error: Could not find an account with that email.");
+                });
+        }
+    };
 
 
 
@@ -146,7 +186,13 @@ const handleLogin = (e) => {
                                 </div>
 
                                 <label className="label">
-                                    <Link to='/under-development' className="pt-1 label-text-alt link link-hover text-xs">Forgot password?</Link>
+                                    <button 
+                                        type="button"
+                                        onClick={handleForgotPassword}
+                                        className="pt-1 label-text-alt link link-hover text-xs text-left"
+                                    >
+                                        Forgot password?
+                                    </button>
                                 </label>
                                 <label className="">
                                     <p className="text-[14px] w-[220px] mx-auto mt-2 text-[#00000082]">Do not have an account? <Link to='/register' className="hover:link font-semibold text-[14px] text-[#00396a]">Register</Link>
