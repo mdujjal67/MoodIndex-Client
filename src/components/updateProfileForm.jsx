@@ -53,7 +53,7 @@ const UpdateProfileForm = ({ user, currentDbName }) => {
                 setUser({ ...currentUser, photoURL });
 
                 // 4. Update MongoDB
-                await fetch(`http://localhost:9000/users/${currentUser.email}`, {
+                await fetch(`https://mood-index-server.vercel.app/users/${currentUser.email}`, {
                     method: 'PATCH',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ photoURL }),
@@ -81,7 +81,7 @@ const UpdateProfileForm = ({ user, currentDbName }) => {
         setLoading(true);
         try {
             await updateUserName(name);
-            const response = await fetch(`http://localhost:9000/users/${currentUser.email}`, {
+            const response = await fetch(`https://mood-index-server.vercel.app/users/${currentUser.email}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name }),
@@ -143,7 +143,7 @@ const UpdateProfileForm = ({ user, currentDbName }) => {
             try {
                 const userEmail = currentUser.email;
                 await deleteAccount();
-                await fetch(`http://localhost:9000/users/${userEmail}`, { method: 'DELETE' });
+                await fetch(`https://mood-index-server.vercel.app/users/${userEmail}`, { method: 'DELETE' });
 
                 document.getElementById('update_modal')?.close();
                 setUser(null);

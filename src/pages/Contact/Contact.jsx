@@ -21,7 +21,7 @@ const Contact = () => {
         const contactedUser = { email, message };
 
         // Send data to the server 
-        fetch('http://localhost:9000/contactedUser', {
+        fetch('https://mood-index-server.vercel.app/contactedUser', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

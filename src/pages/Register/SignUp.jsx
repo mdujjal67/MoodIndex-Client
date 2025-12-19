@@ -69,7 +69,7 @@ const SignUp = () => {
         };
 
         // Notice the URL change: added /${email} and changed method to PUT
-        const res = await fetch(`http://localhost:9000/users/${email}`, {
+        const res = await fetch(`https://mood-index-server.vercel.app/users/${email}`, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(userData)

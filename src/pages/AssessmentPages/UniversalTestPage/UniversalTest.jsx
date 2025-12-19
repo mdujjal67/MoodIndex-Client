@@ -49,7 +49,7 @@ const UniversalTest = () => {
         };
 
         try {
-            const response = await fetch('http://localhost:9000/results', {
+            const response = await fetch('https://mood-index-server.vercel.app/results', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

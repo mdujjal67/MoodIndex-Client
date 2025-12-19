@@ -31,7 +31,7 @@ const DeleteAccountModal = () => {
 
       // 2. Delete from MongoDB
       if (userEmail) {
-        await fetch(`http://localhost:9000/users/${userEmail}`, { 
+        await fetch(`https://mood-index-server.vercel.app/users/${userEmail}`, { 
             method: 'DELETE' 
         });
       }

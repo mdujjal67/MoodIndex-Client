@@ -19,7 +19,7 @@ const AssessmentHistory = ({ userScores = {} }) => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:9000/results/${user.email}`)
+            fetch(`https://mood-index-server.vercel.app/results/${user.email}`)
                 .then(res => {
                     if (!res.ok) throw new Error('Failed to fetch results');
                     return res.json();

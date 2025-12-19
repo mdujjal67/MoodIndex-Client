@@ -15,7 +15,7 @@ const UserProfile = () => {
 
     if (!user?.email) return;
 
-    fetch(`http://localhost:9000/users/${user.email}`)
+    fetch(`https://mood-index-server.vercel.app/users/${user.email}`)
       .then(res => res.json())
       .then(data => {
         setDbUserName(data?.name || "");

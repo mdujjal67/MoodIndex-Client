@@ -82,7 +82,7 @@ const handleLogin = (e) => {
                     role: 'user' // Default role
                 };
 
-                fetch(`http://localhost:9000/users/${user.email}`, {
+                fetch(`https://mood-index-server.vercel.app/users/${user.email}`, {
                     method: 'PUT', // Use PUT for "Upsert" logic
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(userData)
@@ -122,7 +122,7 @@ const handleLogin = (e) => {
                 .then(async () => {
                     // Update Database to record the reset event
                     try {
-                        await fetch(`http://localhost:9000/users/${email}`, {
+                        await fetch(`https://mood-index-server.vercel.app/users/${email}`, {
                             method: 'PATCH',
                             headers: { 'content-type': 'application/json' },
                             body: JSON.stringify({ 

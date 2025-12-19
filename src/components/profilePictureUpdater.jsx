@@ -43,7 +43,7 @@ const ProfilePictureUpdater = () => {
                 await updateUserPhotoURL(photoURL); 
 
                 // 4. Update MongoDB 
-                const res = await fetch(`http://localhost:9000/users/${user.email}`, {
+                const res = await fetch(`https://mood-index-server.vercel.app/users/${user.email}`, {
                     method: 'PATCH',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
