@@ -55,7 +55,7 @@ const ResultChart = ({ score, result, maxScore }) => {
             </button>
             <button
                 onClick={() => navigate('/assessment-history')}
-                className="px-10 ml-10 py-4 cursor-pointer bg-indigo-900 text-white rounded-full font-bold hover:bg-indigo-800 transition-all shadow-lg active:scale-95"
+                className="px-10 mt-5 lg:mt-0 lg:ml-10 py-4 cursor-pointer bg-indigo-900 text-white rounded-full font-bold hover:bg-indigo-800 transition-all shadow-lg active:scale-95"
             >
                 View Assessment History
             </button>
