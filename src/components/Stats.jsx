@@ -7,7 +7,7 @@ const Stats = () => {
         <div>
             <section className="p-6 bg-gray-100 text-gray-800">
                 <div className="text-center my-8">
-                    <h2 className="text-4xl font-bold font-serif">Our Impact at a Glance</h2>
+                    <h2 className="text-4xl text-indigo-900 font-bold font-serif">Our Impact at a Glance</h2>
                     <p className="text-gray-600">A quick look at how our platform helps users</p>
                 </div>
 

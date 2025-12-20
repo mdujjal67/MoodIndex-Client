@@ -122,7 +122,7 @@ const AssessmentHistory = ({ userScores = {} }) => {
                         <div className="text-center py-12 px-6 bg-indigo-50/30 rounded-2xl border-2 border-dashed border-indigo-100">
                             <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ repeat: Infinity, duration: 3 }} className="text-5xl mb-4">📋</motion.div>
                             <h3 className="text-lg font-bold text-indigo-900 mb-2">No Assessments Yet</h3>
-                            <p className="text-gray-500 text-sm mb-6 leading-relaxed">
+                            <p className="text-gray-600 text-sm mb-6 leading-relaxed">
                                 Take an assessment to unlock detailed insights into your well-being and track your progress.
                             </p>
                             <button 
@@ -203,7 +203,7 @@ const AssessmentHistory = ({ userScores = {} }) => {
                                                     >
                                                         <div>
                                                             <span className="block font-bold text-sm" style={{ color: t.color }}>{t.level}</span>
-                                                            {isActive && <p className="text-[11px] text-gray-500 mt-1 italic leading-relaxed">"{selectedTest.latestResult.advice}"</p>}
+                                                            {isActive && <p className="text-[11px] text-gray-600 mt-1 italic leading-relaxed">"{selectedTest.latestResult.advice}"</p>}
                                                         </div>
                                                         <span className="text-[10px] font-bold bg-gray-50 px-2 py-1 rounded text-gray-400">MAX {t.max}</span>
                                                     </div>

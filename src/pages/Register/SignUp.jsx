@@ -117,7 +117,7 @@ const SignUp = () => {
 
                             <div className="form-control relative">
                                 <input type="name" name="name" placeholder="Full Name" className="input input-bordered border-[#00396a] mb-3 rounded-full pl-10" required />
-                                <FaRegUser className="absolute left-4 top-3 text-gray-500" />
+                                <FaRegUser className="absolute left-4 top-3 text-gray-600" />
                             </div>
 
                             {/* ⭐️ 3. Updated Email field with Error Message */}
@@ -129,7 +129,7 @@ const SignUp = () => {
                                     className={`input input-bordered rounded-full pl-10 ${emailError ? 'border-red-500' : 'border-[#00396a]'}`}
                                     required
                                 />
-                                <HiOutlineMail className="absolute left-4 top-3 text-gray-500" />
+                                <HiOutlineMail className="absolute left-4 top-3 text-gray-600" />
                                 {emailError && (
                                     <p className="text-[12px] text-red-500 ml-4 mt-1">
                                         {emailError}
@@ -139,7 +139,7 @@ const SignUp = () => {
 
                             <div className="form-control relative w-full">
                                 <input type="link" name="photoURL" placeholder="Photo URL" className="input input-bordered border-[#00396a] mb-3 rounded-full pl-10" required />
-                                <IoMdLink className="font-bold absolute left-4 top-3 text-gray-500" />
+                                <IoMdLink className="font-bold absolute left-4 top-3 text-gray-600" />
                             </div>
 
                             <div className="form-control relative w-full">
@@ -150,7 +150,7 @@ const SignUp = () => {
                                     className={`input input-bordered rounded-full pl-10 ${passwordError ? 'border-red-500' : 'border-[#00396a]'}`}
                                     required
                                 />
-                                <MdPassword className="absolute left-4 top-3 text-gray-500" />
+                                <MdPassword className="absolute left-4 top-3 text-gray-600" />
                                 <a className="relative" href="#" onClick={(e) => { e.preventDefault(); setShowPassword(!showPassword); }}>
                                     <span className="absolute right-4 top-1">
                                         {showPassword ? <FaEye /> : <FaEyeSlash />}

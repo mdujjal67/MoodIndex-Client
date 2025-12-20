@@ -124,14 +124,14 @@
 //           <div className="bg-white p-6 rounded-xl">
 //             <h3 className="text-xl font-bold text-indigo-900 mb-2">Need to talk?</h3>
 //             <p className="text-3xl font-black text-red-600 mb-4">0203 936 2549</p>
-//             <p className="text-gray-500 text-sm leading-relaxed">
+//             <p className="text-gray-600 text-sm leading-relaxed">
 //               Confidential support answered by assistant psychologists to discuss your treatment options.
 //             </p>
 //           </div>
 //           <div className="bg-white p-6 rounded-xl">
 //             <h3 className="text-xl font-bold text-indigo-900 mb-2">Take another test</h3>
 //             <button className="text-lg font-bold text-red-600 underline mb-4 block hover:text-red-700">View all clinical tests</button>
-//             <p className="text-gray-500 text-sm leading-relaxed">
+//             <p className="text-gray-600 text-sm leading-relaxed">
 //               Online quizzes for ADHD, autism, depression, and PTSD. None take longer than 5 minutes.
 //             </p>
 //           </div>

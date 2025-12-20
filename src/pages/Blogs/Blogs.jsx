@@ -16,7 +16,7 @@ const Blogs = ({ data: propData, isHome }) => {
     <section className="w-full py-6 sm:py-12 dark:bg-gray-100 mt-20 dark:text-gray-800">
       <div className="max-w-7xl mx-auto px-4 space-y-8">
         <div className="space-y-2 text-center">
-          <h2 className="font-serif text-4xl font-bold">Latest Articles</h2>
+          <h2 className="font-serif text-4xl text-indigo-900 font-bold">Latest Articles</h2>
           <p className="text-sm dark:text-gray-600">
             Explore our latest blogs on mental health, wellbeing, and lifestyle tips.
           </p>

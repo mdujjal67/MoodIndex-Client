@@ -162,7 +162,7 @@ const handleLogin = (e) => {
                             {/* This is for Email field */}
                             <div className="form-control relative">
                                 <input type="email" name="email" placeholder="Your Email" className="input input-bordered border-[#00396a] -mt-1 mb-3 rounded-full pl-10" required></input>
-                                <FaRegUser className=" absolute left-4 top-3 text-gray-500" />
+                                <FaRegUser className=" absolute left-4 top-3 text-gray-600" />
                             </div>
 
                             {/* This is for Password field*/}
@@ -172,7 +172,7 @@ const handleLogin = (e) => {
                                     name="password"
                                     placeholder="Password"
                                     className="input input-bordered border-[#00396a] -mt-1 rounded-full pl-10" required />
-                                <MdPassword className="absolute left-4 top-3 text-gray-500" />
+                                <MdPassword className="absolute left-4 top-3 text-gray-600" />
                                 <a className="relative" href="#">
                                     <span className="absolute right-4 top-1" onClick={() => setShowPassword(!showPassword)}>
                                         {showPassword ? <FaEye /> : <FaEyeSlash />}

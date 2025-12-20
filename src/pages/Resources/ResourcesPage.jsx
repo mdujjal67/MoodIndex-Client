@@ -39,10 +39,10 @@ const ResourcesPage = () => {
 
         {/* --- Header Section --- */}
         <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-tight text-indigo-900 sm:text-5xl">
             📘 Explore Mental Health Resources
           </h1>
-          <p className="mt-3 max-w-3xl mx-auto text-xl text-gray-500 sm:mt-4">
+          <p className="mt-3 max-w-3xl mx-auto text-xl text-gray-600 sm:mt-4">
             Evidence-based articles, guides, and answers — all in one place.
           </p>
         </div>

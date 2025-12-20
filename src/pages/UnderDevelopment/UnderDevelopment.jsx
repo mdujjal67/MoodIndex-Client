@@ -23,7 +23,7 @@ const UnderDevelopment = () => {
                     {/* ➡️ Left Content Section */}
                     <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-xl lg:text-left">
                         
-                        <h1 className="text-4xl font-extrabold leading-none sm:text-6xl text-gray-900">
+                        <h1 className="text-4xl font-extrabold leading-none sm:text-6xl text-indigo-900">
                             System Upgrade in <span className={PRIMARY_COLOR}>Progress</span> 🛠️
                         </h1>
                         

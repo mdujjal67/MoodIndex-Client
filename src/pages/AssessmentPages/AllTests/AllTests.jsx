@@ -1,9 +1,14 @@
 // src/components/AllTests.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useLoaderData } from "react-router-dom";
 import { PlusCircleIcon, XCircleIcon } from "@heroicons/react/24/outline";
 
 const AllTests = ({ allTest: propData }) => {
+  
+  useEffect((() => {
+          document.title = "MoodIndex | Assessments"
+      }), []);
+
   const loaderData = useLoaderData(); // Always call the hook
   const allTest = propData || loaderData;
 
@@ -17,7 +22,14 @@ const AllTests = ({ allTest: propData }) => {
     const matchesCategory = categoryFilter === "All" || test.category === categoryFilter;
     const matchesSearch = test.title.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
+
+    
   });
+  // useEffect(() => {
+  //       if (allTest?.title) {
+  //           document.title = `MoodIndex | ${allTest.title}`;
+  //       }
+  //   }, [allTest]);
 
   const categories = ["All", ...new Set(allTest.map((t) => t.category))];
 

@@ -15,7 +15,7 @@ const Features = () => {
 
     return (
         <div className="max-w-6xl mx-auto py-16 px-4">
-            <h1 className="text-4xl font-bold text-center text-[#1BA9B5] mb-12">Key Features</h1>
+            <h1 className="text-4xl font-bold text-center text-indigo-900 mb-12">Key Features</h1>
             <div className="grid md:grid-cols-3 gap-8 text-center">
                 {featureList.map((f, i) => (
                     <div key={i} className="p-8 bg-white border rounded-xl shadow-sm hover:shadow-md transition-all">

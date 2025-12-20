@@ -28,7 +28,7 @@ const Developers = () => {
 
     return (
         <div className="max-w-5xl mx-auto py-16 px-4">
-            <h1 className="text-4xl font-bold text-center text-[#1BA9B5] mb-4">Technical Overview</h1>
+            <h1 className="text-4xl font-bold text-center text-indigo-900 mb-4">Technical Short Overview</h1>
             <p className="text-center text-gray-600 mb-12">Mood Index is a full-stack MERN application integrated with Firebase Auth.</p>
             
             {/* Main Stack */}

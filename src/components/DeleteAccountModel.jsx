@@ -64,7 +64,7 @@ const DeleteAccountModal = () => {
   return (
     <div className="modal-box">
       <h3 className="font-bold text-lg text-red-600">Delete Account</h3>
-      <p className="py-2 text-gray-500">This action cannot be undone. All your assessment history will be wiped.</p>
+      <p className="py-2 text-gray-600">This action cannot be undone. All your assessment history will be wiped.</p>
       
       {isEmailUser && (
         <div className="form-control w-full mt-4">

@@ -14,15 +14,7 @@ import MissionVisionPage from '../pages/MissionVision/MissionVision';
 import AboutProjectPage from '../pages/AboutTheProject/AboutProject';
 import EduAwarenessDetails from '../pages/EducationAwareness/EduAwarenessDetails';
 import UnderDevelopment from '../pages/UnderDevelopment/UnderDevelopment';
-// import AnxietyTest from '../pages/AssessmentPages/AnxietyTestPage/AnxietyTest';
 import AllTests from '../pages/AssessmentPages/AllTests/AllTests';
-// import DepressionTest from '../pages/AssessmentPages/DepressionTestPage/DepressionTest';
-// import AddictionTest from '../pages/AssessmentPages/AddictionTestPage/AddictionTest';
-// import BipolarTest from '../pages/AssessmentPages/BipolarTestPage/BipolarTest';
-// import EatingDisorderTest from '../pages/AssessmentPages/EatingDisorderPage/EatingDisorderTest';
-// import ADHDTest from '../pages/AssessmentPages/ADHDTestPage/ADHDTest';
-// import OCDTest from '../pages/AssessmentPages/OCDTestPage/OCDTest';
-// import GamblingAddictTest from '../pages/AssessmentPages/GamblingAddictTestPage/GamblingAddictTest';
 import ResourcesPage from '../pages/Resources/ResourcesPage';
 import Login from '../pages/Login/Login';
 import SignUp from '../pages/Register/SignUp';
@@ -32,6 +24,8 @@ import UniversalTest from '../pages/AssessmentPages/UniversalTestPage/UniversalT
 import AssessmentHistory from '../pages/AssessmentHistoryPage/AssessmentHistory';
 import Features from '../pages/Features/Features';
 import Privacy from '../pages/Privacy/Privacy';
+// import Developers from '../pages/Developers/Developers';
+import AccessibilityPage from '../pages/AccessibilityPage/AccessibilityPage';
 import Developers from '../pages/Developers/Developers';
 
 export const router = createBrowserRouter([
@@ -167,7 +161,12 @@ export const router = createBrowserRouter([
       },
       {
         path: '/developers',
-        Component: Developers,
+        element: <PrivateRoutes><Developers></Developers></PrivateRoutes> ,
+      },
+
+      {
+        path: '/accessibility',
+        Component: AccessibilityPage,
       },
 
 

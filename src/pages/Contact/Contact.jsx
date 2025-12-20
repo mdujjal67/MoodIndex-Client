@@ -57,7 +57,7 @@ const Contact = () => {
                     
                     {/* Contact Information Side */}
                     <div className="py-6 md:py-0 md:px-6">
-                        <h1 className="text-4xl font-bold">Get in touch</h1>
+                        <h1 className="text-4xl font-bold text-indigo-900">Get in touch</h1>
                         <p className="pt-2 pb-4">Fill in the form to send your opinion</p>
                         <div className="space-y-4">
                             <p className="flex items-center">
@@ -77,7 +77,7 @@ const Contact = () => {
                                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
                                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                                 </svg>
-                                <span>contact@moodindex.com</span>
+                                <span>contact.moodindex@gmail.com</span>
                             </p>
                         </div>
                     </div>
@@ -115,7 +115,7 @@ const Contact = () => {
                             type="submit" 
                             name="submit" 
                             value="Send Message" 
-                            className="btn w-full bg-[#00396a] hover:bg-gray-400 text-white rounded-full border-none font-bold uppercase transition-colors duration-300" 
+                            className="btn w-full bg-[#00396a] hover:bg-gray-400 text-white rounded-full border-none font-semibold uppercase transition-colors duration-300" 
                         />
                     </form>
                 </div>

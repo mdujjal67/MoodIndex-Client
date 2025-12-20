@@ -8,7 +8,7 @@ const TestHomeSection = () => {
                 <div className="container mx-auto space-y-12">
 
                     {/* Section Title */}
-                    <h2 className="text-4xl font-serif font-bold text-center mb-14 mt-4">
+                    <h2 className="text-4xl text-indigo-900 font-serif font-bold text-center mb-14 mt-4">
                         Quick Self-Check
                     </h2>
 

@@ -34,7 +34,7 @@ const HelpCenter = () => {
         <div className="min-h-screen bg-white">
             <section className="py-12">
                 <div className="container flex flex-col items-center p-4 mx-auto md:p-8">
-                    <h1 className="text-3xl font-serif font-bold leading-none text-center sm:text-4xl text-[#00396a]">
+                    <h1 className="text-3xl font-serif font-bold leading-none text-center sm:text-4xl text-indigo-900">
                         Help Center
                     </h1>
 

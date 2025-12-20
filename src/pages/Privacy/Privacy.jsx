@@ -8,7 +8,7 @@ const Privacy = () => {
 
     return (
         <div className="max-w-4xl mx-auto py-16 px-6 leading-relaxed">
-            <h1 className="text-4xl font-bold text-[#1BA9B5] mb-6 text-center">Privacy Policy</h1>
+            <h1 className="text-4xl font-bold text-indigo-900 mb-6 text-center">Privacy Policy</h1>
             <div className="space-y-6 text-gray-700">
                 <section>
                     <h2 className="text-2xl font-semibold mb-2 text-gray-800 border-b pb-1">Data Protection</h2>

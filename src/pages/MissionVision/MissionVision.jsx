@@ -14,10 +14,10 @@ const MissionVisionPage = () => {
 
                 {/* --- Header Section --- */}
                 <div className="text-center">
-                    <h1 className="text-4xl font-serif font-bold tracking-tight text-gray-900 sm:text-5xl">
+                    <h1 className="text-4xl font-serif font-bold tracking-tight text-indigo-900 sm:text-5xl">
                         Our Mission & Vision
                     </h1>
-                    <p className="mt-3 max-w-2xl mx-auto text-gray-500 sm:mt-4">
+                    <p className="mt-3 max-w-2xl mx-auto text-gray-600 sm:mt-4">
                         Guiding principles and the future we are committed to building.
                     </p>
                 </div>
@@ -75,10 +75,10 @@ const MissionVisionPage = () => {
                             <table className="min-w-full divide-y divide-gray-200 shadow-xl rounded-lg overflow-hidden">
                                 <thead className="bg-indigo-50">
                                     <tr>
-                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
                                             Value
                                         </th>
-                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
                                             Definition
                                         </th>
                                     </tr>
@@ -116,7 +116,7 @@ const ValueRow = ({ value, definition }) => (
         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
             {value}
         </td>
-        <td className="px-6 py-4 whitespace-normal text-sm text-gray-500">
+        <td className="px-6 py-4 whitespace-normal text-sm text-gray-600">
             {definition}
         </td>
     </tr>

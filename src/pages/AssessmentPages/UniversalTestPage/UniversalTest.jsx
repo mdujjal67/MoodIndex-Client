@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import ResultChart from '../../ResultChart/ResultChart';
@@ -14,16 +14,23 @@ const options = [
 ];
 
 const UniversalTest = () => {
-    const testData = useLoaderData(); 
+    const testData = useLoaderData();
     const navigate = useNavigate();
-    const { user } = useContext(AuthContext); 
-    
+    const { user } = useContext(AuthContext);
+
     const [currentStep, setCurrentStep] = useState(0);
     const [scores, setScores] = useState([]);
     const [isFinished, setIsFinished] = useState(false);
 
     // Ensure testData contains title, questions, thresholds, maxScore, and slug
-    const { title, questions, thresholds, maxScore, slug } = testData; 
+    const { title, questions, thresholds, maxScore, slug } = testData;
+
+    // Dynamic Title
+    useEffect(() => {
+        if (testData?.title) {
+            document.title = `MoodIndex | ${testData.title}`;
+        }
+    }, [testData]);
 
     const getResultData = (score) => {
         // Dynamically find the correct threshold from JSON
@@ -40,7 +47,7 @@ const UniversalTest = () => {
         const resultRecord = {
             userEmail: user.email,
             testTitle: testDetails.title,
-            testSlug: testDetails.slug, 
+            testSlug: testDetails.slug,
             score: score,
             maxScore: testDetails.maxScore,
             level: resultData.level,
@@ -56,7 +63,7 @@ const UniversalTest = () => {
                 },
                 body: JSON.stringify(resultRecord),
             });
-            
+
             if (response.ok) {
                 // Successful save
             } else {
@@ -82,7 +89,7 @@ const UniversalTest = () => {
             // ⭐️ CALL SAVE FUNCTION ON FINISH
             const finalScore = newScores.reduce((acc, curr) => acc + (curr || 0), 0);
             const resultData = getResultData(finalScore);
-            
+
             saveResultToDB(finalScore, resultData, { title, maxScore, slug });
         }
     };
@@ -100,7 +107,7 @@ const UniversalTest = () => {
                 {!isFinished ? (
                     <>
                         <AnimatePresence mode="wait">
-                            <motion.div 
+                            <motion.div
                                 key={currentStep}
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -110,11 +117,11 @@ const UniversalTest = () => {
                                 <h3 className="text-indigo-400 font-bold uppercase tracking-widest text-sm mb-2">{title}</h3>
                                 <h2 className="text-3xl md:text-5xl font-bold text-indigo-900 mb-4">Question {currentStep + 1}</h2>
                                 <div className="w-16 h-1 bg-indigo-900/10 mx-auto mb-10 rounded-full"></div>
-                                
+
                                 <p className="text-xl md:text-2xl text-gray-700 mb-12 min-h-20">
                                     {questions[currentStep]}
                                 </p>
-                                
+
                                 <div className="flex flex-wrap justify-center gap-4">
                                     {options.map((opt) => (
                                         <button
@@ -128,7 +135,7 @@ const UniversalTest = () => {
                                 </div>
 
                                 {currentStep > 0 && (
-                                    <button 
+                                    <button
                                         onClick={handlePrevious}
                                         className="mt-10 cursor-pointer text-gray-400 hover:text-indigo-900 transition-colors text-sm font-bold flex items-center justify-center gap-2 mx-auto"
                                     >
@@ -141,7 +148,7 @@ const UniversalTest = () => {
                         {/* Progress Bar */}
                         <div className="max-w-xl mx-auto text-center">
                             <div className="relative w-full h-3 bg-gray-200 rounded-full mb-4">
-                                <motion.div 
+                                <motion.div
                                     className="absolute left-0 top-0 h-full bg-indigo-900 rounded-full"
                                     initial={{ width: 0 }}
                                     animate={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}
@@ -153,32 +160,45 @@ const UniversalTest = () => {
                         </div>
                     </>
                 ) : (
-                    <ResultChart 
-                        score={totalScore} 
-                        result={getResultData(totalScore)} 
-                        maxScore={maxScore} 
+                    <ResultChart
+                        score={totalScore}
+                        result={getResultData(totalScore)}
+                        maxScore={maxScore}
                     />
                 )}
 
-                {/* Existing Support Footer */}
+                {/* Footer Part */}
                 <div className="mt-20 grid md:grid-cols-2 gap-12 border-t border-gray-200 pt-12">
-                    <div className="bg-white p-6 rounded-xl">
-                        <h3 className="text-xl font-bold text-indigo-900 mb-2">Emergency?</h3>
-                        <p className="text-3xl font-black text-red-600 mb-4">999</p>
-                        <p className="text-gray-500 text-sm leading-relaxed">
-                            Confidential support answered by assistant psychologists to discuss your treatment options.
-                        </p>
+                    {/* Emergency & Support Section */}
+                    <div className="bg-white p-6 rounded-xl border border-red-50 shadow-sm">
+                        <h3 className="text-xl font-bold text-indigo-900 mb-2">Immediate Help</h3>
+                        <div className="flex items-baseline gap-4 mb-4">
+                            <a href="tel:999" className="block text-4xl font-black text-red-600 hover:scale-105 transition-transform focus:outline-none focus:ring-4 focus:ring-red-300 focus:ring-offset-2">
+                                999
+                            </a>
+                            <span className="text-sm font-bold text-red-500 uppercase tracking-wider">Emergency Line</span>
+                        </div>
+                        <div className="space-y-3">
+                            <p className="text-gray-700 font-semibold text-sm">
+                                Confidential support answered by assistant psychologists:
+                            </p>
+                            <p className="text-gray-600 text-sm leading-relaxed">
+                                Reach out to discuss your treatment options and screening results in a safe, non-profit environment.
+                            </p>
+                        </div>
                     </div>
-                    <div className="bg-white p-6 rounded-xl">
-                        <h3 className="text-xl font-bold text-indigo-900 mb-2">Take another test</h3>
-                        <button 
+
+                    {/* Navigation Section */}
+                    <div className="bg-white p-6 rounded-xl border border-indigo-50 shadow-sm">
+                        <h3 className="text-xl font-bold text-indigo-900 mb-2">Continue Screening</h3>
+                        <button
                             onClick={() => navigate('/assessments')}
-                            className="text-lg font-bold cursor-pointer hover:text-indigo-900 text-red-600 underline mb-4 block"
+                            className="text-lg font-bold cursor-pointer hover:text-indigo-700 text-[#1BA9B5] underline mb-4 block transition-colors"
                         >
                             View all clinical tests
                         </button>
-                        <p className="text-gray-500 text-sm leading-relaxed">
-                            Online quizzes for ADHD, autism, depression, and PTSD. None take longer than 5 minutes.
+                        <p className="text-gray-600 text-sm leading-relaxed">
+                            Free clinical tools for ADHD, autism, depression, and PTSD. These validated screens help you understand your mental health in under 5 minutes.
                         </p>
                     </div>
                 </div>

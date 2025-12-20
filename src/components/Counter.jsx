@@ -70,7 +70,7 @@ const Counter = ({ endValue, duration = 1500, suffix = '', precision = 0 }) => {
     });
 
     return (
-        <span ref={ref} className="text-4xl font-bold leading-none lg:text-6xl">
+        <span ref={ref} className="text-4xl text-indigo-900 font-bold leading-none lg:text-6xl">
             {formattedCount}
             {suffix}
         </span>

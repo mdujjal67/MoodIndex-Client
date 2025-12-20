@@ -53,7 +53,7 @@ const UserProfile = () => {
 
         <div className="mt-6 border-t pt-4">
           <div className="flex justify-between bg-gray-50 p-3 rounded-lg">
-            <span className="text-sm text-gray-500">Email</span>
+            <span className="text-sm text-gray-600">Email</span>
             <span className="text-sm font-medium">{user.email}</span>
           </div>
         </div>

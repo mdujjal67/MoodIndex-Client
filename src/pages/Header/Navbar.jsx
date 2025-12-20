@@ -339,7 +339,7 @@ const Navbar = () => {
                 alt="User"
               />
             ) : (
-              <FaUser className="text-4xl text-gray-400" />
+              <FaUser className="text-4xl text-indigo-900" />
             )}
           </div>
         </div>

@@ -14,10 +14,10 @@ const AboutProjectPage = () => {
 
         {/* --- Header Section --- */}
         <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-tight text-indigo-900 sm:text-5xl">
             💡 About Us: The Project
           </h1>
-          <p className="mt-3 max-w-3xl mx-auto text-xl text-gray-500 sm:mt-4">
+          <p className="mt-3 max-w-3xl mx-auto text-xl text-gray-600 sm:mt-4">
             Building a Bridge to Better Mental Health
           </p>
         </div>
