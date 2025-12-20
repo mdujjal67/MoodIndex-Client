@@ -62,8 +62,8 @@ const handleLogin = (e) => {
                 });
         })
         .catch((error) => {
-            setLoading(false); // ⭐️ FIX: Stop loading if password/email is wrong
-            setLoginError('Invalid credentials');
+            setLoading(false); 
+            setLoginError('Wrong Email ID or Password! Please enter correct information.');
             toast.error('Login failed');
         });
 };

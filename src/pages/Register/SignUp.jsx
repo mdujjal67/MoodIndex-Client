@@ -81,7 +81,7 @@ const SignUp = () => {
             targetForm.reset(); 
             await logOut();
             navigate('/login');
-            toast.success('Registration successful! Please login.');
+            // toast.success('Registration successful! Please login.');
         } else {
             console.error("Database sync failed");
             toast.error("Database error occurred.");
